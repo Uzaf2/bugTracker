@@ -1,0 +1,27 @@
+.background  {
+    background-image: url('./background.jpeg');
+    background-size:cover;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.form {
+    margin: 0 auto;
+    margin-top: 200px;
+    border-radius: 25px;
+    width: 400px;
+    height: 350px;
+    background: #ffffff;
+}
+
+.innerForm  {
+    width: 350px;
+    margin-left:20px;
+    margin-top: 100px;
+}
+
+.formContainer {
+    margin-top: 0px;
+}
+
