@@ -63,13 +63,14 @@ const useStyles = makeStyles((theme) => ({
     });
 
 
-    const [addUser, { loading }]= useMutation (REGISTER_USER,{
+    const [addUser, { loading }] = useMutation (REGISTER_USER,{
         update(_, { data}){
             console.log(data)
             props.history.push('/');
         },
         onError(err){
            setErrors(err.graphQLErrors[0].extensions.exception.errors);
+           console.log("setting erorrs:",errors)
         },
         variables: values
     });
@@ -96,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
     return (
         <Container component="main" maxWidth="xs" className={useStyles.container} class="background">
             <CssBaseline />
-            <div class="form">
+            <div className="form">
             <div className={useStyles.paper} class="innerForm">
             <Typography component="h1" variant="h5" className={styles.fontType} style={{ marginBottom : "10px" }}>
             </Typography>
@@ -136,7 +137,7 @@ const useStyles = makeStyles((theme) => ({
                                 variant="outlined"
                                 fullWidth
                                 label="Password"
-                                type="paswword"
+                                type="password"
                                 id="password"
                                 name="password"
                                 autoComplete="password"
@@ -172,6 +173,13 @@ const useStyles = makeStyles((theme) => ({
                     </Typography>
                     </Button>
                 </form>
+                <div className="ui error message">
+                    <ul className="list">
+                        {Object.values(errors).map(value=>(
+                            <li key={value}>{value}</li>
+                        ))}
+                    </ul>
+                </div>
                 
             </div>
             </div>

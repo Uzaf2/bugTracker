@@ -1,8 +1,9 @@
+const { UserInputError } = require('apollo-server');
 const User = require('../../models/User');
+const { validateLoginInput, validateRegisterInput } = require ('../../utils/validators');
 
 module.exports = {
     Query: {
-
         async getUsers(_, {},) {
             try {
                 const users = await User.find().sort({createdAt : -1});
@@ -14,8 +15,14 @@ module.exports = {
         }
     },
     Mutation: {
+       
         async register (_, { registerInput: { username, email, password, confirmPassword }}) {
 
+           const { errors, valid } = validateRegisterInput(username,email, password, confirmPassword);
+
+           if (!valid) {
+               throw new UserInputError('Error: ', {errors});
+           }
             const user = await User.findOne({username});
             if (user) {
                 throw new UserInputError('Username is taken', {
@@ -41,6 +48,26 @@ module.exports = {
                 ...res._doc,
                 id: res._id,
               };
+        },
+        async login (_, {username, password}) {
+
+            const {errors, valid} = validateLoginInput(username, password);
+
+            if(!valid )
+            {
+                throw new UserInputError ('Error: ',{errors});
+            }
+
+            const user = await User.findOne({username});
+            
+            if (!user) {
+                errors.general = 'User not found';
+                throw new UserInputError('User not found',{errors});
+            }
+            return {
+                ...user._doc,
+                id:user._id
+            };
         }
     }
 };

@@ -1,5 +1,5 @@
 
-import { React}from 'react';
+import { React, useState}from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -7,10 +7,13 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import  '../App.css';
+import '../App.css'; 
 import { Link } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
+import {useForm } from '../util/hooks';
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/react-hooks';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -57,10 +60,35 @@ const useStyles = makeStyles((theme) => ({
   const font =  "'Merriweather', serif";
   
   function Login (props) {
+
+    const [errors, setErrors ] = useState({});
+    const {onChange,onSubmit, values } = useForm(loginUser,{
+        username: '',
+        password: ''
+    });
+
+    const [login, {loading} ] = useMutation (LOGIN_USER, {
+        update(_,{data})
+        {
+            console.log("In the update function of the login page");
+            console.log("Data from login",data);
+            props.history.push('/Register');
+        }, 
+        onError(err){
+            setErrors(err.graphQLErrors[0].extensions.exception.errors)
+        }, variables : values
+    });
+
+    function loginUser() {
+        login();
+    }
+
     const history = useHistory();
     function handleClick() {
         history.push("/Register");
       }
+
+      
     const styles = useStyles();
 
     return (
@@ -70,8 +98,8 @@ const useStyles = makeStyles((theme) => ({
             <div className={useStyles.paper} class="innerForm">
             <Typography component="h1" variant="h5" className={styles.fontType} style={{ marginBottom : "10px" }}>
             </Typography>
-                <form className={useStyles.form} class="formContainer" >
-                    <Grid container spacing={2}  >
+                <form className={useStyles.form} class="formContainer" onSubmit={onSubmit}>
+                    <Grid container spacing={2}>
                        
                         <Grid item xs={12} sm={12} >
                             <TextField
@@ -82,6 +110,9 @@ const useStyles = makeStyles((theme) => ({
                                 type="text"
                                 autoComplete="username"
                                 name="username"
+                                error={errors.username ? true: false}
+                                value={values.username}
+                                onChange={onChange}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -92,6 +123,9 @@ const useStyles = makeStyles((theme) => ({
                                 type="password"
                                 id="password"
                                 name="password"
+                                error={errors.password ? true: false}
+                                value={values.password}
+                                onChange={onChange}
                             />
                         </Grid>
                     </Grid>
@@ -109,12 +143,29 @@ const useStyles = makeStyles((theme) => ({
                     
                     <a href="#" onClick={handleClick}> Don't have an account? Sign Up ? </a>
                  </form>
-            </div>
+                 <div className="ui error message">
+                    <ul className="list">
+                        {Object.values(errors).map(value=>(
+                            <li key={value}>{value}</li>
+                        ))}
+                    </ul>
+                </div>
+            </div> 
             </div>
         </Container>
      
     )
 }
 
+
+const LOGIN_USER = gql `
+mutation  login($username:String! $password: String! ) {
+    login(username: $username password: $password){
+    id
+    email
+    username
+    creationTime
+    }
+}`;
 
 export default Login;
