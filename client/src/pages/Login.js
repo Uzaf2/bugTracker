@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
         {
             console.log("In the update function of the login page");
             console.log("Data from login",data);
-            props.history.push('/Register');
+            props.history.push('/ManageUserRoles');
         }, 
         onError(err){
             setErrors(err.graphQLErrors[0].extensions.exception.errors)

@@ -1,6 +1,7 @@
 import './App.css';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ManageUserRoles from './pages/ManageUserRoles';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
@@ -18,6 +19,7 @@ function App() {
       <Router>
       <Route exact path="/" component={Login} />
       <Route exact path="/Register" component={Register} />
+      <Route exact path="/ManageUserRoles" component={ManageUserRoles} />
      </Router>
     </div>
     </ApolloProvider>
