@@ -28,8 +28,9 @@ function ManageUserRoles (props) {
     
           <div className="mainNav">
           <div className="navBrand">
-          <span class="nav__name">Nav</span>
+          <span class="nav__logo">Nav</span>
           </div>
+          <ul class="nav__list">
           <div className="navbar">
           <a className="section" href="#section">
           <img class="grid" src={grid} alt="image al" />
@@ -58,12 +59,14 @@ function ManageUserRoles (props) {
           </a>
 
 
-          <a className="section" width="10px"href="#section">
+          <a class="section" width="10px"href="#section">
             
           <img class="grid" src={personAddOutline} alt="image al" />
           <span class="nav__name">User Profile</span>
           </a>
+          
           </div>
+          </ul>
           </div>
 
           

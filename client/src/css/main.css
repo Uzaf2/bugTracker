@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap");
 .class1 {
   opacity: 0.8;
   background-color: #D1D7E0;
@@ -24,6 +25,7 @@
   -webkit-transition: .5s;
   transition: .5s;
   z-index: var(--z-fixed);
+  color: white;
 }
 
 .mainNav {
@@ -39,6 +41,10 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   overflow: hidden;
+}
+
+.mainNav__name {
+  margin-bottom: 10px;
 }
 
 .navBrand {
@@ -103,10 +109,11 @@
   width: calc(var(92px) + 9.25rem);
   height: 30px;
   justify-self: flex-end;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 .navbar .section:hover {
-  background-color: #0C5DF4;
+  background-color: #F5A623;
   -webkit-transition: .3s;
   transition: .3s;
   cursor: pointer;
@@ -121,13 +128,29 @@
   -ms-grid-columns: max-content max-content;
       grid-template-columns: -webkit-max-content -webkit-max-content;
       grid-template-columns: max-content max-content;
-}
-
-ion-icon {
-  color: blue;
+  -webkit-filter: brightness(0) invert(1);
+          filter: brightness(0) invert(1);
 }
 
 .section {
   color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: .5rem;
+  margin-bottom: 1rem;
+  border-radius: .5rem;
+  color: var(--white-color);
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+navlist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 /*# sourceMappingURL=main.css.map */
