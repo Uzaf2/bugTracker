@@ -2,126 +2,81 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
 
-.class1 {
-    opacity:0.8;
-    background-color: #D1D7E0;
-    position:fixed;
-    width:75%;
-    right: 0;
-    height:100%;
-    position: fixed; 
-    top:0px;
-    left:0px;
-    z-index:1000;
-}
-
-.navbar2{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: var(--nav-width);
-    height: 100vh;
-    background-color: var(--bg-color);
-    color: var(--white-color);
-    padding: 1.5rem 1.5rem 2rem;
-    transition: .5s;
-    z-index: var(--z-fixed);
-    color: white;
-  }
-
 .mainNav{
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     overflow: hidden;
-
-    &__name {
-        margin-bottom: 10px;
-
-    }
+    
 }
 
 .navBrand {
-    display: grid;
-    grid-template-columns: max-content max-content;
-    justify-content: space-between;
+    display: flex;
     align-items: center;
     margin-bottom: 2rem;
-
+    padding: 0 .5rem;
 }
 
 .navbar {
-    height:100%;
+    height: 100%;
     width: 18%;  
     position: fixed; 
     top: 0; 
     left: 0; 
-    background-color:#12192C; 
-    flex-direction: column;
-    justify-content: space-around;
-    margin-bottom: 2rem;
+    //background-color:#12192C; 
+    background-color: #262B40;
+    padding: 1.25rem .5rem 2rem;
+    transition: .5s;
     font-weight: 600;
     color: white;
-    font-family:'Poppins', sans-serif;
-    display: flex;
     font-size: 1rem;
-    justify-self: flex-end;
-    //padding: .75rem;
-    margin-bottom: 20px;
-    column-gap: .75rem;
-    grid-template-columns: max-content max-content;
-    align-items: center;
-    text-align:left;
-    
+
     a {
         color: white;
         text-decoration: none;
         font-size: .875rem;
         text-align: left;
         align-items: left;
-        padding: .75rem;
+        padding: .5rem;
+        margin-bottom: 1rem;
         border-radius: 25px;
         width: calc(var(92px) + 9.25rem);
-        height: 30px;
-        justify-self: flex-end;
-        font-family: 'Nunito Sans', sans-serif;
+        font-family: 'Nunito Sans', sans-serif;  
         
     }
+
+    .section{
+        color: white;
+        display: flex;
+        margin-bottom: 1rem;
+        border-radius: .5rem;
+        transition: .3s;
+    }
+
+    .section1 {
+        color: white;
+        display: flex;
+        align-items: center;
+        padding: .5rem;
+        margin-bottom: 2rem;
+        border-radius: .5rem;
+        transition: .3s;
+        font-size: 1.2rem;
+        border-left: 10px;
+    }
+
     .section:hover {
-        //background-color: #0C5DF4;
-        background-color:#F5A623;
+        background-color:#4A5073;
         transition: .3s;
         cursor: pointer;
     }
     .grid {
         width: 10%;
         color: white;
-        margin-top: 40;
-        margin-right: 2px;
-        display: inline-block;
+        margin-right: 10px;
         grid-template-columns: max-content max-content;
         filter:  brightness(0) invert(1); 
     }
    
 }
 
-.section{
-    color: white;
-    display: flex;
-    align-items: center;
-    padding: .5rem;
-    margin-bottom: 1rem;
-    border-radius: .5rem;
-    color: var(--white-color);
-    transition: .3s;
-}
-
-nav {
-    &list {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-
-}
