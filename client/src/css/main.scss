@@ -77,6 +77,22 @@
         grid-template-columns: max-content max-content;
         filter:  brightness(0) invert(1); 
     }
-   
 }
 
+
+.toggle{
+    position: absolute;
+    top: 1.10rem;
+    right: -.6rem;
+    width: 18px;
+    height: 18px;
+    background-color: var(--second-color);
+    border-radius: 50%;
+    font-size: 1.25rem;
+    color: var(--first-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .5s;
+}
