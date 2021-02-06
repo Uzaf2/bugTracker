@@ -2,6 +2,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
 
+.mainBody {
+    display: flex;
+    flex-flow: column wrap;
+  }
 .mainNav{
     height: 100vh;
     display: flex;
@@ -30,6 +34,7 @@
     font-weight: 600;
     color: white;
     font-size: 1rem;
+
 
     a {
         color: white;
@@ -66,7 +71,9 @@
     }
 
     .section:hover {
-        background-color:#4A5073;
+        //background-color:#4A5073;
+        //background-color:#4A5073;
+        background-color:#F5A623;
         transition: .3s;
         cursor: pointer;
     }
@@ -96,3 +103,26 @@
     cursor: pointer;
     transition: .5s;
 }
+
+
+h1 {margin: 0;}
+
+.body-pd{
+    padding: 2rem 0 0 16rem;
+  }
+
+  body{
+    position: relative;
+    margin: 0;
+    padding: 2rem 0 0 6.75rem;
+    transition: .5s;
+  }
+
+  *,::before,::after{
+    box-sizing: border-box;
+  }
+
+  /*Expander menu*/
+.expander{
+    width: calc(var(--nav-width) + 9.25rem);
+  }
