@@ -19,12 +19,12 @@ function ManageUserRoles(props) {
     document.getElementById("mySidebar").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
 
-    document.getElementById('navName').style.fontSize = '.875rem';
-    document.getElementById('navName1').style.fontSize = '.875rem';
-    document.getElementById('navName2').style.fontSize = '.875rem';
-    document.getElementById('navName3').style.fontSize = '.875rem';
-    document.getElementById('navName4').style.fontSize = '.875rem';
-    document.getElementById('navName5').style.fontSize = '.875rem';
+    document.getElementById('navName').style.fontSize = '0.75rem';
+    document.getElementById('navName1').style.fontSize = '0.75rem';
+    document.getElementById('navName2').style.fontSize = '0.75rem';
+    document.getElementById('navName3').style.fontSize = '0.75rem';
+    document.getElementById('navName4').style.fontSize = '0.75rem';
+    document.getElementById('navName5').style.fontSize = '0.75rem';
 
     
     document.getElementById('grid').style.width = '30px';
