@@ -24,7 +24,7 @@ function ManageUserRoles(props) {
     document.getElementById('navName2').style.fontSize = '0.75rem';
     document.getElementById('navName3').style.fontSize = '0.75rem';
     document.getElementById('navName4').style.fontSize = '0.75rem';
-    document.getElementById('navName5').style.fontSize = '0.75rem';
+    document.getElementById('navName5').style.fontSize = '';
 
     
     document.getElementById('grid').style.width = '30px';
@@ -96,8 +96,6 @@ function ManageUserRoles(props) {
           </a>
       </div>
 
-      
-    
     <div id="main" class="main">
       <h2>Collapsed Sidebar</h2>
       <p>Click on the hamburger menu/bar icon to open the sidebar, and push this content to the right.</p>
