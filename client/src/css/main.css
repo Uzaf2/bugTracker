@@ -1,69 +1,96 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap");
-.mainBody {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column wrap;
-          flex-flow: column wrap;
+body {
+  font-family: "Lato", sans-serif;
 }
 
-.mainNav {
-  height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  overflow: hidden;
-}
-
-.navBrand {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 2rem;
-  padding: 0 .5rem;
-}
-
-.navbar {
+.sidebar {
   height: 100%;
-  width: 18%;
+  width: 20%;
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
+  overflow-x: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  padding-top: 60px;
   background-color: #262B40;
-  padding: 1.25rem .5rem 2rem;
-  -webkit-transition: .5s;
-  transition: .5s;
-  font-weight: 600;
-  color: white;
-  font-size: 1rem;
 }
 
-.navbar a {
-  color: white;
+.sidebar a {
+  padding: .5rem;
   text-decoration: none;
   font-size: .875rem;
-  text-align: left;
-  -webkit-box-align: left;
-      -ms-flex-align: left;
-          align-items: left;
-  padding: .5rem;
+  color: white;
+  text-decoration: none;
+  display: block;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   margin-bottom: 1rem;
-  border-radius: 25px;
+  border-radius: 10px;
   width: calc(var(92px) + 9.25rem);
   font-family: 'Nunito Sans', sans-serif;
+  padding: .5rem;
 }
 
-.navbar .section {
+.sidebar a:hover {
+  background-color: #F5A623;
+  -webkit-transition: .3s;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+.main {
+  -webkit-transition: margin-left .5s;
+  transition: margin-left .5s;
+  padding: 16px;
+  margin-left: 20%;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {
+    padding-top: 15px;
+  }
+  .sidebar a {
+    font-size: 18px;
+  }
+}
+
+.grid {
+  width: 10%;
+  color: white;
+  margin-right: 10px;
+  -ms-grid-columns: max-content max-content;
+      grid-template-columns: -webkit-max-content -webkit-max-content;
+      grid-template-columns: max-content max-content;
+  -webkit-filter: brightness(0) invert(1);
+          filter: brightness(0) invert(1);
+}
+
+.section {
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -74,7 +101,7 @@
   transition: .3s;
 }
 
-.navbar .section1 {
+.section1 {
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -91,71 +118,7 @@
   border-left: 10px;
 }
 
-.navbar .section:hover {
-  background-color: #F5A623;
-  -webkit-transition: .3s;
-  transition: .3s;
-  cursor: pointer;
-}
-
-.navbar .grid {
-  width: 10%;
-  color: white;
-  margin-right: 10px;
-  -ms-grid-columns: max-content max-content;
-      grid-template-columns: -webkit-max-content -webkit-max-content;
-      grid-template-columns: max-content max-content;
-  -webkit-filter: brightness(0) invert(1);
-          filter: brightness(0) invert(1);
-}
-
-.toggle {
-  position: absolute;
-  top: 1.10rem;
-  right: -.6rem;
-  width: 18px;
-  height: 18px;
-  background-color: var(--second-color);
-  border-radius: 50%;
-  font-size: 1.25rem;
-  color: var(--first-color);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  cursor: pointer;
-  -webkit-transition: .5s;
-  transition: .5s;
-}
-
-h1 {
-  margin: 0;
-}
-
-.body-pd {
-  padding: 2rem 0 0 16rem;
-}
-
 body {
-  position: relative;
-  margin: 0;
-  padding: 2rem 0 0 6.75rem;
-  -webkit-transition: .5s;
-  transition: .5s;
-}
-
-*, ::before, ::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-/*Expander menu*/
-.expander {
-  width: calc(var(--nav-width) + 9.25rem);
+  background-color: #EDEDED;
 }
 /*# sourceMappingURL=main.css.map */
