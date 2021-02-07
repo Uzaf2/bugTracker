@@ -96,6 +96,7 @@ function ManageUserRoles(props) {
           </a>
       </div>
 
+
     <div id="main" class="main">
       <h2>Collapsed Sidebar</h2>
       <p>Click on the hamburger menu/bar icon to open the sidebar, and push this content to the right.</p>
