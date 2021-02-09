@@ -36,7 +36,7 @@ function createData(username, email, role) {
   return { username, email, role };
 }
 
- function BasicTable() {
+ function UserTable() {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -125,4 +125,4 @@ const FETCH_USERS_QUERY = gql `
 }
 }`;
 
-export default BasicTable;
+export default UserTable;
