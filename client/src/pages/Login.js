@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   
   function Login (props) {
 
-    const [errors, setErrors ] = useState({});
+    const [ errors, setErrors ] = useState({});
     const {onChange,onSubmit, values } = useForm(loginUser,{
         username: '',
         password: ''
@@ -159,8 +159,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 const LOGIN_USER = gql `
-mutation  login($username:String! $password: String! ) {
-    login(username: $username password: $password){
+mutation  login($username:String! $password: String!) {
+    login(username: $username password: $password){ 
     id
     email
     username

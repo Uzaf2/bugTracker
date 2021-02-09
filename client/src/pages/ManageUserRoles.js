@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import '../css/main.css';
-
+import BasicTable from '../components/BasicTable';
 import grid from '../icons/grid-outline.svg';
 import homeIcon from '../icons/home-outline.svg';
 import layers from '../icons/layers-outline.svg';
@@ -12,6 +12,7 @@ import personCircleOutline from '../icons/person-circle-outline.svg';
 //import personOutline from 'person-outline.svg';
 import reorderFourOutline from '../icons/reorder-four-outline.svg';
 //import users from 'users.svg';
+
 
 function ManageUserRoles(props) {
 
@@ -98,11 +99,41 @@ function ManageUserRoles(props) {
 
 
     <div id="main" class="main">
-      <h2>Collapsed Sidebar</h2>
-      <p>Click on the hamburger menu/bar icon to open the sidebar, and push this content to the right.</p>
-    </div>
+      
+  
+ <div class="grid-item">
+ <p>Manage User Roles</p>
+  <div class="custom-select">
+  <label for="cars" class="heading">Select 1 or more Users:</label>
+  <br/>
+   <select>
+    <option value="0">Select User:</option>
+    <option value="1">Hanan</option>
+    <option value="2">Rizwan</option>
+    <option value="3">Usman</option>
+  </select>
+</div>
+<div class="custom-select2">
+      <label for="cars" class="heading">Select the Role of assign:</label>
+      <br/>
+   <select>
+    <option value="0">--Select Role/None--:</option>
+    <option value="1">Admin</option>
+    <option value="2">Demo_Admin</option>
+    <option value="3">Demo_Developer</option>
+    <option value="4">Demo_Project Manager</option>
+  </select>
+</div>
+</div>
+
+<div class="grid-item">
+<div class="table">
+<BasicTable class="basicTable"/>
+</div>
+</div>
+</div>
     
-    </body>
+</body>
   );
 }
 

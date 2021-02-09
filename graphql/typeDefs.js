@@ -15,6 +15,8 @@ type User{
     username: String !
     email: String !
     creationTime: String!
+    role: String !
+    access: String!
 }
 
 type Query {
