@@ -4,12 +4,20 @@ const projectSchema = new Schema ({
     name: String,
     description: String, 
     users: [{
-        type: Schema.Types.ObjectId,
-        ref: 'user'
+        username: String, 
+        email: String, 
+        role: String
     }],
     tickets: [{
-        type: Schema.Types.ObjectId,
-        ref: 'ticket'
+        title: String,
+        description: String, 
+        assignedDeveloper: String, 
+        submitter: String,
+        priority: String, 
+        status: String,
+        type: String,
+        createdAt: String,
+        updatedAt:String
     }]
 });
 

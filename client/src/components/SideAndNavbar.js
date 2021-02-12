@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import '../css/main.css';
-import UserTable from '../components/UserTable';
+import UserTable from './UserTable';
 import grid from '../icons/grid-outline.svg';
 import homeIcon from '../icons/home-outline.svg';
 import layers from '../icons/layers-outline.svg';
@@ -12,10 +12,10 @@ import personCircleOutline from '../icons/person-circle-outline.svg';
 //import personOutline from 'person-outline.svg';
 import reorderFourOutline from '../icons/reorder-four-outline.svg';
 //import users from 'users.svg';
-import UserList from '../components/UserList';
+import UserList from './UserList';
 
 
-function ManageUserRoles(props) {
+function SideAndNavbar(props) {
 
   function openNav(e) {
     document.getElementById("mySidebar").style.width = "250px";
@@ -102,35 +102,11 @@ function ManageUserRoles(props) {
       </div>
 
       <div id="main" class="main">
-        <div class="grid-item">
-          <p>Manage User Roles</p>
-          <div class="custom-select">
-            <label for="cars" class="heading">Select 1 or more Users:</label>
-            <br />
-            <UserList />
-          </div>
-          <div class="custom-select2">
-            <label for="cars" class="heading">Select the Role of assign:</label>
-            <br />
-            <select>
-              <option value="0">--Select Role/None--:</option>
-              <option value="1">Admin</option>
-              <option value="2">Demo_Admin</option>
-              <option value="3">Demo_Developer</option>
-              <option value="4">Demo_Project Manager</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="grid-item">
-          <div class="table">
-            <UserTable class="userTable" />
-          </div>
-        </div>
+        
       </div>
 
     </body>
   );
 }
 
-export default ManageUserRoles;
+export default SideAndNavbar;

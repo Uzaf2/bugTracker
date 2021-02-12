@@ -5,10 +5,13 @@ import ManageUserRoles from './pages/ManageUserRoles';
 import UserList from './components/UserList';
 import UserTable from './components/UserTable';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import CreateProject from './components/CreateProject';
+import SideAndNavbar from './components/SideAndNavbar';
 import Users from './pages/Users';
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client';
+import ProjectTable from './components/ProjectTable';
 
 const client = new ApolloClient({
   uri: 'http://localhost:5000/',
@@ -26,6 +29,9 @@ function App() {
           <Route exact path="/UserTable" component={UserTable} />
           <Route exact path="/Users" component={Users} />
           <Route exact path="/UserList" component={UserList} />
+          <Route exact path="/CreateProject" component={CreateProject} />
+          <Route exact path="/ProjectTable" component={ProjectTable} />
+          <Route exact path="/SideAndNavbar" component={SideAndNavbar} />
         </Router>
       </div>
     </ApolloProvider>

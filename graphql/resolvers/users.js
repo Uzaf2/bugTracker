@@ -15,7 +15,6 @@ module.exports = {
         }
     },
     Mutation: {
-       
         async register (_, { registerInput: { username, email, password, confirmPassword }}) {
 
            const { errors, valid } = validateRegisterInput(username,email, password, confirmPassword);

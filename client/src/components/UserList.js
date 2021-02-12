@@ -17,7 +17,7 @@ function UserList() {
     const { loading, data } = useQuery(FETCH_USERS_QUERY);
     var rows= ['Select the user'];
     if (loading) 
-    return <p>Loading...</p>;
+         return <p>Loading...</p>;
     else {
         var length = data.getUsers.length;
         for(var i=0;i<length;i++)

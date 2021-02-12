@@ -68,7 +68,9 @@ body {
     display: grid;
     grid-template-columns: auto auto auto;
     width: 80%;
-    height: 100%;
+    height: 90%;
+    bottom: 0;
+    margin-top: 0;
   }
   
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -150,4 +152,43 @@ body {
   font-size: 12px;
 }
 
+
+.topnav {
+  overflow: hidden;
+  background-color: #262B40;;
+  float: right;
+  margin-top: 0 px;
+  width: 81%;
+  z-index: 100;
+  border-top: 0;
+}
+
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #262B40;
+  color: white;
+}
+
+
+.topnav input[type=text] {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  border: none;
+  font-size: 17px;
+}
 

@@ -60,7 +60,6 @@ const useStyles = makeStyles((theme) => ({
   const font =  "'Merriweather', serif";
   
   function Login (props) {
-
     const [ errors, setErrors ] = useState({});
     const {onChange,onSubmit, values } = useForm(loginUser,{
         username: '',
@@ -153,7 +152,6 @@ const useStyles = makeStyles((theme) => ({
             </div> 
             </div>
         </Container>
-     
     )
 }
 
