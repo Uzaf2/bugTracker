@@ -5,7 +5,8 @@ import ManageUserRoles from './pages/ManageUserRoles';
 import UserList from './components/UserList';
 import UserTable from './components/UserTable';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import CreateProject from './components/CreateProject';
+import CreateProject from './pages/CreateProject';
+import ViewProjectList from './pages/ViewProjectsList';
 import SideAndNavbar from './components/SideAndNavbar';
 import Users from './pages/Users';
 
@@ -32,6 +33,7 @@ function App() {
           <Route exact path="/CreateProject" component={CreateProject} />
           <Route exact path="/ProjectTable" component={ProjectTable} />
           <Route exact path="/SideAndNavbar" component={SideAndNavbar} />
+          <Route exact path="/ViewProjectList" component={ViewProjectList} />
         </Router>
       </div>
     </ApolloProvider>

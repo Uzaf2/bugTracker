@@ -9,7 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { useQuery, gql } from '@apollo/client';
-
+import SideAndNavbar from './SideAndNavbar';
 const useStyles = makeStyles({
   root: {
     width: '100%',
@@ -20,11 +20,11 @@ const useStyles = makeStyles({
 });
 
 const columns = [
-  { id: 'username', label: 'Username', minWidth: 170 },
-  { id: 'email', label: 'Email', minWidth: 100 },
+  { id: 'name', label: 'Name', minWidth: 170 },
+  { id: 'description', label: 'Description', minWidth: 100 },
   {
-    id: 'role',
-    label: 'Role',
+    id: 'details',
+    label: 'Details',
     minWidth: 170,
     align: 'right',
     format: (value) => value.toLocaleString('en-US'),
@@ -32,28 +32,27 @@ const columns = [
 
 ];
 
-function createData(username, email, role) {
-  return { username, email, role };
+function createData(name, description, details) {
+  return { name, description,details};
 }
 
  function ProjectTable() {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const { loading, data } = useQuery(FETCH_USERS_QUERY);
+  const { loading, data } = useQuery(FETCH_PROJECTS_QUERY);
 
   var rows = [];
   if (loading) 
     return <p>Loading...</p>;
   else {
-    var length = data.getUsers.length;
+    var length = data.getProjects.length;
+    //console.log(data.getProjects);
     for(var i=0;i<length; i++)
     {
-      rows[i] = createData(data.getUsers[i].username,data.getUsers[i].email, data.getUsers[i].role)
+      rows[i] = createData(data.getProjects[i].name,data.getProjects[i].description, 'Edit Details')
     }
   }
-
- //const rows = [createData('India', 'IN', 1324171354)  ];
   
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -64,7 +63,23 @@ function createData(username, email, role) {
     setPage(0);
   };
 
+  function renderElement (value, value2){
+    console.log("In render Element", value2);
+        //return value;
+         if (value2.id === "details")
+         {
+           return <a href={value}> {value} </a>;
+         }
+         else {
+          return  value;
+         }
+       // return  <a href={value}> {value} </a>
+  }
   return (
+    <body>
+ <div>
+    <SideAndNavbar></SideAndNavbar>
+    <div id="main" class="main">
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
@@ -89,7 +104,7 @@ function createData(username, email, role) {
                     const value = row[column.id];
                     return (
                       <TableCell key={column.id} align={column.align}>
-                        {column.format && typeof value === 'number' ? column.format(value) : value}
+                        {renderElement(value, column)}
                       </TableCell>
                     );
                   })}
@@ -109,19 +124,18 @@ function createData(username, email, role) {
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
     </Paper>
+    </div>
+    </div>
+    </body>
   );
 }
 
 
-const FETCH_USERS_QUERY = gql `
+const FETCH_PROJECTS_QUERY = gql `
 {
-  getUsers{
-  username
-  id
-  email
-  creationTime
-  role
-  access
+  getProjects{
+  name
+  description
 }
 }`;
 

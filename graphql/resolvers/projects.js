@@ -3,7 +3,16 @@ const Project = require('../../models/project');
 
 module.exports= {
     Query: {
-
+        async getProjects(_, {},){
+            try {
+                const projects = await Project.find().sort({createdAt:-1});
+                return projects;
+            }
+            catch(err)
+            {
+                throw new Error(err);
+            }
+        }
     },
     Mutation: {
         async createProject(_,{ name, description}) {
@@ -27,4 +36,4 @@ module.exports= {
             return project;
         }
     }
-}
+};

@@ -11,7 +11,7 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
-import {useForm } from '../util/hooks';
+import { useForm } from '../util/hooks';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 
@@ -61,14 +61,13 @@ const useStyles = makeStyles((theme) => ({
   
   function Login (props) {
     const [ errors, setErrors ] = useState({});
-    const {onChange,onSubmit, values } = useForm(loginUser,{
+    const { onChange, onSubmit, values } = useForm(loginUser,{
         username: '',
         password: ''
     });
 
-    const [login, {loading} ] = useMutation (LOGIN_USER, {
-        update(_,{data})
-        {
+    const [login, {loading} ] = useMutation(LOGIN_USER, {
+        update(_,{data}){
             console.log("In the update function of the login page");
             console.log("Data from login",data);
             props.history.push('/ManageUserRoles');
@@ -157,8 +156,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 const LOGIN_USER = gql `
-mutation  login($username:String! $password: String!) {
-    login(username: $username password: $password){ 
+mutation login($username:String! $password: String!) {
+    login(username: $username password: $password) { 
     id
     email
     username

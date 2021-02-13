@@ -38,6 +38,7 @@ type Project {
 }
 type Query {
     getUsers: [User]
+    getProjects: [Project]
 }
 
 type Mutation {
