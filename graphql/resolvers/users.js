@@ -1,9 +1,39 @@
 const { UserInputError } = require('apollo-server');
 const User = require('../../models/User');
 const { validateLoginInput, validateRegisterInput } = require ('../../utils/validators');
+var mongoose = require('mongoose');
 
 module.exports = {
     Query: {
+        async getUserMultiple(_,{users},)
+        {
+            try {
+                var list = [];
+                for (var i=0; i< users.length; i++)
+                {
+                    var id = mongoose.Types.ObjectId(users[i].name);
+                    //console.log("Value of id", users[i].name);
+                    const user = await User.findById(id);
+                    list.push(user);
+                   // list.push(users[i]);
+                }
+
+                return list;
+            }
+            catch(err){
+                throw new Error(err);
+            }
+        }
+        ,
+        async getUser(_,{userId},){
+            try {
+                const user = await User.findById(userId);
+                return user;
+            }
+            catch (err){
+                throw new Error (err);
+            }
+        },
         async getUsers(_, {},) {
             try {
                 const users = await User.find().sort({createdAt : -1});

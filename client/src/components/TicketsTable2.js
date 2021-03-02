@@ -12,10 +12,10 @@ import { useQuery, gql } from '@apollo/client';
 import SideAndNavbar from './SideAndNavbar';
 import { useHistory } from "react-router-dom";
 import '../css/projectTable.css';
-import Button from '@material-ui/core/Button';
+
 const useStyles = makeStyles({
   root: {
-    width: '100%',
+    width: '500px',
   },
   container: {
     maxHeight: 440,
@@ -23,37 +23,41 @@ const useStyles = makeStyles({
 });
 
 const columns = [
-  { id: 'name', label: 'Name', minWidth: 170 },
+  { id: 'name', label: 'Name', minWidth: 100 },
   { id: 'description', label: 'Description', minWidth: 100 },
-  {
-    id: 'details',
-    label: 'Details',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
-  },
+  { id: 'developer', label: 'Developer', minWidth: 100 },
+  { id: 'status', label: 'Status', minWidth: 100 },
+  { id: 'created', label: 'Created', minWidth: 100 },
 ];
 
-function createData(name, description, details) {
-  return { name, description, details };
+function createData(name, description, developer, status, created) {
+  return { name, description, developer, status, created };
 }
 
-function ProjectTable() {
+function TicketsTable() {
 
-  var i;
-  var valueNumber = 0;
   const history = useHistory();
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const { loading, data } = useQuery(FETCH_PROJECTS_QUERY);
+
   var rows = [];
   if (loading)
     return <p>Loading...</p>;
   else {
     var length = data.getProjects.length;
+   
     for (var i = 0; i < length; i++) {
-      rows[i] = createData(data.getProjects[i].name, data.getProjects[i].description, 'Edit Details')
+        
+      /*var length2 = data.getProjects[i].tickets.length;
+        for(var j = 0; j < length2; j++)
+        {
+            rows[i] = createData(data.getProjects[i].tickets[j].title, data.getProjects[i].tickets[j].description
+                ,data.getProjects[i].tickets[j].assignedDeveloper, data.getProjects[i].tickets[j].status,
+                data.getProjects[i].tickets[j].createdAt);
+        }
+        */
     }
   }
 
@@ -66,48 +70,11 @@ function ProjectTable() {
     setPage(0);
   };
 
-  function HandleOnClick(props, rowsArray) {
-   
-    history.push({
-      pathname: '/ProjectDetails',
-      search: '?update=true',  // query string
-      state: {  // location state
-        index: props, 
-        array: rowsArray
-      },
-    }); 
-
-  }
-
-  function AssignUser() {
-    //history.push('/AssignUser');
-    history.push({
-      pathname: '/AssignUser',
-      search: '?update=true',  // query string
-      state: {  // location state
-        update: true, 
-      },
-    }); 
-  }
-
-  function CreateTicket() {
-    history.push('/CreateTicket');
-  }
-
-  function RenderElement(value, value2, value3) {
-    var one = "CreateProject";
-    if (value2.id === "details") {
-      return <a  onClick={() => HandleOnClick(value3, rows)} className="link"> {value} </a>;
-    }
-    else {
-      return value;
-    }
-  }
   return (
     <body>
       <div>
-        <SideAndNavbar></SideAndNavbar>
-        <div id="main" className="main">
+    
+        <div id="main" class="main">
           <Paper className={classes.root}>
             <TableContainer className={classes.container}>
               <Table stickyHeader aria-label="sticky table">
@@ -126,14 +93,13 @@ function ProjectTable() {
                 </TableHead>
                 <TableBody>
                   {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    valueNumber++;
                     return (
                       <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                         {columns.map((column) => {
                           const value = row[column.id];
                           return (
                             <TableCell key={column.id} align={column.align}>
-                              {RenderElement(value, column, valueNumber)}
+                                {value}
                             </TableCell>
                           );
                         })}
@@ -152,23 +118,20 @@ function ProjectTable() {
               onChangePage={handleChangePage}
               onChangeRowsPerPage={handleChangeRowsPerPage}
             />
-          </Paper>    
+          </Paper>
         </div>
       </div>
     </body>
   );
 }
 
-
 const FETCH_PROJECTS_QUERY = gql`
 {
-  getProjects{
+getProjects{
   name
   description
   id
-}
+}  
 }`;
 
-
-
-export default ProjectTable;
+export default TicketsTable;

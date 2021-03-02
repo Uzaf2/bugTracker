@@ -9,7 +9,12 @@ import CreateProject from './pages/CreateProject';
 import ViewProjectList from './pages/ViewProjectsList';
 import SideAndNavbar from './components/SideAndNavbar';
 import Users from './pages/Users';
-
+import ProjectDetails from './pages/ProjectDetails';
+import ProjectTable2 from './components/ProjectTable2';
+import TicketsTable from './components/TicketsTable';
+import AssignedPersonnel from './components/AssignedPersonnel';
+import AssignUser from './pages/AssignUser';
+import CreateTicket from './pages/CreateTicket';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client';
 import ProjectTable from './components/ProjectTable';
@@ -34,6 +39,12 @@ function App() {
           <Route exact path="/ProjectTable" component={ProjectTable} />
           <Route exact path="/SideAndNavbar" component={SideAndNavbar} />
           <Route exact path="/ViewProjectList" component={ViewProjectList} />
+          <Route exact path="/ProjectDetails" component={ProjectDetails} />
+          <Route exact path="/ProjectTable2" component={ProjectTable2} />
+          <Route exact path="/TicketsTable" component={TicketsTable} />
+          <Route exact path="/AssignedPersonnel" component={AssignedPersonnel} />
+          <Route exact path="/AssignUser" component={AssignUser} />
+          <Route exact path="/CreateTicket" component={CreateTicket} />
         </Router>
       </div>
     </ApolloProvider>

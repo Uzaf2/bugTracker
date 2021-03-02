@@ -65,17 +65,17 @@ const useStyles = makeStyles((theme) => ({
 
     const [addUser, { loading }] = useMutation (REGISTER_USER,{
         update(_, { data}){
-            console.log(data)
+            //console.log(data)
             props.history.push('/');
         },
         onError(err){
            setErrors(err.graphQLErrors[0].extensions.exception.errors);
-           console.log("setting erorrs:",errors)
+           //console.log("setting erorrs:",errors)
         },
         variables: values
     });
 
-    console.log("Adduser", addUser);
+    //console.log("Adduser", addUser);
     /*
     const [addUser, { loading }] = useMutation(REGISTER_USER, {
         update(_, { data: { register: userData }}){

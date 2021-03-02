@@ -5,11 +5,11 @@ const ticketSchema = new Schema ({
     description : String,
     assignedDeveloper: [{
         type: Schema.Types.ObjectId,
-        ref: 'assignedDeveloper'
+        ref: 'Developer'
     }],
     submitter: [{
         type: Schema.Types.ObjectId,
-        ref: 'submitter'
+        ref: 'Submitter'
     }], 
     priority: String,
     status: String,

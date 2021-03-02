@@ -68,8 +68,8 @@ const useStyles = makeStyles((theme) => ({
 
     const [login, {loading} ] = useMutation(LOGIN_USER, {
         update(_,{data}){
-            console.log("In the update function of the login page");
-            console.log("Data from login",data);
+            //console.log("In the update function of the login page");
+            //console.log("Data from login",data);
             props.history.push('/ManageUserRoles');
         }, 
         onError(err){
@@ -84,9 +84,8 @@ const useStyles = makeStyles((theme) => ({
     const history = useHistory();
     function handleClick() {
         history.push("/Register");
-      }
-
-      
+    }
+  
     const styles = useStyles();
 
     return (

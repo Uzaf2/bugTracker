@@ -1,0 +1,30 @@
+a{
+    color: blue;
+    text-decoration: underline;
+}
+  
+
+a:hover {
+    color: #262B40;
+    cursor: pointer;
+  }
+
+.main{
+    float: right;
+}
+
+.bottomDiv{
+    float: right;
+    margin-right: 600px;
+    margin-top:100px;
+}
+
+.btn1 {
+   color: #262B40;
+   margin:20px 20px 20px 20px;
+}
+
+.btn2 {
+    color:red;
+    margin:20px 20px 20px 20px;
+}
