@@ -3,6 +3,7 @@ import '../css/main.css';
 import UserTable from '../components/UserTable';
 import UserList from '../components/UserList';
 import SideAndNavbar from '../components/SideAndNavbar';
+import Button from '@material-ui/core/Button';
 
 function ManageUserRoles(props) {
 
@@ -14,12 +15,12 @@ function ManageUserRoles(props) {
         <div class="grid-item">
           <p>Manage User Roles</p>
           <div class="custom-select">
-            <label for="cars" class="heading">Select 1 or more Users:</label>
+            <label for="cars" class="heading" className="part1">Select 1 or more Users:</label>
             <br />
             <UserList />
           </div>
           <div class="custom-select2">
-            <label for="cars" class="heading">Select the Role of assign:</label>
+            <label for="cars" class="heading" className="part2">Select the Role to assign:</label>
             <br />
             <select>
               <option value="0">--Select Role/None--:</option>
@@ -29,6 +30,10 @@ function ManageUserRoles(props) {
               <option value="4">Demo_Project Manager</option>
             </select>
           </div>
+
+          <Button variant="contained" color="primary">
+          Assign
+          </Button>
         </div>
 
         <div class="grid-item">

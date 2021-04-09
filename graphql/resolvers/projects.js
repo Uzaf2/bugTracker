@@ -1,11 +1,38 @@
 const { UserInputError } = require('apollo-server');
 const Project = require('../../models/project');
 var mongoose = require('mongoose');
+var User = mongoose.model('User');
+
+var mongoose = require('mongoose');
 module.exports = {
     Query: {
+        async getProjectsAndUsers(_, { name},) {
+            try {
+                var usersArray = [];
+                const projects = await Project.find().sort({ createdAt: -1 });
+                const length = projects[name].users.length;
+                var userId = 0
+                var users = 0;
+                for (var i=0;i<length; i++)
+               {
+                  console.log("index", i);
+                  userId = projects[name].users[i];
+                  var usersValue =  await User.findOne( userId );
+                  usersArray.push(usersValue);
+                  
+               }
+               console.log("UsersArray",usersArray);
+
+               return usersArray;
+            }
+            catch (err) {
+                throw new Error(err);
+            }
+        },
         async getProjects(_, { },) {
             try {
                 const projects = await Project.find().sort({ createdAt: -1 });
+                console.log("Project", projects);
                 return projects;
             }
             catch (err) {
@@ -14,6 +41,7 @@ module.exports = {
         }
     },
     Mutation: {
+        
         async createProject(_, { name, description }) {
             const projectValue = await Project.findOne({ name });
 

@@ -17,7 +17,7 @@ function CreateProject(props) {
     const [create, {loading}] = useMutation (CREATE_PROJECT,{
         update(_,  {data}){
             //console.log("In the update function of the create Project page");
-            //console.log("Data from login",data);
+            console.log("Data from login",data);
         },
         onError(err) {
             setErrors(err.graphQLErrors[0].extensions.exception.errors);
