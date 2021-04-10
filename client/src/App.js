@@ -2,7 +2,6 @@ import './App.css';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ManageUserRoles from './pages/ManageUserRoles';
-import UserList from './components/UserList';
 import UserTable from './components/UserTable';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import CreateProject from './pages/CreateProject';
@@ -34,7 +33,6 @@ function App() {
           <Route exact path="/ManageUserRoles" component={ManageUserRoles} />
           <Route exact path="/UserTable" component={UserTable} />
           <Route exact path="/Users" component={Users} />
-          <Route exact path="/UserList" component={UserList} />
           <Route exact path="/CreateProject" component={CreateProject} />
           <Route exact path="/ProjectTable" component={ProjectTable} />
           <Route exact path="/SideAndNavbar" component={SideAndNavbar} />

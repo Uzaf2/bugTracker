@@ -73,10 +73,10 @@ function TicketsTable() {
   return (
     <body>
       <div>
-    
         <div id="main" class="main">
           <Paper className={classes.root}>
             <TableContainer className={classes.container}>
+              <p>Tickets for the Project</p>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>
@@ -84,8 +84,7 @@ function TicketsTable() {
                       <TableCell
                         key={column.id}
                         align={column.align}
-                        style={{ minWidth: column.minWidth }}
-                      >
+                        style={{ minWidth: column.minWidth }}>
                         {column.label}
                       </TableCell>
                     ))}

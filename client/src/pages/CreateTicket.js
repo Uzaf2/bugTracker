@@ -5,44 +5,98 @@ import gql from 'graphql-tag';
 import SideAndNavbar from '../components/SideAndNavbar';
 import { useMutation } from '@apollo/react-hooks';
 import { useForm } from '../util/hooks';
+import { useQuery } from '@apollo/client';
 
 function CreateTicket(props) {
 
     const [errors, setErrors]= useState({});
     const {onChange, onSubmit, values}= useForm(createProject, {
-        name:'',
-        description: ''
+        
+        title:'',
+        description: '',
+        assignedProject: '',
+        assignedDeveloper: '',
+        priority: '',
+        type: '',
+        status: ''
     });
     
-    const [create, {loading}] = useMutation (CREATE_PROJECT,{
+    const [create, {loading}] = useMutation (CREATE_TICKET,{
         update(_,  {data}){
+       
         },
         onError(err) {
-            setErrors(err.graphQLErrors[0].extensions.exception.errors);
+            //.graphQLErrors[0].extensions.exception.errors
+           // setErrors(err);
+            console.log("Errors from create tickets", err);
         },
         variables:values
     });
+
+  
+    
+    const {loading:usersloading, data: users} = useQuery (GET_USERS);
+    const {loading:projectsloading, data:projects} = useQuery (GET_PROJECTS);
+    
+    if (projects!=null)
+    {       
+        const length = projects.getProjects.length; 
+        var projectsArray = [];
+        for (var i=0;i<projects.getProjects.length; i++)
+        {
+            projectsArray.push(projects.getProjects[i].name);
+        }
+    
+        var select = document.getElementById("assignedProject");
+        // Put a check here
+        for(var i = 0; i < projectsArray.length; i++) {
+        var opt = projectsArray[i];
+        var el = document.createElement("option");
+        el.textContent = opt;
+        el.value = opt;
+        select.appendChild(el);
+        }
+    
+    }
+    if (users!=null)
+    {
+        const length = users.getUsers.length; 
+        var usernames = [];
+        for (var i=0;i<users.getUsers.length; i++)
+        {
+           usernames.push(users.getUsers[i].username);
+        }
+    
+        var select = document.getElementById("assignedDeveloper");
+        // Put a check here
+        for(var i = 0; i < usernames.length; i++) {
+        var opt = usernames[i];
+        var el = document.createElement("option");
+        el.textContent = opt;
+        el.value = opt;
+        select.appendChild(el);
+        }
+    }
     
     function createProject () {
         create();
     }
-
  return (
 <body>
 
         <SideAndNavbar/>
           <form onSubmit={onSubmit} class="inputForm">
-            <label for="name">Ticket Title</label>
+            <label for="title">Ticket Title</label>
             <input 
             type="text" 
-            id="name" 
-            name="name" 
+            id="title" 
+            name="title" 
             placeholder="Ticket Title.." 
-            autoComplete="name"
-            error={errors.name ? true:false}
-            value={values.name}
+            autoComplete="title"
+            error={errors.title ? true:false}
+            value={values.title}
             onChange={onChange}/>
-            <label for="description">Project Description</label>
+            <label for="description">Ticket Description</label>
             <textarea 
             className="description" 
             type="text" 
@@ -51,78 +105,43 @@ function CreateTicket(props) {
             placeholder="Project desc.." required
             error={errors.description}
             value={values.description}
-            onChange={onChange}></textarea>
-            <label for="name">Assigned Developer</label>
-            <input 
-            type="text" 
-            id="name" 
-            name="name" 
-            placeholder="Assigned Developer.." 
-            autoComplete="name"
-            error={errors.name ? true:false}
-            value={values.name}
             onChange={onChange}/>
-            <label for="name">Submitter</label>
-            <input 
-            type="text" 
-            id="name" 
-            name="name" 
-            placeholder="Submitter.." 
-            autoComplete="name"
-            error={errors.name ? true:false}
-            value={values.name}
-            onChange={onChange}/>
-            <label for="name">Priority</label>
-            <input 
-            type="text" 
-            id="name" 
-            name="name" 
-            placeholder="Priority.." 
-            autoComplete="name"
-            error={errors.name ? true:false}
-            value={values.name}
-            onChange={onChange}/>
-            <label for="name">Status</label>
-            <input 
-            type="text" 
-            id="name" 
-            name="name" 
-            placeholder="Status.." 
-            autoComplete="name"
-            error={errors.name ? true:false}
-            value={values.name}
-            onChange={onChange}/>
-            <label for="name">Type</label>
-            <input 
-            type="text" 
-            id="name" 
-            name="name" 
-            placeholder="Type..." 
-            autoComplete="name"
-            error={errors.name ? true:false}
-            value={values.name}
-            onChange={onChange}/>
-            <label for="name">CreatedAt</label>
-            <input 
-            type="text" 
-            id="name" 
-            name="name" 
-            placeholder="Creation Time.." 
-            autoComplete="name"
-            error={errors.name ? true:false}
-            value={values.name}
-            onChange={onChange}/>
-            <label for="name">Updated Time</label>
-            <input 
-            type="text" 
-            id="name" 
-            name="name" 
-            placeholder="Updated Time.." 
-            autoComplete="name"
-            error={errors.name ? true:false}
-            value={values.name}
-            onChange={onChange}/>
-            
+            <label for="">Assigned Project</label>
+            <select id="assignedProject" name="assignedProject"
+            value={values.assignedProject} onChange={onChange}>
+            </select>
+            <label for="assignedDeveloper">Assigned Developer</label>
+            <select id="assignedDeveloper" name="assignedDeveloper"
+            value={values.assignedDeveloper} onChange={onChange}>
+            </select>
+            <label for="priority">Priority</label>
+            <select id="priority"
+            value={values.priority}
+            name="priority"
+            onChange={onChange}>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+            </select>
+            <label for="type">Ticket Type</label>
+            <select id="type" name="type"
+            value={values.type}
+            id="type"
+            name="type"
+            onChange={onChange}>
+            <option value="Bugs/Error">Bugs/Error</option>
+            <option value="Feature Requests">Feature Requests</option>
+            <option value="Other Comments">Other Comments</option>
+            <option value="Training/Document Requests">Training/Document Requests</option>
+            </select>
+            <label for="ticketStatus">Ticket Status</label>
+            <select name="status" value={values.status}
+            id="status" name="status"
+            onChange={onChange}>
+            <option value="completed">Completed</option>
+            <option value="open">Open</option>
+            <option value="inprogress">In Progress</option>
+            </select>
             <input type="submit" value="Create Ticket" />
           </form>
           <div className="ui error message">
@@ -136,11 +155,46 @@ function CreateTicket(props) {
  )
 }
 
-const CREATE_PROJECT =  gql `
-mutation createProject($name: String! $description: String!) {
-    createProject(name:$name description: $description) {
-        name description
-    }     
+const CREATE_TICKET =  gql `
+mutation createTicket($title: String! $description: String! $assignedProject: String!
+    $assignedDeveloper: String! $priority: String!  $status: String! $type: String!) {
+    
+    createTicket(title:$title description: $description assignedProject: $assignedProject 
+    assignedDeveloper: $assignedDeveloper priority:$priority status: $status type: $type  ) {
+    
+    id
+    title
+    description
+    priority 
+    status
+    type
+    createdAt
+    updatedAt
+    
+}     
 }`;
 
+const GET_USERS = gql`
+{
+    getUsers {
+        id 
+        username
+        email
+        creationTime
+        role 
+        access
+    }
+}
+`;
+
+const GET_PROJECTS = gql` 
+{
+    getProjects {
+        id 
+        name
+        description
+        users
+        tickets 
+    }
+}  `;
 export default CreateTicket;

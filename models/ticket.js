@@ -3,13 +3,13 @@ const { model, Schema } = require('mongoose');
 const ticketSchema = new Schema ({
     title: String,
     description : String,
+    assignedProject: [{
+        type: Schema.Types.ObjectId,
+        ref: 'AssignedProject'
+    }],
     assignedDeveloper: [{
         type: Schema.Types.ObjectId,
-        ref: 'Developer'
-    }],
-    submitter: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Submitter'
+        ref: 'AssignedDeveloper'
     }], 
     priority: String,
     status: String,

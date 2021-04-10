@@ -52,30 +52,46 @@ function AssignedDeveloper(props) {
   variables: { name: "1"}
 });
 
-
   var rows = [];
   console.log("Error", errors)
   if (loading)
     return <p>Loading...</p>;
   else {
    
-    console.log("Data",data);
+    console.log("Data",data.getProjectsAndUsers);
+    console.log("Length",data.getProjectsAndUsers.length);
   
-    /*
     var length = data.getProjectsAndUsers.length;
-    var length3 = data.getProjectsAndUsers[index].users.length;
-   for (var k = 0; k < length3; k++)
+    //var length3 = data.getProjectsAndUsers[index].users.length;
+   for (var k = 0; k < length; k++)
     {
-      console.log(data.getProjectsAndUsers[index]);
-      var myName = (data.getProjectsAndUsers[index].users[k]);
-          var myName2 = '"' + myName + '"';  
-          JSON.stringify(myName2); 
-          markersArray.push({
-            name: myName2
+          console.log("in loop",data.getProjectsAndUsers[k]);
+          var name = (data.getProjectsAndUsers[k].username);
+
+          var email = (data.getProjectsAndUsers[k].email);
+
+          var creationTime = (data.getProjectsAndUsers[k].creationTime);
+
+          var role = (data.getProjectsAndUsers[k].role);
+
+
+          var access = (data.getProjectsAndUsers[k].access);
+
+          JSON.stringify(name); 
+          JSON.stringify(email); 
+          JSON.stringify(creationTime); 
+          JSON.stringify(role); 
+          JSON.stringify(access); 
+
+          rows.push({
+            username: name,
+            email: email,
+            creationTime: creationTime,
+            role: role,
+            access: access
           });
     }
-    console.log("MarkersArray", markersArray);
-    */
+    console.log("MarkersArray", rows);
   }
 
   const handleChangePage = (event, newPage) => {
@@ -91,8 +107,10 @@ function AssignedDeveloper(props) {
     <body>
       <div>
         <div id="main" class="main">
+         
           <Paper className={classes.root}>
             <TableContainer className={classes.container}>
+            <p>AssignedPersonnel</p>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>

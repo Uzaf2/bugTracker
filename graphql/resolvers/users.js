@@ -12,10 +12,8 @@ module.exports = {
                 for (var i=0; i< users.length; i++)
                 {
                     var id = mongoose.Types.ObjectId(users[i].name);
-                    //console.log("Value of id", users[i].name);
                     const user = await User.findById(id);
                     list.push(user);
-                   // list.push(users[i]);
                 }
 
                 return list;
@@ -71,7 +69,7 @@ module.exports = {
                 access: "None"
               });
 
-              const res = await newUser.save();
+              const res = await new User.save();
 
               return {
                 ...res._doc,
@@ -97,6 +95,10 @@ module.exports = {
                 ...user._doc,
                 id:user._id
             };
+        },
+        async assignRole(_, {name, role}){
+            console.log("Values in the AssignRole function", name,"Role :", role)
+            return "";
         }
     }
 };

@@ -41,8 +41,8 @@ input userInput {
     name: String 
 }
 type Query {
-    getUsers: [User]
-    getProjects: [Project]
+    getUsers: [User]!
+    getProjects: [Project]!
     getUser(userId: String!): User!
     getUserMultiple(users: [userInput]): [User]!
     getProjectsAndUsers(name: String!): [User]
@@ -53,5 +53,7 @@ type Mutation {
     login(username: String!, password: String!): User !
     createProject(name: String!, description: String): Project!
     assignUser(projectId: String !, userId: String ! ): Project!
+    createTicket(title: String!, description: String!, assignedProject: String!, assignedDeveloper: String!, priority: String!, type: String!, status: String!): Ticket!
+    assignRole (name: String!, role: String !): String !
 }
 `;

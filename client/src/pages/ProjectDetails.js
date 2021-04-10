@@ -43,12 +43,14 @@ function CreateTicket() {
 <body>
     <SideAndNavbar/>
     <div className="firstDiv">
+    <ProjectTable2 index={value}/> 
     </div>
     <div className="main">
     <div classsName="firstmain">
     <AssignedPersonnel index={value}/>
     </div>
     <div className="secondMain">
+    <TicketsTable2 className="ticketsTable"/>
     </div>
     </div>
     <div className="bottomDiv">

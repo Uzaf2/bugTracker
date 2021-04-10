@@ -3,10 +3,9 @@ const Project = require('../../models/project');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
-var mongoose = require('mongoose');
 module.exports = {
     Query: {
-        async getProjectsAndUsers(_, { name},) {
+        async getProjectsAndUsers(_, { name },) {
             try {
                 var usersArray = [];
                 const projects = await Project.find().sort({ createdAt: -1 });
@@ -19,7 +18,6 @@ module.exports = {
                   userId = projects[name].users[i];
                   var usersValue =  await User.findOne( userId );
                   usersArray.push(usersValue);
-                  
                }
                console.log("UsersArray",usersArray);
 
@@ -41,8 +39,7 @@ module.exports = {
         }
     },
     Mutation: {
-        
-        async createProject(_, { name, description }) {
+        async createProject(_, { name, description,  }) {
             const projectValue = await Project.findOne({ name });
 
             if (projectValue) {
@@ -58,15 +55,13 @@ module.exports = {
                 description
             })
 
-            const project = await newProject.save();
+            const project = await new Project.save();
 
             return project;
         },
         async assignUser(_, { projectId, userId }) {
             const project = await Project.findById(projectId);
             var flag = false;
-            //console.log("List of objects", list[0]);
-            //console.log("Length", project.users.length);
 
             console.log("Value of: ",typeof project.users[0]);
 
@@ -79,8 +74,7 @@ module.exports = {
                     var obj = toString(project.users[i]);
                     var obj2 = toString(id);
                     if (obj === obj2) {
-                       // console.log("Project id:", project.users[i]);
-                       // console.log("Given id:", id);
+
                         flag = true;
                     }
                 }
