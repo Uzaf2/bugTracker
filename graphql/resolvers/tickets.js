@@ -78,5 +78,17 @@ module.exports = {
             const ticket = await newTicket.save();
            return ticket;
         }
+    },
+    Query: {
+        async getTickets(_,{ }) 
+        {
+            try{
+                const tickets = await Ticket.find().sort({ createdAt: -1 });
+                return tickets;
+            }
+            catch (err) {
+                throw new Error(err);
+            }
+        }
     }
 };

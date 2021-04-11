@@ -46,6 +46,7 @@ type Query {
     getUser(userId: String!): User!
     getUserMultiple(users: [userInput]): [User]!
     getProjectsAndUsers(name: String!): [User]
+    getTickets: [Ticket]
 }
 
 type Mutation {

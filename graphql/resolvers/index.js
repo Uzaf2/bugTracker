@@ -10,6 +10,7 @@ module.exports = {
     },
     Query: {
         ...usersResolvers.Query,
-        ...projectsResolvers.Query
+        ...projectsResolvers.Query,
+        ...ticketsResolvers.Query
     }
 };

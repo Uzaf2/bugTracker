@@ -48,18 +48,11 @@ function TicketsTable() {
     return <p>Loading...</p>;
   else {
     console.log("data", data);
-    /*
-    var length = data.getProjects.length;
+    var length = data.getTickets.length;
     for (var i = 0; i < length; i++) {
-        var length2 = data.getProjects[i].tickets.length;
-        for(var j = 0; j < length2; j++)
-        {
-            rows[i] = createData(data.getProjects[i].tickets[j].title, data.getProjects[i].tickets[j].description
-                ,data.getProjects[i].tickets[j].assignedDeveloper, data.getProjects[i].tickets[j].status,
-                data.getProjects[i].tickets[j].createdAt);
-        }
+    rows[i] = createData(data.getTickets[i].title, data.getTickets[i].description 
+    ,data.getTickets[i].assignedDeveloper, data.getTickets[i].status, data.getTickets[i].createdAt);
     }
-    */
   }
 
   const handleChangePage = (event, newPage) => {
@@ -128,12 +121,15 @@ function TicketsTable() {
 
 const FETCH_PROJECTS_QUERY = gql`
 {
-getProjects{
-  name
-  description
-  tickets
-  users 
-}  
+  getTickets{
+    title
+    description
+    priority
+    status
+    type
+    createdAt
+    updatedAt
+      }
 }`;
 
 export default TicketsTable;
