@@ -49,7 +49,7 @@ function AssignedDeveloper(props) {
   const [ errors, setErrors ] = useState({});
  
  const {loading, data} = useQuery (FETCH_PROJECTS_QUERY,{
-  variables: { name: "1"}
+  variables: { name: String(props.index)}
 });
 
   var rows = [];
@@ -91,7 +91,6 @@ function AssignedDeveloper(props) {
             access: access
           });
     }
-    console.log("MarkersArray", rows);
   }
 
   const handleChangePage = (event, newPage) => {

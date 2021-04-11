@@ -7,15 +7,17 @@ module.exports = {
     Query: {
         async getProjectsAndUsers(_, { name },) {
             try {
+                const index = name -1 ;
                 var usersArray = [];
                 const projects = await Project.find().sort({ createdAt: -1 });
-                const length = projects[name].users.length;
+                const length = projects[index].users.length;
                 var userId = 0
                 var users = 0;
+                console.log("length", length, "index", name);
                 for (var i=0;i<length; i++)
                {
                   console.log("index", i);
-                  userId = projects[name].users[i];
+                  userId = projects[index].users[i];
                   var usersValue =  await User.findOne( userId );
                   usersArray.push(usersValue);
                }
@@ -63,7 +65,7 @@ module.exports = {
             const project = await Project.findById(projectId);
             var flag = false;
 
-            console.log("Value of: ",typeof project.users[0]);
+           // console.log("Value of: ",typeof project.users[0]);
 
             if (userId.match(/^[0-9a-fA-F]{24}$/)) {
                 var id = mongoose.Types.ObjectId(userId);
@@ -71,12 +73,15 @@ module.exports = {
 
                 for (var i = 0; i < project.users.length; i++) {
 
+                    console.log("Users in the project", project.users[i]);
+                    console.log("id", id);
                     var obj = toString(project.users[i]);
                     var obj2 = toString(id);
-                    if (obj === obj2) {
-
-                        flag = true;
-                    }
+                  
+                    if (obj.localeCompare(obj2))
+                {
+                    flag = true;
+                }
                 }
 
                 console.log("flag", flag);

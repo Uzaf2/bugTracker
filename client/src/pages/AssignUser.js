@@ -41,7 +41,7 @@ function AssignUser(props) {
      
   });
 
-    console.log(userId,projectId);
+    //console.log(userId,projectId);
   
     var rows= ['Select the user'];
     if (loading) 

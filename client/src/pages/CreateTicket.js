@@ -26,15 +26,13 @@ function CreateTicket(props) {
        
         },
         onError(err) {
-            //.graphQLErrors[0].extensions.exception.errors
-           // setErrors(err);
-            console.log("Errors from create tickets", err);
+        //.graphQLErrors[0].extensions.exception.errors
+        // setErrors(err);
+        console.log("Errors from create tickets", err);
         },
         variables:values
     });
 
-  
-    
     const {loading:usersloading, data: users} = useQuery (GET_USERS);
     const {loading:projectsloading, data:projects} = useQuery (GET_PROJECTS);
     
@@ -47,34 +45,44 @@ function CreateTicket(props) {
             projectsArray.push(projects.getProjects[i].name);
         }
     
-        var select = document.getElementById("assignedProject");
-        // Put a check here
-        for(var i = 0; i < projectsArray.length; i++) {
-        var opt = projectsArray[i];
-        var el = document.createElement("option");
-        el.textContent = opt;
-        el.value = opt;
-        select.appendChild(el);
+        //console.log("Select", projectsArray);
+        //console.log("usernames", usernames);
+        var select = document.getElementById("assignedProject");   
+        
+        if (select.length < length)
+        {
+            // Put a check here
+            for(var i = 0; i < projectsArray.length; i++) {
+            var opt = projectsArray[i];
+            var el = document.createElement("option");
+            el.textContent = opt;
+            el.value = opt;
+            select.appendChild(el);
+            }
         }
-    
     }
     if (users!=null)
     {
         const length = users.getUsers.length; 
         var usernames = [];
+        
         for (var i=0;i<users.getUsers.length; i++)
         {
            usernames.push(users.getUsers[i].username);
         }
     
         var select = document.getElementById("assignedDeveloper");
-        // Put a check here
-        for(var i = 0; i < usernames.length; i++) {
-        var opt = usernames[i];
-        var el = document.createElement("option");
-        el.textContent = opt;
-        el.value = opt;
-        select.appendChild(el);
+       
+        if (select.length< length)
+        {
+             // Put a check here
+            for(var i = 0; i < usernames.length; i++) {
+            var opt = usernames[i];
+            var el = document.createElement("option");
+            el.textContent = opt;
+            el.value = opt;
+            select.appendChild(el);
+            }
         }
     }
     
@@ -112,6 +120,7 @@ function CreateTicket(props) {
             </select>
             <label for="assignedDeveloper">Assigned Developer</label>
             <select id="assignedDeveloper" name="assignedDeveloper"
+            id="assignedDeveloper" name="assignedDeveloper"
             value={values.assignedDeveloper} onChange={onChange}>
             </select>
             <label for="priority">Priority</label>

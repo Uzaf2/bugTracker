@@ -2,6 +2,7 @@ const { UserInputError } = require('apollo-server');
 const User = require('../../models/User');
 const { validateLoginInput, validateRegisterInput } = require ('../../utils/validators');
 var mongoose = require('mongoose');
+const { UniqueArgumentNamesRule } = require('graphql');
 
 module.exports = {
     Query: {
@@ -80,7 +81,7 @@ module.exports = {
 
             const {errors, valid} = validateLoginInput(username, password);
 
-            if(!valid )
+            if(!valid)
             {
                 throw new UserInputError ('Error: ',{errors});
             }
@@ -97,7 +98,42 @@ module.exports = {
             };
         },
         async assignRole(_, {name, role}){
-            console.log("Values in the AssignRole function", name,"Role :", role)
+            //console.log("Values in the AssignRole function", name,"Role :", role);
+
+            const userObj = await User.findOneAndUpdate({username:name}, {role, role});
+            //console.log("UserObj", userObj[0].role);
+            //userObj[0].role.push(role);
+
+            //console.log("UserObj",userObj.assignedTickets);
+
+            /*
+            const assignedTickets = userObj[0].assignedTickets;
+            const ticketsCreated = userObj[0].ticketsCreated;
+            const associatedProjects = userObj[0].associatedProjects;
+            const _id = userObj[0]._id;
+            const email = userObj.email;
+            const password = userObj.password;
+            const creationTime = userObj.creationTime;
+            const roleValue = role;
+            const username = userObj[0].username;
+            const access = userObj[0].access;
+
+            console.log("UserObj", userObj);
+
+        
+            const newUser = new User({
+                _id,
+                username,
+                email,
+                password,
+                creationTime,
+                roleValue,
+                access
+              });
+              
+              */
+
+            await userObj.save();
             return "";
         }
     }

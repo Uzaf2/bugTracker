@@ -47,6 +47,8 @@ function TicketsTable() {
   if (loading)
     return <p>Loading...</p>;
   else {
+    console.log("data", data);
+    /*
     var length = data.getProjects.length;
     for (var i = 0; i < length; i++) {
         var length2 = data.getProjects[i].tickets.length;
@@ -57,6 +59,7 @@ function TicketsTable() {
                 data.getProjects[i].tickets[j].createdAt);
         }
     }
+    */
   }
 
   const handleChangePage = (event, newPage) => {
@@ -129,28 +132,28 @@ getProjects{
   name
   description
   tickets
-  {
-    id
-    title
-    description
-    assignedDeveloper
-    submitter
-    priority
-    status
-    type
-    createdAt
-    updatedAt
-  }
-  users
-  {
-    id
-    username
-    email
-    creationTime
-    role
-    access
-  }
+  users 
 }  
 }`;
 
 export default TicketsTable;
+
+/*
+title
+description
+assignedDeveloper
+submitter
+priority
+status
+type
+createdAt
+updatedAt
+
+
+
+username
+    email
+    creationTime
+    role
+    access
+    */

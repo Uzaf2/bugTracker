@@ -74,10 +74,10 @@ function ManageUserRoles(props) {
             <br />
             <select id="role" name="role" onChange={onChange} value={values.role}>
               <option value="0">--Select Role/None--:</option>
-              <option value="1">Admin</option>
-              <option value="2">Demo_Admin</option>
-              <option value="3">Demo_Developer</option>
-              <option value="4">Demo_Project Manager</option>
+              <option value="Admin">Admin</option>
+              <option value="Demo Admin">Demo_Admin</option>
+              <option value="Demo Developer">Demo_Developer</option>
+              <option value="Demo Project Manager">Demo_Project Manager</option>
             </select>
           </div>
 
