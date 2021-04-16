@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import '../css/main.css';
+import '../css/manageUserRoles.css';
 import UserTable from '../components/UserTable';
 import SideAndNavbar from '../components/SideAndNavbar';
 import Button from '@material-ui/core/Button';
@@ -58,15 +58,14 @@ function ManageUserRoles(props) {
    
     <form onSubmit={onSubmit} class="inputForm">
     <p>Manage User Roles</p>
-      <div id="main" class="main">
+      <div id="main" class="container">
      
-        <div class="grid-item2">
+        <div class="cell-1">
 
-        
-          <div class="custom-select">
-            <label for="cars" class="heading" className="part1">Select 1 or more Users:</label>
+          <div class="custom-select1">
+            <label for="cars" class="label1" className="part1">Select 1 or more Users:</label>
             <br />
-            <select id="name" name="name" onChange={onChange} value={values.name}>
+            <select id="name" class="select1" name="name" onChange={onChange} value={values.name}>
          {rows.map(time => {
            return (
              <option value={time}> {time} </option>
@@ -75,10 +74,10 @@ function ManageUserRoles(props) {
       </select>
           </div>
           
-          <div class="custom-select">
-            <label for="cars" class="heading" className="part2">Select the Role to assign:</label>
+          <div class="custom-select2">
+            <label for="cars" class="label2" className="part2">Select the Role to assign:</label>
             <br />
-            <select id="role" name="role" onChange={onChange} value={values.role}>
+            <select id="role" class="select2" name="role" onChange={onChange} value={values.role}>
               <option value="0">--Select Role/None--:</option>
               <option value="Admin">Admin</option>
               <option value="Demo Admin">Demo_Admin</option>
@@ -87,13 +86,14 @@ function ManageUserRoles(props) {
             </select>
           </div>
 
-          <Button className="button1" variant="contained" color="primary" type="submit">
+          <Button class="assignButton" className="button1" variant="contained" color="primary" type="submit">
           Assign
           </Button>
          
-        </div>
+         </div>
+       
         
-        <div class="grid-item2">
+        <div class="cell-2">
           <div class="table">
             <UserTable class="userTable" />
           </div>

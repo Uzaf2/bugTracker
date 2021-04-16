@@ -87,6 +87,10 @@ const useStyles = makeStyles((theme) => ({
     function handleClick() {
         history.push("/Register");
     }
+
+    function handleClickDemo() {
+        history.push("/Accounts");
+    }
   
     const styles = useStyles();
 
@@ -142,7 +146,7 @@ const useStyles = makeStyles((theme) => ({
                     
                     <a href="#" className="signUp" onClick={handleClick}> Don't have an account? Sign Up ? </a>
                     <p></p>
-                    <a href="#" className="signUp" onClick={handleClick}> For Demo Account click here ! </a>
+                    <a href="#" className="signUp" onClick={handleClickDemo}> For Demo Account click here ! </a>
                  </form>
                  <div className="ui error message">
                     <ul className="list">

@@ -61,17 +61,7 @@ body {
     background-color: #444;
   }
   
-  .main {
-    transition: margin-left .5s;
-    padding: 16px;
-    margin-left: 18%;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    width: 80%;
-    height: 90%;
-    bottom: 0;
-    margin-top: 0;
-  }
+  
   
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {
@@ -122,22 +112,7 @@ body {
   float:  right;
 }
 
-.grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
-  //border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
-  height: 80vh;
-}
 
-.custom-select {
-  float: left;
-}
-
-.grid-item1{
-  background-color:#111;
-}
 
 .userTable {
   margin-top: 0%;

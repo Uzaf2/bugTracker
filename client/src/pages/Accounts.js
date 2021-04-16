@@ -11,7 +11,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { useForm } from '../util/hooks';
 import { Input } from 'semantic-ui-react'
 import AccountsImg from '../icons/images.svg';
-import '../css/Accounts.css';
+import '../css/accounts.css';
 
 const useStyles = makeStyles((theme) => ({
     inputType:{
@@ -85,19 +85,19 @@ function Accounts(props) {
                         <div class="grid-item">
                         <div class="article">
                         <img alt="Image of Seal" class="img2"  src={AccountsImg}/>
-                        <p class="paragraph">Admin</p>
+                        <p class="paragraph">Project Manager</p>
                         </div>
                         </div>
                         <div class="grid-item">
                         <div class="article">
                         <img alt="Image of Seal"  class="img3" src={AccountsImg}/>
-                        <p class="paragraph">Admin</p>
+                        <p class="paragraph">Developer</p>
                         </div>
                         </div>
                         <div class="grid-item">
                         <div class="article">
                         <img alt="Image of Seal"  class="img4" src={AccountsImg}/>
-                        <p class="paragraph">Admin</p>
+                        <p class="paragraph">Submitter</p>
                         </div>
                         </div>
                     </form>
