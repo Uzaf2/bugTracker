@@ -18,6 +18,8 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client';
 import ProjectTable from './components/ProjectTable';
 import Accounts from './pages/Accounts';
+import TestUserTable from './components/TestUserTable';
+import TestUserRoles from './pages/TestUserRoles';
 
 const client = new ApolloClient({
   uri: 'http://localhost:5000/',
@@ -45,6 +47,8 @@ function App() {
           <Route exact path="/AssignUser" component={AssignUser} />
           <Route exact path="/CreateTicket" component={CreateTicket} />
           <Route exact path="/Accounts" component={Accounts} />
+          <Route exact path="/TestUserRoles" component={TestUserRoles} />
+          <Route exact path="/TestUserTable" component={TestUserTable} />
         </Router>
       </div>
     </ApolloProvider>

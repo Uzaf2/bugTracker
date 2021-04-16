@@ -9,11 +9,14 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { useQuery, gql } from '@apollo/client';
+import { Collapse } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
     width: '100%',
+
   },
+
   container: {
     maxHeight: 440,
   },
@@ -68,7 +71,7 @@ function createData(username, email, role) {
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
-          <TableHead>
+          <TableHead className={classes.header}>
             <TableRow>
               {columns.map((column) => (
                 <TableCell

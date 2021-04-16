@@ -55,7 +55,6 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
         justify: "center",
     },
-
     logo: {
         width: '10%'
     }
