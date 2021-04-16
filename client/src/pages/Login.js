@@ -14,7 +14,6 @@ import { useHistory } from "react-router-dom";
 import { useForm } from '../util/hooks';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
-import '../App.css';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -98,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
             <div className={useStyles.paper} class="innerForm">
             <Typography component="h1" variant="h5" className={styles.fontType} style={{ marginBottom : "10px" }}>
             </Typography>
-                <form className={useStyles.form} class="formContainer" onSubmit={onSubmit}>
+                <form className={useStyles.form} class="formContainer1" onSubmit={onSubmit}>
                     <Grid container spacing={2}>
                        
                         <Grid item xs={12}  >

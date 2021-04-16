@@ -60,7 +60,7 @@ function ManageUserRoles(props) {
     <p>Manage User Roles</p>
       <div id="main" class="main">
      
-        <div class="grid-item">
+        <div class="grid-item2">
 
         
           <div class="custom-select">
@@ -92,9 +92,8 @@ function ManageUserRoles(props) {
           </Button>
          
         </div>
-       
         
-        <div class="grid-item">
+        <div class="grid-item2">
           <div class="table">
             <UserTable class="userTable" />
           </div>

@@ -17,6 +17,7 @@ import CreateTicket from './pages/CreateTicket';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client';
 import ProjectTable from './components/ProjectTable';
+import Accounts from './pages/Accounts';
 
 const client = new ApolloClient({
   uri: 'http://localhost:5000/',
@@ -43,6 +44,7 @@ function App() {
           <Route exact path="/AssignedPersonnel" component={AssignedPersonnel} />
           <Route exact path="/AssignUser" component={AssignUser} />
           <Route exact path="/CreateTicket" component={CreateTicket} />
+          <Route exact path="/Accounts" component={Accounts} />
         </Router>
       </div>
     </ApolloProvider>

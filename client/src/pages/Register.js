@@ -106,7 +106,7 @@ function Register(props) {
                 <div className={useStyles.paper} class="innerForm">
                     <Typography component="h1" variant="h5" className={styles.fontType} style={{ marginBottom: "10px" }}>
                     </Typography>
-                    <form className={useStyles.form} class="formContainer" onSubmit={onSubmit}>
+                    <form className={useStyles.form} class="formContainer1" onSubmit={onSubmit}>
                         <Grid container spacing={2}>
 
                             <Grid item xs={12} sm={12}>
