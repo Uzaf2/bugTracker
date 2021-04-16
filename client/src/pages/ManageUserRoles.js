@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 import '../css/main.css';
 import UserTable from '../components/UserTable';
 import SideAndNavbar from '../components/SideAndNavbar';
@@ -8,6 +9,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { useForm } from '../util/hooks';
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
+
 
 function ManageUserRoles(props) {
 
@@ -53,10 +55,14 @@ function ManageUserRoles(props) {
   return (
     <body>
     <SideAndNavbar/>
+   
     <form onSubmit={onSubmit} class="inputForm">
+    <p>Manage User Roles</p>
       <div id="main" class="main">
+     
         <div class="grid-item">
-          <p>Manage User Roles</p>
+
+        
           <div class="custom-select">
             <label for="cars" class="heading" className="part1">Select 1 or more Users:</label>
             <br />
@@ -69,7 +75,7 @@ function ManageUserRoles(props) {
       </select>
           </div>
           
-          <div class="custom-select2">
+          <div class="custom-select">
             <label for="cars" class="heading" className="part2">Select the Role to assign:</label>
             <br />
             <select id="role" name="role" onChange={onChange} value={values.role}>
@@ -81,19 +87,25 @@ function ManageUserRoles(props) {
             </select>
           </div>
 
-          <Button variant="contained" color="primary" type="submit">
+          <Button className="button1" variant="contained" color="primary" type="submit">
           Assign
           </Button>
+         
         </div>
        
+        
         <div class="grid-item">
           <div class="table">
             <UserTable class="userTable" />
           </div>
         </div>
-      </div>
 
+      
+      </div>
+   
+    
       </form>
+
 
     </body>
   );

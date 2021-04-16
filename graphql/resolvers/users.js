@@ -70,7 +70,7 @@ module.exports = {
                 access: "None"
               });
 
-              const res = await new User.save();
+              const res = await newUser.save();
 
               return {
                 ...res._doc,

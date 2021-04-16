@@ -20,6 +20,7 @@ function CreateProject(props) {
             console.log("Data from login",data);
         },
         onError(err) {
+            console.log(err);
             setErrors(err.graphQLErrors[0].extensions.exception.errors);
         },
         variables:values
@@ -51,7 +52,7 @@ function CreateProject(props) {
             id="description" 
             name="description" 
             placeholder="Project desc.." required
-            error={errors.description}
+            error={errors.description  ? true:false}
             value={values.description}
             onChange={onChange}></textarea>
             <input type="submit" value="Create Project" />

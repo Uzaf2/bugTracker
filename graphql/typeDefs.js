@@ -18,17 +18,6 @@ type User{
     access: String!
 }
 
-type Ticket {
-    id: ID !
-    title: String !
-    description : String !
-    priority: String 
-    status: String
-    type: String
-    createdAt: String
-    updatedAt: String
-}
-
 type Project {
     id: ID!
     name: String!
@@ -37,9 +26,23 @@ type Project {
     tickets: [ID]
 }
 
+type Ticket {
+    id: ID !
+    title: String !
+    description : String !
+    assignedProject:   [ID] 
+    assignedDeveloper: [ID] 
+    priority: String 
+    status: String
+    type: String
+    createdAt: String
+    updatedAt: String
+}
+
 input userInput {
     name: String 
 }
+
 type Query {
     getUsers: [User]!
     getProjects: [Project]!
@@ -54,7 +57,7 @@ type Mutation {
     login(username: String!, password: String!): User !
     createProject(name: String!, description: String): Project!
     assignUser(projectId: String !, userId: String ! ): Project!
-    createTicket(title: String!, description: String!, assignedProject: String!, assignedDeveloper: String!, priority: String!, type: String!, status: String!): Ticket!
+    createTicket(title: String!, description: String!, assignedProjectInput: String!, assignedDeveloperInput: String!, priority: String!, type: String!, status: String!): Ticket!
     assignRole (name: String!, role: String !): String !
 }
 `;

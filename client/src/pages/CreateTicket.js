@@ -14,8 +14,8 @@ function CreateTicket(props) {
         
         title:'',
         description: '',
-        assignedProject: '',
-        assignedDeveloper: '',
+        assignedProjectInput: '',
+        assignedDeveloperInput: '',
         priority: '',
         type: '',
         status: ''
@@ -45,9 +45,7 @@ function CreateTicket(props) {
             projectsArray.push(projects.getProjects[i].name);
         }
     
-        //console.log("Select", projectsArray);
-        //console.log("usernames", usernames);
-        var select = document.getElementById("assignedProject");   
+        var select = document.getElementById("assignedProjectInput");   
         
         if (select.length < length)
         {
@@ -71,9 +69,9 @@ function CreateTicket(props) {
            usernames.push(users.getUsers[i].username);
         }
     
-        var select = document.getElementById("assignedDeveloper");
+        var select = document.getElementById("assignedDeveloperInput");
        
-        if (select.length< length)
+         if (select.length< length)
         {
              // Put a check here
             for(var i = 0; i < usernames.length; i++) {
@@ -115,13 +113,13 @@ function CreateTicket(props) {
             value={values.description}
             onChange={onChange}/>
             <label for="">Assigned Project</label>
-            <select id="assignedProject" name="assignedProject"
-            value={values.assignedProject} onChange={onChange}>
+            <select id="assignedProjectInput" name="assignedProjectInput"
+            value={values.assignedProjectInput} onChange={onChange}>
             </select>
-            <label for="assignedDeveloper">Assigned Developer</label>
-            <select id="assignedDeveloper" name="assignedDeveloper"
-            id="assignedDeveloper" name="assignedDeveloper"
-            value={values.assignedDeveloper} onChange={onChange}>
+            <label for="assignedDeveloperInput">Assigned Developer</label>
+            <select id="assignedDeveloperInput" name="assignedDeveloperInput"
+            id="assignedDeveloperInput" name="assignedDeveloperInput"
+            value={values.assignedDeveloperInput} onChange={onChange}>
             </select>
             <label for="priority">Priority</label>
             <select id="priority"
@@ -165,11 +163,11 @@ function CreateTicket(props) {
 }
 
 const CREATE_TICKET =  gql `
-mutation createTicket($title: String! $description: String! $assignedProject: String!
-    $assignedDeveloper: String! $priority: String!  $status: String! $type: String!) {
+mutation createTicket($title: String! $description: String! $assignedProjectInput: String!
+    $assignedDeveloperInput: String! $priority: String!  $status: String! $type: String!) {
     
-    createTicket(title:$title description: $description assignedProject: $assignedProject 
-    assignedDeveloper: $assignedDeveloper priority:$priority status: $status type: $type  ) {
+    createTicket(title:$title description: $description assignedProjectInput: $assignedProjectInput 
+    assignedDeveloperInput: $assignedDeveloperInput priority:$priority status: $status type: $type) {
     
     id
     title

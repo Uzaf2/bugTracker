@@ -94,6 +94,10 @@ function ProjectTable() {
     history.push('/CreateTicket');
   }
 
+  function CreateProject() {
+    history.push('/CreateProject');
+  }
+
   function RenderElement(value, value2, value3) {
     var one = "CreateProject";
     if (value2.id === "details") {
@@ -107,8 +111,11 @@ function ProjectTable() {
     <body>
       <div>
         <SideAndNavbar></SideAndNavbar>
+     
         <div id="main" className="main">
+       
           <Paper className={classes.root}>
+          <Button variant="contained" color="primary" onClick={CreateProject} className="btn1">Create Project</Button>
             <TableContainer className={classes.container}>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>

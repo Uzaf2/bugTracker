@@ -42,21 +42,24 @@ function CreateTicket() {
  return (
 <body>
     <SideAndNavbar/>
+      
+    <div className="bottomDiv">
+    <Button variant="contained" color="primary" onClick={AssignUser} className="btn1">Assign User</Button>
+      <Button variant="contained" color="primary" onClick={CreateTicket} className="btn2">Create Ticket</Button>
+    </div>
+     
     <div className="firstDiv">
+    
     <ProjectTable2 index={value}/> 
     </div>
     <div className="main">
-    <div classsName="firstmain">
     <AssignedPersonnel index={value}/>
-    </div>
     <div className="secondMain">
     <TicketsTable2 className="ticketsTable"/>
     </div>
     </div>
-    <div className="bottomDiv">
-      <Button variant="contained" color="primary" onClick={AssignUser} className="btn1">Assign User</Button>
-      <Button variant="contained" color="primary" onClick={CreateTicket} className="btn2">Create Ticket</Button>
-    </div>
+    
+    
    </body>
  )
 }

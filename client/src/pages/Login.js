@@ -14,6 +14,7 @@ import { useHistory } from "react-router-dom";
 import { useForm } from '../util/hooks';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
+import '../App.css';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -53,9 +54,11 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         height: '100%',
     },
+    signUp:{
+        marginTop:'20px'
+    }    
 
   }));
-
 
   const font =  "'Merriweather', serif";
   
@@ -91,15 +94,15 @@ const useStyles = makeStyles((theme) => ({
     return (
         <Container component="main" maxWidth="xs" className={useStyles.container} class="background">
             <CssBaseline />
-            <div class="form" >
+            <div class="form">
             <div className={useStyles.paper} class="innerForm">
             <Typography component="h1" variant="h5" className={styles.fontType} style={{ marginBottom : "10px" }}>
             </Typography>
                 <form className={useStyles.form} class="formContainer" onSubmit={onSubmit}>
                     <Grid container spacing={2}>
                        
-                        <Grid item xs={12} sm={12} >
-                            <TextField
+                        <Grid item xs={12}  >
+                        <TextField
                                 variant="outlined"
                                 fullWidth
                                 id="username"
@@ -138,7 +141,9 @@ const useStyles = makeStyles((theme) => ({
                     </Typography>
                     </Button>
                     
-                    <a href="#" onClick={handleClick}> Don't have an account? Sign Up ? </a>
+                    <a href="#" className="signUp" onClick={handleClick}> Don't have an account? Sign Up ? </a>
+                    <p></p>
+                    <a href="#" className="signUp" onClick={handleClick}> For Demo Account click here ! </a>
                  </form>
                  <div className="ui error message">
                     <ul className="list">
@@ -152,7 +157,6 @@ const useStyles = makeStyles((theme) => ({
         </Container>
     )
 }
-
 
 const LOGIN_USER = gql `
 mutation login($username:String! $password: String!) {

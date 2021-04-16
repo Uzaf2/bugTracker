@@ -10,31 +10,14 @@ var mongoose = require('mongoose');
 
 module.exports = {
     Mutation: {
-        async createTicket(_,{title,description, assignedProject, assignedDeveloper, priority, status, type  }) 
+        async createTicket(_,{title,description, assignedProjectInput, assignedDeveloperInput, priority, status, type  }) 
         {
-            console.log("title", title);
-            console.log("description", description);
-            console.log("assignedProject", assignedProject);
-            console.log("assignedDeveloper", assignedDeveloper);
-            console.log("priority", priority);
-            console.log("status", status);
-            console.log("type", type);
+            var assignedProject = [];
+            var assignedDeveloper = [];
+            var ticketsArray = [];
 
+            const assignedProjectValue = await Project.find({name:assignedProjectInput});
 
-            //const ticketValue  = await Ticket.findOne({name});
-            
-            /*if (ticketValue){
-                throw new UserInputError('name of the ticket is already taken',{
-                    errors: {
-                        name:'This ticket username is already taken'
-                    }
-                })
-            }
-            */
-            
-            //console.log("AssignedProject", assignedProject);
-            const assignedProjectValue = await Project.find({name:assignedProject});
-             
             if (!assignedProjectValue){
                 throw new UserInputError('Project name is not present',{
                     errors: {
@@ -42,13 +25,11 @@ module.exports = {
                     }
                 })
             }
-            
-           // console.log("Project", assignedProjectValue[0]._id);
 
-            const projectId =  assignedProjectValue[0]._id;
+            const assignedDeveloperValue = await User.find({username:assignedDeveloperInput});
 
-            //console.log("AssignedDeveloper", assignedDeveloper);
-            const assignedDeveloperValue = await User.find({username:assignedDeveloper});
+            var developerId= mongoose.Types.ObjectId(assignedDeveloperValue[0]._id);
+            var projectId = mongoose.Types.ObjectId(assignedProjectValue[0]._id);
 
             if (!assignedDeveloperValue){
                 throw new UserInputError('Developer name is not present',{
@@ -56,18 +37,16 @@ module.exports = {
                         name:'Developer name is not present'
                     }
                 })
-            }
+            }          
             
-           // console.log("Developer", assignedDeveloperValue[0]._id);
+            assignedProject.push(projectId);
+            assignedDeveloper.push(developerId);
 
-            const developerId = assignedDeveloperValue[0]._id;
-            
-            
             const newTicket = new Ticket({
                 title,
                 description,
-                projectId,
-                developerId,
+                assignedProject,
+                assignedDeveloper,
                 priority,
                 status,
                 type,
@@ -75,7 +54,18 @@ module.exports = {
                 updatedAt: new Date().toISOString()
             })
 
-            const ticket = await newTicket.save();
+           var ticketId= mongoose.Types.ObjectId(newTicket._id);
+
+           //assignedProjectValue[0].tickets.push(ticketId);
+
+           ticketsArray.push(ticketId);
+
+           await Project.findByIdAndUpdate({_id: projectId},{tickets: ticketsArray});
+
+
+           const ticket = await newTicket.save();
+
+
            return ticket;
         }
     },

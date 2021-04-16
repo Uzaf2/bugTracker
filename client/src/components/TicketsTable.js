@@ -16,7 +16,7 @@ import '../css/projectTable.css';
 
 const useStyles = makeStyles({
   root: {
-    width: '500px',
+    width: '1000px',
   },
   container: {
     maxHeight: 440,
@@ -26,13 +26,13 @@ const useStyles = makeStyles({
 const columns = [
   { id: 'name', label: 'Name', minWidth: 100 },
   { id: 'description', label: 'Description', minWidth: 100 },
-  { id: 'developer', label: 'Developer', minWidth: 100 },
+  { id: 'priority', label: 'Priority', minWidth: 100 },
   { id: 'status', label: 'Status', minWidth: 100 },
   { id: 'created', label: 'Created', minWidth: 100 },
 ];
 
-function createData(name, description, developer, status, created) {
-  return { name, description, developer, status, created };
+function createData(name, description, priority, status, created) {
+  return { name, description, priority, status, created };
 }
 
 function TicketsTable() {
@@ -51,7 +51,7 @@ function TicketsTable() {
     var length = data.getTickets.length;
     for (var i = 0; i < length; i++) {
     rows[i] = createData(data.getTickets[i].title, data.getTickets[i].description 
-    ,data.getTickets[i].assignedDeveloper, data.getTickets[i].status, data.getTickets[i].createdAt);
+    ,data.getTickets[i].priority, data.getTickets[i].status, data.getTickets[i].createdAt);
     }
   }
 
@@ -70,6 +70,7 @@ function TicketsTable() {
         <SideAndNavbar></SideAndNavbar>
         <div id="main" class="main">
           <Paper className={classes.root}>
+          <h3>Tickets Table</h3>
             <TableContainer className={classes.container}>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>
