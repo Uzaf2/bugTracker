@@ -15,11 +15,26 @@ import '../css/projectTable.css';
 import Button from '@material-ui/core/Button';
 const useStyles = makeStyles({
   root: {
-    width: '100%',
+    width: '150%',
   },
+  banner:{
+    backgroundColor: '#262B40',
+    height: '15%',
+    width:'93%',
+    padding: '2%',
+    marginLeft:'1%'
+    },
+    heading:{
+      color: 'white'
+    },
   container: {
     maxHeight: 440,
   },
+  main:{
+    display: 'inline-block',
+    textAlign:'left',
+    marginLeft:'20%'
+  }
 });
 
 const columns = [
@@ -69,7 +84,7 @@ function ProjectTable() {
   function HandleOnClick(props, rowsArray) {
    
     history.push({
-      pathname: '/ProjectDetails',
+      pathname: '/ProjectDetails2',
       search: '?update=true',  // query string
       state: {  // location state
         index: props, 
@@ -112,10 +127,16 @@ function ProjectTable() {
       <div>
         <SideAndNavbar></SideAndNavbar>
      
-        <div id="main" className="main">
-       
+        <div id="main" className="main" className={classes.main}>
+          <div>
+        <Button variant="contained" color="primary" onClick={CreateProject} className="btn1">Create Project</Button>
+         </div>
           <Paper className={classes.root}>
-          <Button variant="contained" color="primary" onClick={CreateProject} className="btn1">Create Project</Button>
+          <div className={classes.banner}>
+          <h3 className={classes.heading}>Your Projects</h3>
+          <p className={classes.heading}>All the Projects you have in the database</p>
+          </div>
+         
             <TableContainer className={classes.container}>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>

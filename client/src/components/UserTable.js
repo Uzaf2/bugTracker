@@ -16,7 +16,16 @@ const useStyles = makeStyles({
     width: '100%',
 
   },
-
+  banner:{
+    backgroundColor: '#262B40',
+    height: '5%',
+    width:'93%',
+    padding: '2%',
+    marginLeft:'1%'
+    },
+    heading:{
+      color: 'white'
+    },
   container: {
     maxHeight: 440,
   },
@@ -70,6 +79,10 @@ function createData(username, email, role) {
   return (
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
+      <div className={classes.banner}>
+          <h3 className={classes.heading}>Your Projects</h3>
+          <p className={classes.heading}>All the Projects you have in the database</p>
+          </div>
         <Table stickyHeader aria-label="sticky table">
           <TableHead className={classes.header}>
             <TableRow>

@@ -16,8 +16,19 @@ import { useMutation } from '@apollo/react-hooks';
 import query from'./AssignedPersonnelQuery.js';
 
 const useStyles = makeStyles({
+  banner:
+  {
+  backgroundColor: '#262B40',
+  height: '5%',
+  width:'93%',
+  padding: '2%',
+  marginLeft:'1%'
+  },
+  heading:{
+    color: 'white'
+  },
   root: {
-    width: '500px',
+    width: '100%',
   },
   container: {
     maxHeight: 440,
@@ -109,7 +120,10 @@ function AssignedDeveloper(props) {
          
           <Paper className={classes.root}>
             <TableContainer className={classes.container}>
-            <p>AssignedPersonnel</p>
+            <div className={classes.banner}>
+          <h3 className={classes.heading}>AssignedPersonnel</h3>
+          <p className={classes.heading}>Users assigned to this Project</p>
+          </div>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>

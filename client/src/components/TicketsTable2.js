@@ -14,8 +14,20 @@ import { useHistory } from "react-router-dom";
 import '../css/projectTable.css';
 
 const useStyles = makeStyles({
+  banner:
+  {
+  backgroundColor: '#262B40',
+  height: '5%',
+  width:'93%',
+  padding: '2%',
+  marginLeft:'1%'
+  },
+  heading:{
+    color: 'white'
+  },
   root: {
-    width: '500px',
+    width: '100%',
+    minHeight: '300px'
   },
   container: {
     maxHeight: 440,
@@ -76,7 +88,9 @@ function TicketsTable() {
         <div id="main" class="main">
           <Paper className={classes.root}>
             <TableContainer className={classes.container}>
-              <p>Tickets for the Project</p>
+              <div className={classes.banner}>
+            <h3 className={classes.heading}>Tickets for the Project</h3>
+            </div>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>

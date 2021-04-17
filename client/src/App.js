@@ -21,6 +21,7 @@ import Accounts from './pages/Accounts';
 import TestUserTable from './components/TestUserTable';
 import TestUserRoles from './pages/TestUserRoles';
 import Table from './components/Table';
+import ProjectDetails2 from './pages/ProjectDetails2';
 
 const client = new ApolloClient({
   uri: 'http://localhost:5000/',
@@ -42,6 +43,7 @@ function App() {
           <Route exact path="/SideAndNavbar" component={SideAndNavbar} />
           <Route exact path="/ViewProjectList" component={ViewProjectList} />
           <Route exact path="/ProjectDetails" component={ProjectDetails} />
+          <Route exact path="/ProjectDetails2" component={ProjectDetails2} />
           <Route exact path="/ProjectTable2" component={ProjectTable2} />
           <Route exact path="/TicketsTable" component={TicketsTable} />
           <Route exact path="/AssignedPersonnel" component={AssignedPersonnel} />

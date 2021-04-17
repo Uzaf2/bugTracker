@@ -16,7 +16,18 @@ import '../css/projectTable.css';
 
 const useStyles = makeStyles({
   root: {
-    width: '1000px',
+    width: '1200px',
+  },
+  banner:{
+  backgroundColor: '#262B40',
+  height: '15%',
+  width:'93%',
+  padding: '2%',
+  marginLeft:'1%'
+  },
+  
+  heading:{
+    color: 'white'
   },
   container: {
     maxHeight: 440,
@@ -28,7 +39,7 @@ const columns = [
   { id: 'description', label: 'Description', minWidth: 100 },
   { id: 'priority', label: 'Priority', minWidth: 100 },
   { id: 'status', label: 'Status', minWidth: 100 },
-  { id: 'created', label: 'Created', minWidth: 100 },
+  { id: 'created', label: 'Creation Time and Date', minWidth: 100 },
 ];
 
 function createData(name, description, priority, status, created) {
@@ -50,8 +61,15 @@ function TicketsTable() {
     console.log("data", data);
     var length = data.getTickets.length;
     for (var i = 0; i < length; i++) {
+
+     var time = data.getTickets[i].createdAt.split('T')[1];
+
+     var date = data.getTickets[i].createdAt.substring(0, data.getTickets[i].createdAt.indexOf("T"));
+     time = time.slice(0, -5); 
+     var dateTime = date+ "    "+time;
+
     rows[i] = createData(data.getTickets[i].title, data.getTickets[i].description 
-    ,data.getTickets[i].priority, data.getTickets[i].status, data.getTickets[i].createdAt);
+    ,data.getTickets[i].priority, data.getTickets[i].status, dateTime);
     }
   }
 
@@ -70,7 +88,10 @@ function TicketsTable() {
         <SideAndNavbar></SideAndNavbar>
         <div id="main" class="main">
           <Paper className={classes.root}>
-          <h3>Tickets Table</h3>
+          <div className={classes.banner}>
+          <h3 className={classes.heading}>Tickets Table</h3>
+          <p className={classes.heading}>All the tickets you have in the database</p>
+          </div>
             <TableContainer className={classes.container}>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>

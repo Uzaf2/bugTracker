@@ -1,8 +1,23 @@
 const { UserInputError } = require('apollo-server');
 const User = require('../../models/User');
+const jwt = require('jsonwebtoken');
 const { validateLoginInput, validateRegisterInput } = require ('../../utils/validators');
+
 var mongoose = require('mongoose');
 const { UniqueArgumentNamesRule } = require('graphql');
+const { SECRET_KEY } = require ('../../config');
+
+function generateToken(user){
+
+return jwt.sign ({
+    id: user.id,
+    email: user.email,
+    username: user.username
+},
+SECRET_KEY, {
+    expiresIn: '1h'
+});
+}
 
 module.exports = {
     Query: {
@@ -92,9 +107,13 @@ module.exports = {
                 errors.general = 'User not found';
                 throw new UserInputError('User not found',{errors});
             }
+
+            const token = generateToken(user);
+
             return {
                 ...user._doc,
-                id:user._id
+                id:user._id,
+                token
             };
         },
         async assignRole(_, {name, role}){

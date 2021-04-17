@@ -16,6 +16,7 @@ type User{
     creationTime: String!
     role: String !
     access: String!
+    token: String!
 }
 
 type Project {

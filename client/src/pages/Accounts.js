@@ -12,6 +12,7 @@ import { useForm } from '../util/hooks';
 import { Input } from 'semantic-ui-react'
 import AccountsImg from '../icons/images.svg';
 import '../css/accounts.css';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     inputType:{
@@ -64,6 +65,12 @@ const useStyles = makeStyles((theme) => ({
 const font = "'Merriweather', serif";
 function Accounts(props) {
 
+    const history = useHistory();
+
+    function imageClick() {
+        history.push("/ManageUserRoles");
+    }
+
     const styles = useStyles();
 
     return (
@@ -76,8 +83,10 @@ function Accounts(props) {
                         <div class="grid-item">
 
                         <div class="article">
-                        <img title="Title Tag Goes Here" alt="Image of Seal" class="img1" src={AccountsImg}/>
-                        <p class="paragraph">Admin</p>
+                        <img title="Title Tag Goes Here" alt="Image of Seal" class="img1" src={AccountsImg} 
+                        
+                        onClick={() => imageClick()}/>
+                        <p class="paragraph" onClick={() => imageClick()} >Admin</p>
                         </div>
 
                         </div>

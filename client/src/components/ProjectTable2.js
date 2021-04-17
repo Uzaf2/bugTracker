@@ -15,7 +15,7 @@ import '../css/projectTable.css';
 
 const useStyles = makeStyles({
   root: {
-    width: '500px',
+    width: '200%',
   },
   container: {
     maxHeight: 440,
