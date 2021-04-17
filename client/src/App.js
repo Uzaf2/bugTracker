@@ -20,6 +20,7 @@ import ProjectTable from './components/ProjectTable';
 import Accounts from './pages/Accounts';
 import TestUserTable from './components/TestUserTable';
 import TestUserRoles from './pages/TestUserRoles';
+import Table from './components/Table';
 
 const client = new ApolloClient({
   uri: 'http://localhost:5000/',
@@ -49,6 +50,7 @@ function App() {
           <Route exact path="/Accounts" component={Accounts} />
           <Route exact path="/TestUserRoles" component={TestUserRoles} />
           <Route exact path="/TestUserTable" component={TestUserTable} />
+          <Route exact path="/Table" component={Table} />
         </Router>
       </div>
     </ApolloProvider>

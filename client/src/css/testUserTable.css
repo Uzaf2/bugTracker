@@ -1,11 +1,16 @@
 .styled-table {
-    border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
     font-family: sans-serif;
     min-width: 800px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     font-size: 16px;
+
+    border-collapse:separate;
+    border:solid black 1px;
+    border-radius:6px;
+    -moz-border-radius:25px;
+    
 }
 .styled-table thead tr {
     background-color: #36304A;
@@ -16,6 +21,7 @@
 .styled-table th{
     padding: 12px 15px;
     font-weight: normal;
+    
 }
 .styled-table td {
     padding: 12px 15px;

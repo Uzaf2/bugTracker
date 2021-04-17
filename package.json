@@ -14,7 +14,10 @@
     "graphql": "^15.5.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.1",
+    "namor": "^2.0.2",
+    "react-table": "^7.6.3",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.3"
+    "semantic-ui-react": "^2.0.3",
+    "styled-components": "^5.2.3"
   }
 }
