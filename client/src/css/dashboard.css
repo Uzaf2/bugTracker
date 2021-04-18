@@ -1,0 +1,53 @@
+.container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  -ms-grid-rows: auto auto;
+      grid-template-rows: auto auto;
+  padding: 10px;
+  margin-left: 20%;
+  width: 79%;
+  height: 87vh;
+}
+
+.grid-item1 {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  font-size: 30px;
+  text-align: center;
+}
+
+.grid-item2 {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  font-size: 30px;
+  text-align: center;
+}
+
+.grid-item3 {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  font-size: 30px;
+  text-align: center;
+}
+
+.grid-item4 {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  font-size: 30px;
+  text-align: center;
+}
+/*# sourceMappingURL=dashboard.css.map */

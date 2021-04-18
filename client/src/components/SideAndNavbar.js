@@ -56,6 +56,10 @@ function SideAndNavbar(props) {
     document.getElementById('grid5').style.width = '30px';
   }
   
+  function HandleOnClickDashboard (){
+    history.push('/Dashboard');
+  }
+
   function HandleOnClickProjectTable() {
     history.push('/ProjectTable');
   }
@@ -68,18 +72,23 @@ function SideAndNavbar(props) {
   function HandleOnClickManageUserRoles() {
     history.push('/ManageUserRoles');
   }
+
+  function HandleOnClickAssignUser(){
+     history.push('/AssignUser');
+  }
+
   return (
     <body>
       <div id="mySidebar" class="sidebar">
-        <a href="#" className="section">
+        <a href="#" className="section" onClick={HandleOnClickDashboard}>
           <img class="grid" id="grid" src={grid} alt="image al" />
           <span class="navName" id="navName">Dashboard Home</span>
         </a>
-        <a href="#" className="section" onClick={HandleOnClickManageUserRoles}>
+        <a href="#" className="section" onClick={HandleOnClickAssignUser}>
           <img class="grid" id="grid1" src={homeIcon} alt="image al" />
           <span class="navName" id="navName1">Manage Role Assignment</span>
         </a>
-        <a href="#" className="section">
+        <a href="#" className="section" onClick={HandleOnClickManageUserRoles}>
           <img class="grid" id="grid2" src={peopleCirle} alt="image al" />
           <span class="navName" id="navName2">Manage Project Users</span>
         </a>

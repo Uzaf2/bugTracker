@@ -61,8 +61,8 @@
   }
 
   .label1 {
-    margin-left: 100%;
-    align-items: center;
+   padding-left: 50px;
+   grid-area: header;
   }
 
   .select1{
@@ -78,13 +78,17 @@
   .select2{
     margin-left: 50%;
     width: 100%;
+    grid-area: body;
   }
 
 
   .assignButton{
     margin-left: 40%;
-    width: 20%;
-    height: 10%;
+    width: 40%;
+    height: 8%;
+    color: white;
+    background-color: #3F51B5;
+    border-radius: 10px;
   }
 
 .mainContainer {

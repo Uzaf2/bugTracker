@@ -56,26 +56,26 @@ function ManageUserRoles(props) {
     <SideAndNavbar/>
    
     <form onSubmit={onSubmit} class="inputForm">
-    <p>Manage User Roles</p>
+   
       <div id="main" class="container">
-     
         <div class="leftSide">
-
+        
           <div class="custom-select1">
+          <h2>Manage User Roles</h2>
             <label for="cars" class="label1" className="part1">Select 1 or more Users:</label>
-            <br />
+            <br/>
             <select id="name" class="select1" name="name" onChange={onChange} value={values.name}>
          {rows.map(time => {
            return (
              <option value={time}> {time} </option>
            )
          })}
-      </select>
+        </select>
           </div>
           
           <div class="custom-select2">
             <label for="cars" class="label2" className="part2">Select the Role to assign:</label>
-            <br />
+            <br/>
             <select id="role" class="select2" name="role" onChange={onChange} value={values.role}>
               <option value="0">--Select Role/None--:</option>
               <option value="Admin">Admin</option>
@@ -85,23 +85,16 @@ function ManageUserRoles(props) {
             </select>
           </div>
 
-          <Button class="assignButton" className="button1" variant="contained" color="primary" type="submit">
+          <Button class="assignButton" className="button1" variant="contained" color="primary" >
           Assign
           </Button>
-         
          </div>
        
-      
           <div class="rightSide">
             <UserTable class="userTable" />
           </div>
       </div>
-      
-   
-    
       </form>
-
-
     </body>
   );
 }
