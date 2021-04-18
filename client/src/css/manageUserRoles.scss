@@ -31,26 +31,9 @@
 
   .container {
     height: 90vh;
-    width: 90vw;
+    width: 100%;
     margin: 2rem auto;
-    display: grid;
-    grid-template-areas: "header"
-                         "footer";
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr;
-  }
-  
-  .cell-1 {
-    background: deepskyblue;
-    grid-area: header;
-    margin-left:20%;
-    border: 10px solid black;
-  }
-  .cell-2 {
-    background: white;
-    grid-area: footer;
-    margin-left:20%;
-    border: 10px solid black;
+    display: flex;
   }
   
   .cell {
@@ -63,19 +46,23 @@
   
   .custom-select1 {
     height: 30%;
-    width: 50%;    
+    width: 60%;    
+    grid-area: header;
   }
   .custom-select2 {
     height: 30%;
-    width: 50%;
+    width: 60%;
+    grid-area: body;
   }
   .assignButton {
     height: 20%;
     width: 20%;
+    grid-area: footer;
   }
 
   .label1 {
     margin-left: 100%;
+    align-items: center;
   }
 
   .select1{
@@ -85,6 +72,7 @@
 
   .label2{
     margin-left: 100%;
+    align-items: center;
   }
 
   .select2{
@@ -98,3 +86,25 @@
     width: 20%;
     height: 10%;
   }
+
+.mainContainer {
+  display: flex;
+}
+
+.leftSide {
+width: 100%;
+background-color: #abc;
+margin-left: 18.5%;
+display: grid;
+grid-template-areas: "header"
+"body"
+"footer";
+
+grid-template-rows: 1fr 1fr 5fr;
+grid-template-columns: 1fr;
+}
+
+.rightSide {
+  width:200%;
+  background-color: #687;
+}

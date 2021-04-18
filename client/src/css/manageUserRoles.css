@@ -31,33 +31,11 @@
 
 .container {
   height: 90vh;
-  width: 90vw;
+  width: 100%;
   margin: 2rem auto;
-  display: -ms-grid;
-  display: grid;
-      grid-template-areas: "header" "footer";
-  -ms-grid-rows: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-}
-
-.cell-1 {
-  background: deepskyblue;
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: header;
-  margin-left: 20%;
-  border: 10px solid black;
-}
-
-.cell-2 {
-  background: white;
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  grid-area: footer;
-  margin-left: 20%;
-  border: 10px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .cell {
@@ -69,21 +47,33 @@
 
 .custom-select1 {
   height: 30%;
-  width: 50%;
+  width: 60%;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: header;
 }
 
 .custom-select2 {
   height: 30%;
-  width: 50%;
+  width: 60%;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: body;
 }
 
 .assignButton {
   height: 20%;
   width: 20%;
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: footer;
 }
 
 .label1 {
   margin-left: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .select1 {
@@ -93,6 +83,9 @@
 
 .label2 {
   margin-left: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .select2 {
@@ -104,5 +97,29 @@
   margin-left: 40%;
   width: 20%;
   height: 10%;
+}
+
+.mainContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.leftSide {
+  width: 100%;
+  background-color: #abc;
+  margin-left: 18.5%;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "header" "body" "footer";
+  -ms-grid-rows: 1fr 1fr 5fr;
+      grid-template-rows: 1fr 1fr 5fr;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+}
+
+.rightSide {
+  width: 200%;
+  background-color: #687;
 }
 /*# sourceMappingURL=manageUserRoles.css.map */

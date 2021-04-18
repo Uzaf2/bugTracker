@@ -51,7 +51,6 @@ function ManageUserRoles(props) {
     assign();
 }
 
-
   return (
     <body>
     <SideAndNavbar/>
@@ -60,7 +59,7 @@ function ManageUserRoles(props) {
     <p>Manage User Roles</p>
       <div id="main" class="container">
      
-        <div class="cell-1">
+        <div class="leftSide">
 
           <div class="custom-select1">
             <label for="cars" class="label1" className="part1">Select 1 or more Users:</label>
@@ -92,15 +91,12 @@ function ManageUserRoles(props) {
          
          </div>
        
-        
-        <div class="cell-2">
-          <div class="table">
+      
+          <div class="rightSide">
             <UserTable class="userTable" />
           </div>
-        </div>
-
-      
       </div>
+      
    
     
       </form>
