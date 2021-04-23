@@ -6,12 +6,11 @@ import TicketTypePieChart from '../components/TicketTypePieChart';
 import TicketStatusBarChart from '../components/TicketStatusBarChart';
 import DeveloperTicketsPieChart from '../components/DeveloperTicketsPieChart';
 
+
 function Dashboard(props) {
 
-      
  return (
 <body>
-
         <SideAndNavbar/>
         <div class="container"> 
         <div class="grid-item1"> <TicketPriorityBarChart/></div>

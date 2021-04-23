@@ -11,12 +11,14 @@ import TableRow from '@material-ui/core/TableRow';
 import { useQuery, gql } from '@apollo/client';
 import SideAndNavbar from './SideAndNavbar';
 import { useHistory } from "react-router-dom";
-import '../css/projectTable.css';
+import '../css/ticketsTable.css';
 //import SideAndNavbar from '../components/SideAndNavbar';
 
 const useStyles = makeStyles({
   root: {
-    width: '1200px',
+    width: '1000px',
+    marginLeft: '5.5%',
+    marginTop:'5%'
   },
   banner:{
   backgroundColor: '#262B40',

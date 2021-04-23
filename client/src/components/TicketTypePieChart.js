@@ -3,16 +3,19 @@ import React, {useCallback, useState} from 'react';
 import { useQuery, gql } from '@apollo/client';
 import Chart from "react-google-charts";
 
-var counterValue = 0;
+
 
 function TicketTypePieChart(props) {
-
+var counterValue = 0;
     var featureRequests = 0;
     var otherComments = 0;
     var BugsErrors = 0; 
     var trainingDocuments = 0;
     console.log("Passing over things !!!!!", counterValue);
     const { loading, data } = useQuery(GET_TICKETS);
+    var inputArray= [];
+
+
 
  if (loading)
       return <p>Loading...</p>;
@@ -52,33 +55,31 @@ function TicketTypePieChart(props) {
       
         counterValue = counterValue + 1;
         }
-        
-      console.log("Values",featureRequests, otherComments, BugsErrors, trainingDocuments)
+    
+
+    inputArray.push(['Task', 'Hours per Day']);
+    inputArray.push(['Feature Requests', featureRequests]);
+    inputArray.push(['Other Comments', otherComments]);
+    inputArray.push(['Bugs/Error', BugsErrors]);
+    inputArray.push(['Training/Document Requests', trainingDocuments]);
+
+   
     }
   
   return (
     <body>
-      <div style={{ display: 'flex', maxWidth: 900 }}>
       <Chart
   width={'500px'}
   height={'300px'}
   chartType="PieChart"
   loader={<div>Loading Chart</div>}
-  data={[
-    ['Task', 'Hours per Day'],
-    ['Feature Requests', featureRequests],
-    ['Other Comments', otherComments],
-    ['Bugs/Error', BugsErrors],
-    ['Training/Document Requests', trainingDocuments],
-  ]}
+  data={inputArray}
   options={{
-    title: 'Tickets By Type',
+    title: 'Tickets By Type'
     // Just add this option
-    is3D: true,
   }}
   rootProps={{ 'data-testid': '2' }}
 />
-</div>
     </body>
   );
 }

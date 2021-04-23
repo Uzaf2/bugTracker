@@ -4,9 +4,9 @@ import React, {useCallback, useState} from 'react';
 import Chart from "react-google-charts";
 import { useQuery, gql } from '@apollo/client';
 
-var counterValue = 0;
-function TicketPriorityBarChart(props) {
 
+function TicketPriorityBarChart(props) {
+var counterValue = 0;
     var high = 0;
     var medium = 0;
     var low = 0; 
@@ -50,7 +50,6 @@ function TicketPriorityBarChart(props) {
 
   return (
     <body>
-      <div style={{ display: 'flex', maxWidth: 900 }}>
       <Chart
   width={'500px'}
   height={'300px'}
@@ -82,12 +81,10 @@ function TicketPriorityBarChart(props) {
   // For tests
   rootProps={{ 'data-testid': '6' }}
 />
-</div>
+
     </body>
   );
 }
-
-
 
 const GET_TICKETS = gql`
 {

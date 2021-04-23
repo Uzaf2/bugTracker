@@ -62,8 +62,7 @@ function App() {
           <Route exact path="/TicketPriorityBarChart" component={TicketPriorityBarChart} />
           <Route exact path="/TicketTypePieChart" component={TicketTypePieChart} />
           <Route exact path="/TicketStatusBarChart" component={TicketStatusBarChart} />
-           <Route exact path="/DeveloperTicketsPieChart" component={DeveloperTicketsPieChart} />
-          
+          <Route exact path="/DeveloperTicketsPieChart" component={DeveloperTicketsPieChart} />
         </Router>
       </div>
     </ApolloProvider>

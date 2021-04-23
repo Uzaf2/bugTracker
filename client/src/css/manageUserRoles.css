@@ -13,14 +13,13 @@
 .main {
   -webkit-transition: margin-left .5s;
   transition: margin-left .5s;
-  padding: 16px;
   margin-left: 18%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto auto auto;
       grid-template-columns: auto auto auto;
-  width: 80%;
-  height: 90%;
+  width: 85%;
+  height: 60%;
   bottom: 0;
   margin-top: 0;
 }
@@ -30,9 +29,9 @@
 }
 
 .container {
-  height: 90vh;
+  height: 100vh;
   width: 100%;
-  margin: 2rem auto;
+  margin: 0rem auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -113,8 +112,8 @@
 
 .leftSide {
   width: 100%;
+  height: 80%;
   background-color: #abc;
-  margin-left: 18.5%;
   display: -ms-grid;
   display: grid;
       grid-template-areas: "header" "body" "footer";
@@ -125,7 +124,8 @@
 }
 
 .rightSide {
-  width: 200%;
+  height: 80%;
+  width: 100%;
   background-color: #687;
 }
 /*# sourceMappingURL=manageUserRoles.css.map */

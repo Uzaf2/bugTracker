@@ -38,9 +38,9 @@ const useStyles = makeStyles({
 const columns = [
   { id: 'username', label: 'Username', minWidth: 170 },
   { id: 'email', label: 'Email', minWidth: 100 },
-  { id: 'creationTime', label: 'Created', minWidth: 100 },
+  //{ id: 'creationTime', label: 'Created', minWidth: 100 },
   { id: 'role', label: 'Role', minWidth: 100 },
-  { id: 'access', label: 'Access', minWidth: 100 }
+  //{ id: 'access', label: 'Access', minWidth: 100 }
 ];
 
 function createData(username, email, creationTime, role, access) {
@@ -81,25 +81,25 @@ function AssignedDeveloper(props) {
 
           var email = (data.getProjectsAndUsers[k].email);
 
-          var creationTime = (data.getProjectsAndUsers[k].creationTime);
+          //var creationTime = (data.getProjectsAndUsers[k].creationTime);
 
           var role = (data.getProjectsAndUsers[k].role);
 
 
-          var access = (data.getProjectsAndUsers[k].access);
+          //var access = (data.getProjectsAndUsers[k].access);
 
           JSON.stringify(name); 
           JSON.stringify(email); 
-          JSON.stringify(creationTime); 
+          //JSON.stringify(creationTime); 
           JSON.stringify(role); 
-          JSON.stringify(access); 
+          //JSON.stringify(access); 
 
           rows.push({
             username: name,
             email: email,
-            creationTime: creationTime,
+            //creationTime: creationTime,
             role: role,
-            access: access
+            //access: access
           });
     }
   }

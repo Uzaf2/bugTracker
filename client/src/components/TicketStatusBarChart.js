@@ -4,13 +4,13 @@ import React, {useCallback, useState} from 'react';
 import Chart from "react-google-charts";
 import { useQuery, gql } from '@apollo/client';
 
-var counterValue = 0;
+
 
 function TicketStatusBarChart(props) {
-
-    var high = 0;
-    var medium = 0;
-    var low = 0; 
+    var counterValue = 0;
+    var completed = 0;
+    var open = 0;
+    var inProgress = 0; 
     var rows = [];
     const { loading, data } = useQuery(GET_TICKETS);
 
@@ -27,20 +27,20 @@ function TicketStatusBarChart(props) {
         for (var i =0;i<length;i++)
         {
 
-              var value = data.getTickets[i].priority;
+              var value = data.getTickets[i].status;
 
 
-        if (value === "High")
+        if (value === "completed")
         {
-            high = high +1;
+            completed = completed +1;
         }
-        else if (value === "Low")
+        else if (value === "open")
         {
-            low = low + 1;
+            open = open + 1;
         }
-        else if (value === "Medium")
+        else if (value === "in progress")
         {
-            medium = medium + 1;
+            inProgress = inProgress + 1;
         }
         }
 
@@ -69,9 +69,9 @@ function TicketStatusBarChart(props) {
         calc: 'stringify',
       },
     ],
-    ['High', high, '#b87333', null],
-    ['Medium',  medium, 'silver', null],
-    ['Low', low, 'gold', null],
+    ['Completed', completed, '#b87333', null],
+    ['Open',  open, 'silver', null],
+    ['In Progress', inProgress, 'gold', null],
   ]}
   options={{
     title: 'Number of Tickets by Status',

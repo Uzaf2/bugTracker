@@ -84,7 +84,7 @@ function SideAndNavbar(props) {
           <img class="grid" id="grid" src={grid} alt="image al" />
           <span class="navName" id="navName">Dashboard Home</span>
         </a>
-        <a href="#" className="section" onClick={HandleOnClickAssignUser}>
+        <a href="#" className="section" onClick={HandleOnClickManageUserRoles}>
           <img class="grid" id="grid1" src={homeIcon} alt="image al" />
           <span class="navName" id="navName1">Manage Role Assignment</span>
         </a>
