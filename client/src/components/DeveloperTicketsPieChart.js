@@ -131,7 +131,8 @@ if (loading1)
   loader={<div>Loading Chart</div>}
   data={inputArray}
   options={{
-    title: 'Number of Tickets Assigned to each Developer'
+    title: 'Number of Tickets Assigned to each Developer',
+    backgroundColor: "#EEEEEE"
   }}
   rootProps={{ 'data-testid': '2' }}
 />

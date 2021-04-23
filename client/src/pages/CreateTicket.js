@@ -47,7 +47,9 @@ function CreateTicket(props) {
     
         var select = document.getElementById("assignedProjectInput");   
         
-        if (select.length < length)
+        if (select!= null)
+        {
+            if (select.length < length)
         {
             // Put a check here
             for(var i = 0; i < projectsArray.length; i++) {
@@ -57,6 +59,8 @@ function CreateTicket(props) {
             el.value = opt;
             select.appendChild(el);
             }
+        }
+
         }
     }
     if (users!=null)
@@ -71,15 +75,18 @@ function CreateTicket(props) {
     
         var select = document.getElementById("assignedDeveloperInput");
        
-         if (select.length< length)
+        if (select != null)
         {
-             // Put a check here
-            for(var i = 0; i < usernames.length; i++) {
-            var opt = usernames[i];
-            var el = document.createElement("option");
-            el.textContent = opt;
-            el.value = opt;
-            select.appendChild(el);
+            if (select.length< length)
+            {
+                 // Put a check here
+                for(var i = 0; i < usernames.length; i++) {
+                var opt = usernames[i];
+                var el = document.createElement("option");
+                el.textContent = opt;
+                el.value = opt;
+                select.appendChild(el);
+                }
             }
         }
     }

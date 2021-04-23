@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import '../css/createProject.css';
 import Paper from '@material-ui/core/Paper';
-
-
-
 import '../css/main.css';
 import gql from 'graphql-tag';
 import SideAndNavbar from '../components/SideAndNavbar';
@@ -35,7 +31,21 @@ const useStyles = makeStyles({
     container: {
       maxHeight: 440,
     },
+    firstDiv: {
+      marginLeft: '60px'
+    },
+    bottomDiv: {
+      height:'10%',
+      marginLeft:'20%',
+      marginTop: '20px'
+    }, btn1: {
+      marginTop: '20px'
+    },
+    btn2: {
+      marginTop: '20px'
+    }
   });
+
 
 function ProjectDetails2(props) {
     const classes = useStyles();
@@ -66,12 +76,12 @@ function CreateTicket() {
 <body>
     <SideAndNavbar/>
       
-    <div className="bottomDiv">
-    <Button variant="contained" color="primary" onClick={AssignUser} className="btn1">Assign User</Button>
-      <Button variant="contained" color="primary" onClick={CreateTicket} className="btn2">Create Ticket</Button>
+    <div className={classes.bottomDiv}>
+    <Button variant="contained" color="primary" onClick={AssignUser} className={classes.btn1}>Assign User</Button>
+      <Button variant="contained" color="primary" onClick={CreateTicket} className={classes.btn2}>Create Ticket</Button>
     </div>
      
-    <div className="firstDiv">
+    <div className="firstDiv" className={classes.firstDiv}>
     
     <ProjectTable2 index={value}/> 
     </div>

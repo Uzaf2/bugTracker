@@ -75,7 +75,8 @@ var counterValue = 0;
   loader={<div>Loading Chart</div>}
   data={inputArray}
   options={{
-    title: 'Tickets By Type'
+    title: 'Tickets By Type',
+    backgroundColor: "#EEEEEE"
     // Just add this option
   }}
   rootProps={{ 'data-testid': '2' }}

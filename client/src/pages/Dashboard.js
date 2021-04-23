@@ -13,10 +13,26 @@ function Dashboard(props) {
 <body>
         <SideAndNavbar/>
         <div class="container"> 
-        <div class="grid-item1"> <TicketPriorityBarChart/></div>
-        <div class="grid-item2"><TicketTypePieChart/></div>
-        <div class="grid-item3"><TicketStatusBarChart/></div>
-        <div class="grid-item4"><DeveloperTicketsPieChart/></div>
+        <div class="grid-item1"> <TicketPriorityBarChart/>
+        <div class="low-div-grid-item1">
+        <p>Tickets By Priority</p>
+        </div>
+        </div>
+        <div class="grid-item2"><TicketTypePieChart/>
+        <div class="low-div-grid-item2">
+        <p>Tickets By Type</p>
+        </div>
+        </div>
+        <div class="grid-item3"><TicketStatusBarChart/>
+        <div class="low-div-grid-item3">
+        <p>Tickets By Progress</p>
+        </div>
+        </div>
+        <div class="grid-item4"><DeveloperTicketsPieChart/>
+        <div class="low-div-grid-item4">
+        <p>Tickets Assigned By Developer</p>
+        </div>
+        </div>
         </div>
    </body>
  )

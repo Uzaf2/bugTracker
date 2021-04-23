@@ -79,6 +79,7 @@ function TicketStatusBarChart(props) {
     height: 300,
     bar: { groupWidth: '95%' },
     legend: { position: 'none' },
+    backgroundColor: "#EEEEEE"
   }}
   // For tests
   rootProps={{ 'data-testid': '6' }}

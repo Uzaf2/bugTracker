@@ -68,7 +68,7 @@ function TicketsTable() {
 
      var date = data.getTickets[i].createdAt.substring(0, data.getTickets[i].createdAt.indexOf("T"));
      time = time.slice(0, -5); 
-     var dateTime = date+ "    "+time;
+     var dateTime = date+ "\t\t"+time;
 
     rows[i] = createData(data.getTickets[i].title, data.getTickets[i].description 
     ,data.getTickets[i].priority, data.getTickets[i].status, dateTime);

@@ -13,9 +13,11 @@ import SideAndNavbar from './SideAndNavbar';
 import { useHistory } from "react-router-dom";
 import '../css/projectTable.css';
 import Button from '@material-ui/core/Button';
+
 const useStyles = makeStyles({
   root: {
     width: '150%',
+    marginTop: '15px'
   },
   banner:{
     backgroundColor: '#262B40',
@@ -34,6 +36,9 @@ const useStyles = makeStyles({
     display: 'inline-block',
     textAlign:'left',
     marginLeft:'20%'
+  },
+  btn1: {
+    marginTop: '20px'
   }
 });
 
@@ -129,7 +134,7 @@ function ProjectTable() {
      
         <div id="main" className="main" className={classes.main}>
           <div>
-        <Button variant="contained" color="primary" onClick={CreateProject} className="btn1">Create Project</Button>
+        <Button variant="contained" color="primary" onClick={CreateProject} className={classes.btn1}>Create Project</Button>
          </div>
           <Paper className={classes.root}>
           <div className={classes.banner}>

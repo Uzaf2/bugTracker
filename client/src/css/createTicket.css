@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
+body {
+    font-family: "Lato", sans-serif;
+  }
+input[type=text], select {
+    width: 40%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-left:30%;
+    margin-right: 30%;
+  }
+  
+  input[type=submit] {
+    width: 40%;
+    background-color: #262B40;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left:30%;
+    margin-right: 30%;
+  }
+
+  label{
+    margin-left: 30%;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #F5A623;
+    
+  }
+  
+  .createForm{
+    vertical-align: top;
+    align-items: center;
+  }
+
+label {
+    font-family: "Lato", sans-serif;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.description {
+  width: 530px;
+  height: 200px; 
+  margin-left:30%;
+  margin-right: 30%;
+}
+
+input::placeholder {
+  font-size: 16px;
+  margin-bottom: 100px;
+  color: #979797;
+  padding: 0px;
+  height: 38px;
+}
+
+.title {
+  margin-top: 100px;
+  padding-top: 100px;
+}
+
+
+.innerDiv {
+  margin: auto;
+  position: relative;
+  width: 800px;
+}
+
+.inputText {
+  margin-top: 100px;
+}
