@@ -14,15 +14,13 @@ module.exports = {
                 const length = projects[index].users.length;
                 var userId = 0
                 var users = 0;
-                console.log("length", length, "index", name);
+
                 for (var i=0;i<length; i++)
                {
-                  console.log("index", i);
                   userId = projects[index].users[i];
                   var usersValue =  await User.findOne( userId );
                   usersArray.push(usersValue);
                }
-               console.log("UsersArray",usersArray);
 
                return usersArray;
             }
@@ -33,7 +31,6 @@ module.exports = {
         async getProjects(_, { },) {
             try {
                 const projects = await Project.find().sort({ createdAt: -1 });
-                console.log("Project", projects);
                 return projects;
             }
             catch (err) {
@@ -70,8 +67,9 @@ module.exports = {
         },
         async assignUser(_, { projectId, userId }) {
             
-            const userObj = authorization(context);
+            //const userObj = authorization(context);
             const project = await Project.findById(projectId);
+            console.log("Project", project);
             var flag = false;
 
             if (userId.match(/^[0-9a-fA-F]{24}$/)) {
@@ -80,8 +78,6 @@ module.exports = {
 
                 for (var i = 0; i < project.users.length; i++) {
 
-                    console.log("Users in the project", project.users[i]);
-                    console.log("id", id);
                     var obj = toString(project.users[i]);
                     var obj2 = toString(id);
                   
@@ -91,13 +87,13 @@ module.exports = {
                 }
                 }
 
-                console.log("flag", flag);
                 if (flag === false) {
                     project.users.push(id);
                 }
             }
             
             await project.save();
+            
             return project;
         }
     }

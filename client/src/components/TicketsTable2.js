@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -12,6 +12,7 @@ import { useQuery, gql } from '@apollo/client';
 import SideAndNavbar from './SideAndNavbar';
 import { useHistory } from "react-router-dom";
 import '../css/projectTable.css';
+import {useMutation } from '@apollo/client';
 
 const useStyles = makeStyles({
   banner:
@@ -46,30 +47,45 @@ function createData(name, description, developer, status, created) {
   return { name, description, developer, status, created };
 }
 
-function TicketsTable() {
 
+function TicketsTable(props) {
+
+  console.log("TicketsTable :", props.index);
+  const [errors, setErrors]= useState({});
+  const index = props.index;
   const history = useHistory();
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const { loading, data } = useQuery(FETCH_PROJECTS_QUERY);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10); 
 
-  var rows = [];
-  if (loading)
+const {loading:loading1, data:data1} = useQuery (FETCH_TICKETS_QUERY,{
+  variables: { id: String(index)}
+});
+
+var rows = [];
+if (loading1)
     return <p>Loading...</p>;
   else {
-    var length = data.getProjects.length;
-   
-    for (var i = 0; i < length; i++) {
-        
-      /*var length2 = data.getProjects[i].tickets.length;
-        for(var j = 0; j < length2; j++)
+
+    console.log("data1",data1);
+    console.log("data1", data1.getTicketsByProjectId.length);
+    if(data1.getTicketsByProjectId!=null)
+    {
+      if (data1.getTicketsByProjectId.length > 0)
+    {
+
+      if (data1.getTicketsByProjectId[0]!=null)
+      {
+        for (var i=0;i<data1.getTicketsByProjectId.length;i++)
         {
-            rows[i] = createData(data.getProjects[i].tickets[j].title, data.getProjects[i].tickets[j].description
-                ,data.getProjects[i].tickets[j].assignedDeveloper, data.getProjects[i].tickets[j].status,
-                data.getProjects[i].tickets[j].createdAt);
+          console.log("Value: ", data1.getTicketsByProjectId[i]);
+          rows[i] = createData(data1.getTicketsByProjectId[i].title, data1.getTicketsByProjectId[i].description,
+            data1.getTicketsByProjectId[i].description,data1.getTicketsByProjectId[i].status,
+            data1.getTicketsByProjectId[i].createdAt);
         }
-        */
+      }
+    
+    }
     }
   }
 
@@ -138,13 +154,22 @@ function TicketsTable() {
   );
 }
 
-const FETCH_PROJECTS_QUERY = gql`
-{
-getProjects{
-  name
-  description
-  id
-}  
-}`;
+
+
+const FETCH_TICKETS_QUERY =  gql `
+query
+  getTicketsByProjectId($id: String!){
+    getTicketsByProjectId (id: $id) {
+      id
+      title
+      description
+      priority
+      status
+      type
+      createdAt
+    }
+  }
+`;
+
 
 export default TicketsTable;

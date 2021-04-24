@@ -79,6 +79,32 @@ module.exports = {
             catch (err) {
                 throw new Error(err);
             }
-        }
+        },
+        async getTicketsByProjectId(_,{id})
+        {
+            const projects = await Project.find().sort({ createdAt: -1 });
+            const index = id -1;
+            var ticketsArray =[];
+            var ticketsIdsArray = [];
+
+            console.log("Index",index);
+            const ticketsLength =projects[index].tickets.length;
+
+            console.log("ticketsLength",ticketsLength);
+            for (var i=0; i<ticketsLength; i++)
+            {
+                ticketsIdsArray.push(projects[index].tickets[i]);
+            }
+
+            console.log("Tickets Ids", ticketsIdsArray);
+            
+            for (var i=0;i< ticketsIdsArray.length;i++)
+            {
+                const ticket = await Ticket.findById(ticketsIdsArray[i]);
+                ticketsArray.push(ticket);
+            }
+            console.log("TicketsArray", ticketsArray);
+            return ticketsArray;
+        },
     }
 };

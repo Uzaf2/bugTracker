@@ -27,6 +27,9 @@ import TicketPriorityBarChart from './components/TicketPriorityBarChart';
 import TicketTypePieChart from './components/TicketTypePieChart';
 import TicketStatusBarChart from './components/TicketStatusBarChart';
 import DeveloperTicketsPieChart from './components/DeveloperTicketsPieChart';
+import ManageProjectUsers from './pages/ManageProjectUsers';
+import ProjectUserAssign from './pages/ProjectUserAssign';
+import AssignUser2 from './pages/AssignUser2';
 
 const client = new ApolloClient({
   uri: 'http://localhost:5000/',
@@ -63,6 +66,9 @@ function App() {
           <Route exact path="/TicketTypePieChart" component={TicketTypePieChart} />
           <Route exact path="/TicketStatusBarChart" component={TicketStatusBarChart} />
           <Route exact path="/DeveloperTicketsPieChart" component={DeveloperTicketsPieChart} />
+          <Route exact path="/ManageProjectUsers" component={ManageProjectUsers} />
+          <Route exact path="/ProjectUserAssign" component={ProjectUserAssign} />
+          <Route exact path="/AssignUser2" component={AssignUser2} />
         </Router>
       </div>
     </ApolloProvider>

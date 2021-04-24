@@ -48,6 +48,7 @@ function ManageUserRoles(props) {
   }
 
   function assignRole () {
+    console.log("Assign Role !!!");
     assign();
 }
 
@@ -85,7 +86,7 @@ function ManageUserRoles(props) {
             </select>
           </div>
 
-          <Button class="assignButton" className="button1" variant="contained" color="primary" >
+          <Button class="assignButton" className="button1" variant="contained" color="primary" onClick={assignRole()}>
           Assign
           </Button>
          </div>

@@ -7,6 +7,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { useForm } from '../util/hooks';
 import { useQuery } from '@apollo/client';
 
+
 function CreateTicket(props) {
 
     const [errors, setErrors]= useState({});
@@ -23,7 +24,7 @@ function CreateTicket(props) {
     
     const [create, {loading}] = useMutation (CREATE_TICKET,{
         update(_,  {data}){
-       
+            console.log("Update!!");
         },
         onError(err) {
         //.graphQLErrors[0].extensions.exception.errors
@@ -156,7 +157,7 @@ function CreateTicket(props) {
             <option value="open">Open</option>
             <option value="inprogress">In Progress</option>
             </select>
-            <input type="submit" value="Create Ticket" />
+            <input type="submit" value="Create Ticket"/>
           </form>
           <div className="ui error message">
                 <ul className="list">

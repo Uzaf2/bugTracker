@@ -1,0 +1,33 @@
+.ticketsTable{
+    margin: 0; 
+ }
+ 
+ .assignedPersonnel{
+     float: left;
+     width: 50%;
+     padding: 5px;
+ }
+ 
+ .main{
+     margin-left:-5px;
+     margin-right:-5px;
+ 
+ }
+ 
+ .firstDiv {
+     margin-left: 60px;
+ }
+ 
+ .secondMain{
+     float: left;
+     width: 40%;
+     padding: 0px;
+ }
+ 
+ .bottomDiv{
+     float: right;
+     margin-right: 600px;
+     margin-top:10px;
+     height: 5%;
+ }
+ 

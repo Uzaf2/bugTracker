@@ -60,6 +60,9 @@ function SideAndNavbar(props) {
     history.push('/Dashboard');
   }
 
+  function HandleOnManageProjectUsers (){
+    history.push('/ManageProjectUsers');
+  }
   function HandleOnClickProjectTable() {
     history.push('/ProjectTable');
   }
@@ -88,7 +91,7 @@ function SideAndNavbar(props) {
           <img class="grid" id="grid1" src={homeIcon} alt="image al" />
           <span class="navName" id="navName1">Manage Role Assignment</span>
         </a>
-        <a href="#" className="section" onClick={HandleOnClickManageUserRoles}>
+        <a href="#" className="section" onClick={HandleOnManageProjectUsers}>
           <img class="grid" id="grid2" src={peopleCirle} alt="image al" />
           <span class="navName" id="navName2">Manage Project Users</span>
         </a>

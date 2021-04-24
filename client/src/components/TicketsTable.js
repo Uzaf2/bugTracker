@@ -42,10 +42,11 @@ const columns = [
   { id: 'priority', label: 'Priority', minWidth: 100 },
   { id: 'status', label: 'Status', minWidth: 100 },
   { id: 'created', label: 'Creation Time and Date', minWidth: 100 },
+  { id: 'editDetails', label: 'Edit Ticket', minWidth: 100 },
 ];
 
-function createData(name, description, priority, status, created) {
-  return { name, description, priority, status, created };
+function createData(name, description, priority, status, created, editDetails) {
+  return { name, description, priority, status, created, editDetails };
 }
 
 function TicketsTable() {
@@ -71,7 +72,7 @@ function TicketsTable() {
      var dateTime = date+ "\t\t"+time;
 
     rows[i] = createData(data.getTickets[i].title, data.getTickets[i].description 
-    ,data.getTickets[i].priority, data.getTickets[i].status, dateTime);
+    ,data.getTickets[i].priority, data.getTickets[i].status, dateTime, 'Edit Details');
     }
   }
 
@@ -155,6 +156,7 @@ const FETCH_PROJECTS_QUERY = gql`
     updatedAt
       }
 }`;
+
 
 export default TicketsTable;
 
