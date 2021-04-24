@@ -1,11 +1,8 @@
 const { UserInputError } = require('apollo-server');
 const Ticket = require('../../models/ticket');
-
 var mongoose = require('mongoose');
 var Project = mongoose.model('Project');
 var User = mongoose.model('User');
-
-
 var mongoose = require('mongoose');
 
 module.exports = {
@@ -55,16 +52,17 @@ module.exports = {
             })
 
            var ticketId= mongoose.Types.ObjectId(newTicket._id);
+        
+        const project = await Project.findById(projectId);
 
-           //assignedProjectValue[0].tickets.push(ticketId);
+        for (var i=0;i<project.tickets.length;i++)
+        {
+            ticketsArray.push(project.tickets[i]);
+        }
 
-           ticketsArray.push(ticketId);
-
-           await Project.findByIdAndUpdate({_id: projectId},{tickets: ticketsArray});
-
-
-           const ticket = await newTicket.save();
-
+        ticketsArray.push(ticketId);
+        await Project.findByIdAndUpdate({_id: projectId},{tickets: ticketsArray});
+        const ticket = await newTicket.save();
 
            return ticket;
         }
@@ -87,23 +85,18 @@ module.exports = {
             var ticketsArray =[];
             var ticketsIdsArray = [];
 
-            console.log("Index",index);
             const ticketsLength =projects[index].tickets.length;
 
-            console.log("ticketsLength",ticketsLength);
             for (var i=0; i<ticketsLength; i++)
             {
                 ticketsIdsArray.push(projects[index].tickets[i]);
             }
 
-            console.log("Tickets Ids", ticketsIdsArray);
-            
             for (var i=0;i< ticketsIdsArray.length;i++)
             {
                 const ticket = await Ticket.findById(ticketsIdsArray[i]);
                 ticketsArray.push(ticket);
             }
-            console.log("TicketsArray", ticketsArray);
             return ticketsArray;
         },
     }

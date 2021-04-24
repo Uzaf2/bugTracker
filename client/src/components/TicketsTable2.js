@@ -50,7 +50,6 @@ function createData(name, description, developer, status, created) {
 
 function TicketsTable(props) {
 
-  console.log("TicketsTable :", props.index);
   const [errors, setErrors]= useState({});
   const index = props.index;
   const history = useHistory();
@@ -84,7 +83,6 @@ if (loading1)
             data1.getTicketsByProjectId[i].createdAt);
         }
       }
-    
     }
     }
   }
