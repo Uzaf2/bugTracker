@@ -51,6 +51,7 @@ function createData(name, description, priority, status, created, editDetails) {
 
 function TicketsTable() {
 
+  var valueNumber = 0;
   const history = useHistory();
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
@@ -85,6 +86,28 @@ function TicketsTable() {
     setPage(0);
   };
 
+  function HandleOnClick(props, rowsArray) {
+   
+    history.push({
+      pathname: '/TicketDetails',
+      search: '?update=true',  // query string
+      state: {  // location state
+        index: props, 
+        array: rowsArray
+      },
+    }); 
+
+  }
+
+  function RenderElement(value, value2, value3) {
+    if (value2.id === "editDetails") {
+      return <a  onClick={() => HandleOnClick(value3, rows)} className="link"> {value} </a>;
+    }
+    else {
+      return value;
+    }
+  }
+
   return (
     <body>
       <div>
@@ -112,13 +135,14 @@ function TicketsTable() {
                 </TableHead>
                 <TableBody>
                   {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+                    valueNumber++;
                     return (
                       <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                         {columns.map((column) => {
                           const value = row[column.id];
                           return (
-                            <TableCell key={column.id} align={column.align}>
-                                {value}
+                            <TableCell key={column.id} align={column.align}>    
+                                {RenderElement(value, column, valueNumber)}
                             </TableCell>
                           );
                         })}

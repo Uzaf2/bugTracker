@@ -80,6 +80,10 @@ function SideAndNavbar(props) {
      history.push('/AssignUser');
   }
 
+  function handleClick(){
+    history.push('./ManageUserRoles');
+  }
+
   return (
     <body>
       <div id="mySidebar" class="sidebar">
@@ -115,8 +119,7 @@ function SideAndNavbar(props) {
           </a>
         </div>
       <div class="topnav">
-        <a class="active" href="#home">Name</a>
-        <a class="active" href="#home">Home</a>
+        <a onClick={handleClick} href="#home">Home</a>
         <a href="#about">Logout</a>
       </div>
       <div id="main" class="main">

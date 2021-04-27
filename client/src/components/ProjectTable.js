@@ -119,7 +119,6 @@ function ProjectTable() {
   }
 
   function RenderElement(value, value2, value3) {
-    var one = "CreateProject";
     if (value2.id === "details") {
       return <a  onClick={() => HandleOnClick(value3, rows)} className="link"> {value} </a>;
     }

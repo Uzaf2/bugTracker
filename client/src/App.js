@@ -20,7 +20,6 @@ import ProjectTable from './components/ProjectTable';
 import Accounts from './pages/Accounts';
 import TestUserTable from './components/TestUserTable';
 import TestUserRoles from './pages/TestUserRoles';
-import Table from './components/Table';
 import ProjectDetails2 from './pages/ProjectDetails2';
 import Dashboard from './pages/Dashboard';
 import TicketPriorityBarChart from './components/TicketPriorityBarChart';
@@ -30,6 +29,8 @@ import DeveloperTicketsPieChart from './components/DeveloperTicketsPieChart';
 import ManageProjectUsers from './pages/ManageProjectUsers';
 import ProjectUserAssign from './pages/ProjectUserAssign';
 import AssignUser2 from './pages/AssignUser2';
+import TicketDetails from './pages/TicketDetails';
+import NewLogin from  './pages/NewLogin';
 
 const client = new ApolloClient({
   uri: 'http://localhost:5000/',
@@ -60,7 +61,6 @@ function App() {
           <Route exact path="/Accounts" component={Accounts} />
           <Route exact path="/TestUserRoles" component={TestUserRoles} />
           <Route exact path="/TestUserTable" component={TestUserTable} />
-          <Route exact path="/Table" component={Table} />
           <Route exact path="/Dashboard" component={Dashboard} />
           <Route exact path="/TicketPriorityBarChart" component={TicketPriorityBarChart} />
           <Route exact path="/TicketTypePieChart" component={TicketTypePieChart} />
@@ -69,6 +69,8 @@ function App() {
           <Route exact path="/ManageProjectUsers" component={ManageProjectUsers} />
           <Route exact path="/ProjectUserAssign" component={ProjectUserAssign} />
           <Route exact path="/AssignUser2" component={AssignUser2} />
+          <Route exact path="/TicketDetails" component={TicketDetails} />
+          <Route exact path="/NewLogin" component={NewLogin} />
         </Router>
       </div>
     </ApolloProvider>

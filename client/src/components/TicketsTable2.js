@@ -36,11 +36,11 @@ const useStyles = makeStyles({
 });
 
 const columns = [
-  { id: 'name', label: 'Name', minWidth: 100 },
-  { id: 'description', label: 'Description', minWidth: 100 },
-  { id: 'developer', label: 'Developer', minWidth: 100 },
-  { id: 'status', label: 'Status', minWidth: 100 },
-  { id: 'created', label: 'Created', minWidth: 100 },
+  { id: 'name', label: 'Name', minWidth: 60 },
+  { id: 'description', label: 'Description', minWidth: 60 },
+  { id: 'developer', label: 'Developer', minWidth: 60 },
+  { id: 'status', label: 'Status', minWidth: 60 },
+  { id: 'created', label: 'Created', minWidth: 60 },
 ];
 
 function createData(name, description, developer, status, created) {
