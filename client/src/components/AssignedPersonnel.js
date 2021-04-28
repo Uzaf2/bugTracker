@@ -11,7 +11,6 @@ import TableRow from '@material-ui/core/TableRow';
 import { useQuery, gql } from '@apollo/client';
 import SideAndNavbar from './SideAndNavbar';
 import { useHistory } from "react-router-dom";
-import '../css/projectTable.css';
 import { useMutation } from '@apollo/react-hooks';
 import query from'./AssignedPersonnelQuery.js';
 

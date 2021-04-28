@@ -3,8 +3,6 @@ import React, {useCallback, useState} from 'react';
 import { useQuery, gql } from '@apollo/client';
 import Chart from "react-google-charts";
 
-
-
 function TicketTypePieChart(props) {
 var counterValue = 0;
     var featureRequests = 0;

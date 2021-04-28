@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
-import Paper from '@material-ui/core/Paper';
-import gql from 'graphql-tag';
 import SideAndNavbar from '../components/SideAndNavbar';
-import { useMutation } from '@apollo/react-hooks';
-import { useForm } from '../util/hooks';
-import ProjectTable2 from '../components/ProjectTable2';
 import AssignedPersonnel from '../components/AssignedPersonnel';
-import TicketsTable2 from '../components/TicketsTable2';
 import '../css/projectUserAssign.css';
-import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import AssignUser2 from './AssignUser2';
@@ -54,19 +47,6 @@ function ProjectUserAssign(props) {
     console.log(props);
     var value =  props.history.location.state.index;
 
-/*
-function AssignUser() {
-  history.push({
-    pathname: '/AssignUser',
-    search: '?update=true',  // query string
-    state: {  // location state
-      index: value, 
-    },
-  }); 
-
-  console.log("Value from index", value);
-  }
-  */
 
 
  return (

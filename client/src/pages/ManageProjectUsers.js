@@ -12,7 +12,6 @@ import { useQuery, gql } from '@apollo/client';
 import SideAndNavbar from '../components/SideAndNavbar';
 import { useHistory } from "react-router-dom";
 import '../css/projectTable.css';
-import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
   root: {

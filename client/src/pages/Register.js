@@ -9,7 +9,6 @@ import Container from '@material-ui/core/Container';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 import { useForm } from '../util/hooks';
-import { Input } from 'semantic-ui-react'
 
 const useStyles = makeStyles((theme) => ({
     inputType:{

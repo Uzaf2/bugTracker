@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import Paper from '@material-ui/core/Paper';
-import '../css/main.css';
-import gql from 'graphql-tag';
 import SideAndNavbar from '../components/SideAndNavbar';
-import { useMutation } from '@apollo/react-hooks';
-import { useForm } from '../util/hooks';
 import ProjectTable2 from '../components/ProjectTable2';
 import AssignedPersonnel from '../components/AssignedPersonnel';
 import TicketsTable2 from '../components/TicketsTable2';
