@@ -15,7 +15,6 @@ import ProjectTable2 from './components/ProjectTable2';
 import TicketsTable from './components/TicketsTable';
 
 import AssignedPersonnel from './components/AssignedPersonnel';
-//import AssignUser from './pages/AssignUser';
 import ProjectTable from './components/ProjectTable';
 import Accounts from './pages/Accounts';
 import TestUserTable from './components/TestUserTable';
@@ -28,7 +27,15 @@ import TicketStatusBarChart from './components/TicketStatusBarChart';
 import DeveloperTicketsPieChart from './components/DeveloperTicketsPieChart';
 import ManageProjectUsers from './pages/ManageProjectUsers';
 import TicketDetails from './pages/TicketDetails';
-import NewLogin from  './pages/NewLogin';
+
+//////////////// They are causing problems with TextFields//////
+import AssignUser from './pages/AssignUser';
+import ProjectUserAssign from './pages/ProjectUserAssign';
+import AssignUser2 from './pages/AssignUser2';
+import CreateTicket from './pages/CreateTicket';
+import ProjectDetails from './pages/ProjectDetails';
+import CreateProject from './pages/CreateProject';
+///////////////////////////////////////////////////////////
 
 
 const client = new ApolloClient({
@@ -50,9 +57,7 @@ function App() {
           <Route exact path="/Users" component={Users} />
           <Route exact path="/ProjectTable2" component={ProjectTable2} />
           <Route exact path="/TicketsTable" component={TicketsTable} />
-
           <Route exact path="/AssignedPersonnel" component={AssignedPersonnel} />
-
           <Route exact path="/ProjectTable" component={ProjectTable} />
           <Route exact path="/Accounts" component={Accounts} />
           <Route exact path="/TestUserTable" component={TestUserTable} />
@@ -65,13 +70,12 @@ function App() {
           <Route exact path="/DeveloperTicketsPieChart" component={DeveloperTicketsPieChart} />
           <Route exact path="/ManageProjectUsers" component={ManageProjectUsers} />
           <Route exact path="/TicketDetails" component={TicketDetails} />
-         
-          
-        
-
-
-
-          
+          <Route exact path="/CreateTicket" component={CreateTicket} />
+          <Route exact path="/ProjectDetails" component={ProjectDetails} />
+          <Route exact path="/AssignUser" component={AssignUser} />
+          <Route exact path="/AssignUser2" component={AssignUser2} />
+          <Route exact path="/ProjectUserAssign" component={ProjectUserAssign} />
+          <Route exact path="/CreateProject" component={CreateProject} />
         </Router>
       </div>
     </ApolloProvider>

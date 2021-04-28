@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import '../css/createProject.css';
-import '../css/main.css';
+//import '../css/createProject.css';
+//import '../css/main.css';
 import gql from 'graphql-tag';
 import SideAndNavbar from '../components/SideAndNavbar';
 import { useMutation } from '@apollo/react-hooks';
