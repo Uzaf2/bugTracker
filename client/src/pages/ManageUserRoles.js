@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 import '../css/manageUserRoles.css';
 import UserTable from '../components/UserTable';
 import SideAndNavbar from '../components/SideAndNavbar';

@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import '../App.css'; 
+import { Link } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import { useForm } from '../util/hooks';
 import gql from 'graphql-tag';

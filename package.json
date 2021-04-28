@@ -14,7 +14,7 @@
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^10.0.3",
     "@projectstorm/react-diagrams": "^6.0.1-beta.7",
-    "apollo-server": "^2.23.0",
+    "apollo-server": "^2.21.2",
     "closest": "0.0.1",
     "dagre": "^0.8.5",
     "date-fns": "^2.21.1",

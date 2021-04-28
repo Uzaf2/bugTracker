@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import '../css/createProject.css';
+import '../css/main.css';
 import SideAndNavbar from '../components/SideAndNavbar';
 import { makeStyles } from '@material-ui/core/styles';
 import { useQuery, gql } from '@apollo/client';
 import { useHistory } from "react-router-dom";
 import { useMutation } from '@apollo/react-hooks';
+import { Message, Form } from "semantic-ui-react";
+
 
 const useStyles = makeStyles({
     root: {
