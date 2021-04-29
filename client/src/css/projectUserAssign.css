@@ -23,14 +23,21 @@ body {
     margin-right: 10%;
   }
   
-  .centered {
+  .centered1 {
     position: absolute;
-    top: 50%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
   }
   
+  .centered2 {
+    margin-top: 100px;
+    margin-left: 300px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
   .centered img {
     width: 150px;
     border-radius: 50%;

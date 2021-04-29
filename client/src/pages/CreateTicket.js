@@ -49,7 +49,7 @@ const useStyles = makeStyles({
          },
     },
  description: {
-    width: '530px',
+    width: '620px',
     height: '200px',
     marginLeft: '30%',
     marginRight: '30%'
@@ -170,7 +170,6 @@ function CreateTicket(props) {
             <textarea 
             className={classes.description} 
             type="text" 
-            className={classes.input}
             id="description" 
             name="description" 
             placeholder="Project desc.." required

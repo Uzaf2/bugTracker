@@ -93,13 +93,9 @@ title: {
 }
   });
 
-
-
-
 function ProjectUserAssign(props) {
     const classes = useStyles();
     const history = useHistory();
-
     var value =  props.history.location.state.index;
 
  return (
@@ -107,20 +103,18 @@ function ProjectUserAssign(props) {
     <SideAndNavbar/>
       
     <div class="split left">
-  <div class="centered">
+  <div class="centered1">
   <AssignUser2 index={value}/>
   </div>
 </div>
 
 <div class="split right">
-  <div class="centered">
+  <div class="centered2">
   <AssignedPersonnel index={value}/>
    
   </div>
 </div>
   
-    
-    
    </body>
  )
 }

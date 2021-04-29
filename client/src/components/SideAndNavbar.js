@@ -6,6 +6,15 @@ import peopleCirle from '../icons/people-circle-outline.svg';
 import personAddOutline from '../icons/person-add-outline.svg';
 import { useHistory } from "react-router-dom";
 
+
+/*
+        <a className="section" href="#section" onClick={openNav}>
+          Open Sidebar
+        </a>
+        <a className="section" href="#section" onClick={closeNav}>
+          Close Sidebar
+          </a>
+          */
 function SideAndNavbar(props) {
   const history = useHistory();
  
@@ -102,12 +111,6 @@ function SideAndNavbar(props) {
           <img class="grid" id="grid5" src={personAddOutline} alt="image al" />
           <span class="navName" id="navName5">User Profile</span>
         </a>
-        <a className="section" href="#section" onClick={openNav}>
-          Open Sidebar
-        </a>
-        <a className="section" href="#section" onClick={closeNav}>
-          Close Sidebar
-          </a>
         </div>
       <div class="topnav">
         <a onClick={handleClick} href="#home">Home</a>
