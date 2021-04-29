@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-//import '../css/createTicket.css';
-//import '../css/main.css';
 import gql from 'graphql-tag';
 import SideAndNavbar from '../components/SideAndNavbar';
 import { useMutation } from '@apollo/react-hooks';
 import { useForm } from '../util/hooks';
 import { useQuery } from '@apollo/client';
-import { ClassNames } from '@emotion/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 
@@ -85,12 +82,8 @@ function CreateTicket(props) {
     
     const [create, {loading}] = useMutation (CREATE_TICKET,{
         update(_,  {data}){
-            console.log("Update!!");
         },
         onError(err) {
-        //.graphQLErrors[0].extensions.exception.errors
-        // setErrors(err);
-        console.log("Errors from create tickets", err);
         },
         variables:values
     });

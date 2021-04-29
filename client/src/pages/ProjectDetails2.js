@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
-import Paper from '@material-ui/core/Paper';
 import '../css/main.css';
-import gql from 'graphql-tag';
 import SideAndNavbar from '../components/SideAndNavbar';
-import { useMutation } from '@apollo/react-hooks';
-import { useForm } from '../util/hooks';
 import ProjectTable2 from '../components/ProjectTable2';
 import AssignedPersonnel from '../components/AssignedPersonnel';
 import TicketsTable2 from '../components/TicketsTable2';
@@ -50,13 +46,11 @@ const useStyles = makeStyles({
 function ProjectDetails2(props) {
     const classes = useStyles();
   const history = useHistory();
-//console.log("Props", props.history.location.state.indexValue);
-//console.log("Props 2:", props.history.location.state.index);
 var value =  props.history.location.state.index;
-//console.log("Props", props.history.location.state.array[value - 1]);
+
 
 function AssignUser() {
-  //history.push('/AssignUser');
+  
   history.push({
     pathname: '/AssignUser',
     search: '?update=true',  // query string
@@ -64,8 +58,6 @@ function AssignUser() {
       index: value, 
     },
   }); 
-
-  //console.log("Value from index", value);
 }
 
 function CreateTicket() {

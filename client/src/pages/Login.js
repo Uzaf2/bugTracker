@@ -8,8 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import '../App.css'; 
-import { Link } from 'react-router-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import { useForm } from '../util/hooks';
 import gql from 'graphql-tag';
@@ -70,8 +68,6 @@ const useStyles = makeStyles((theme) => ({
 
     const [login, {loading} ] = useMutation(LOGIN_USER, {
         update(_,{data}){
-            //console.log("In the update function of the login page");
-            //console.log("Data from login",data);
             props.history.push('/ManageUserRoles');
         }, 
         onError(err){

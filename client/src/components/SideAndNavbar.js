@@ -1,18 +1,9 @@
-import { makeStyles } from '@material-ui/core/styles';
 import '../css/main.css';
-import UserTable from './UserTable';
 import grid from '../icons/grid-outline.svg';
 import homeIcon from '../icons/home-outline.svg';
 import layers from '../icons/layers-outline.svg';
-import list from '../icons/list-outline.svg';
 import peopleCirle from '../icons/people-circle-outline.svg';
-//import peopleOutline from '../icons/people-outline.svg';
 import personAddOutline from '../icons/person-add-outline.svg';
-import personCircleOutline from '../icons/person-circle-outline.svg';
-//import personOutline from 'person-outline.svg';
-import reorderFourOutline from '../icons/reorder-four-outline.svg';
-//import users from 'users.svg';
-import UserList from './UserList';
 import { useHistory } from "react-router-dom";
 
 function SideAndNavbar(props) {

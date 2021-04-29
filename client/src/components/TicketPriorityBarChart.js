@@ -1,6 +1,4 @@
-
-import React, {useCallback, useState} from 'react';
-
+import React from 'react';
 import Chart from "react-google-charts";
 import { useQuery, gql } from '@apollo/client';
 
@@ -72,7 +70,6 @@ var counterValue = 0;
     ['Low', low, 'gold', null],
   ]}
   options={{
-    title: 'Number of Tickets by Priority',
     width: 500,
     height: 300,
     bar: { groupWidth: '95%' },

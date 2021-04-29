@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-//import '../css/createProject.css';
-//import '../css/main.css';
 import SideAndNavbar from '../components/SideAndNavbar';
 import { makeStyles } from '@material-ui/core/styles';
 import { useQuery, gql } from '@apollo/client';
@@ -9,12 +7,60 @@ import { useMutation } from '@apollo/react-hooks';
 
 
 const useStyles = makeStyles({
-    root: {
-        width: '100%',
-    },
-    container: {
-        maxHeight: 440,
-    },
+  root: {
+      width: '100%',
+  },
+  container: {
+      maxHeight: 440,
+  },
+  label: {
+      fontSize: 12,
+      marginLeft: '30%',
+      fontFamily: 'sans-serif',
+      fontStyle:'italic',
+      fontWeight:'600'
+  },
+  input:{
+      width: '40%',
+      padding: '12px 20px',
+      margin: '8px 0',
+      display: 'inline-block',
+      borderWidth: '1px',
+      borderColor: '#ddd',
+      borderRadius: '4px', 
+      boxSizing: 'border-box',
+      marginLeft: '30%',
+      marginRight: '30%'
+  },
+  submit:{
+      width: '40%',
+      backgroundColor: '#262B40',
+      color: 'white',
+      padding: '14px 20px',
+      margin: '8px 0',
+      display: 'inline-block',
+      borderWidth: '4px',
+      borderRadius: '4px', 
+      marginLeft: '30%',
+      marginRight: '30%',
+      '&:hover': {
+          background: " #F5A623",
+       },
+  },
+description: {
+  width: '530px',
+  height: '200px',
+  marginLeft: '30%',
+  marginRight: '30%'
+},
+title: {
+    marginTop: '10%',
+    paddingTop: '100px',
+    marginLeft: "43%",
+    fontSize: 18,
+    fontWeight: '800',
+    fontFamily: 'sans-serif'
+}
 });
 
 function AssignUser(props) {
@@ -32,7 +78,6 @@ function AssignUser(props) {
     const [assignUser,{loading1} ] = useMutation(ASSIGN_USER, {
       update(_,{data}){
 
-        console.log("Mutation done")
         success();
       }, 
       onError(err){
@@ -40,8 +85,6 @@ function AssignUser(props) {
       }, variables: { userId, projectId }
      
   });
-
-    //console.log(userId,projectId);
   
     var rows= ['Select the user'];
     if (loading) 
@@ -87,8 +130,8 @@ function AssignUser(props) {
 <body>
         <SideAndNavbar/>
         <div>
-        <label for="name">Assign Users to Projects</label>
-         <select id="selectValue"  onChange={handleOnClick} >
+        <label className={classes.label} for="name">Assign Users to Projects</label>
+         <select className={classes.input} id="selectValue"  onChange={handleOnClick} >
          {rows.map(time => {
            return (
              <option value={time}>{time}</option>

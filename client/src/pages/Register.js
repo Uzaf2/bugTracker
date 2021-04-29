@@ -1,4 +1,4 @@
-import { React, useState, useContext } from 'react';
+import { React, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { TextField } from '@material-ui/core';
@@ -9,7 +9,6 @@ import Container from '@material-ui/core/Container';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 import { useForm } from '../util/hooks';
-import { Input } from 'semantic-ui-react'
 
 const useStyles = makeStyles((theme) => ({
     inputType:{
@@ -70,29 +69,13 @@ function Register(props) {
 
     const [addUser, { loading }] = useMutation(REGISTER_USER, {
         update(_, { data }) {
-            //console.log(data)
             props.history.push('/');
         },
         onError(err) {
             setErrors(err.graphQLErrors[0].extensions.exception.errors);
-            //console.log("setting erorrs:",errors)
         },
         variables: values
     });
-
-    //console.log("Adduser", addUser);
-    /*
-    const [addUser, { loading }] = useMutation(REGISTER_USER, {
-        update(_, { data: { register: userData }}){
-              console.log(userData)
-              props.history.push('/');
-          },
-          onError(err){
-             setErrors(err.graphQLErrors[0].extensions.exception.errors);
-          },
-          variables: values
-      });
-      */
 
     function registerUser() {
         addUser();

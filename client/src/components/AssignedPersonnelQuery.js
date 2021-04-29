@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, { useState} from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { useHistory } from "react-router-dom";
 
@@ -25,7 +25,6 @@ function AssignedPersonnelQuery(props) {
             name: myName2
           });
     }
-    console.log("MarkersArray", markersArray);
   }
 }
 

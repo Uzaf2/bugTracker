@@ -1,5 +1,5 @@
 
-import React, {useCallback, useState} from 'react';
+import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import Chart from "react-google-charts";
 
@@ -16,10 +16,8 @@ function DeveloperTicketsPieChart(props) {
     var developersArray = [];
     var developerNameArray = [];
 
-    console.log("Passing over things !!!!!", counterValue);
     const { loading, data } = useQuery(GET_TICKETS);
     const { loading:loading1, data:data1 } = useQuery(GET_USERS);
-
 
 if (loading)
       return <p>Loading...</p>;
@@ -41,18 +39,11 @@ if (loading1)
     else {
 
     var length2 = data1.getUsers.length;
-    //console.log("Data :",data1.getUsers);
-    
-    
+
     for (var i=0;i<length2;i++ )
     {
       users.push(data1.getUsers[i]);
     }
-    
-   
-
-    //console.log("Tickets", tickets);
-    //console.log("Users", users);
 
     for (var i=0;i<tickets.length; i++)
     {
@@ -61,8 +52,7 @@ if (loading1)
         developersArray.push(tickets[i].assignedDeveloper[j]);
       }
     }
-    
-    //console.log("Developer array", developersArray);
+
 
     for (var i=0;i<users.length;i++)
     {
@@ -76,8 +66,6 @@ if (loading1)
       }
     }
 
-    //console.log("Developers Name", developerNameArray);
-
     var finalArray = [];
     
     function onlyUnique(value, index, self) {
@@ -86,15 +74,11 @@ if (loading1)
 
     var unique = developerNameArray.filter(onlyUnique);
     
-    //console.log("Unique array: ",unique);
-    //console.log("Arrays:",);
-
     for(var i=0;i<unique.length;i++)
     {
       finalArray.push({name:unique[i],count:0});
     }
 
-    //console.log("Final Array", finalArray);
 
     var countArray = [];
     for (var i=0;i<unique.length;i++)
@@ -108,20 +92,15 @@ if (loading1)
       }
     }
 
-  //console.log("Final Array", finalArray);
-
   var inputArray= [];
 
  inputArray.push(['Language', 'Speakers (in millions)']);
   for (var i=0;i<finalArray.length;i++)
   {
     inputArray.push([''+finalArray[i].name+'', finalArray[i].count]);
-  }
-  console.log("InputArray", inputArray);
-  
+  }  
    }
 
-  //console.log("data10", data10);
   return (
     <body>
  <Chart
@@ -131,7 +110,6 @@ if (loading1)
   loader={<div>Loading Chart</div>}
   data={inputArray}
   options={{
-    title: 'Number of Tickets Assigned to each Developer',
     backgroundColor: "#EEEEEE"
   }}
   rootProps={{ 'data-testid': '2' }}

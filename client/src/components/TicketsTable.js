@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -12,7 +12,6 @@ import { useQuery, gql } from '@apollo/client';
 import SideAndNavbar from './SideAndNavbar';
 import { useHistory } from "react-router-dom";
 import '../css/ticketsTable.css';
-//import SideAndNavbar from '../components/SideAndNavbar';
 
 const useStyles = makeStyles({
   root: {
@@ -62,7 +61,6 @@ function TicketsTable() {
   if (loading)
     return <p>Loading...</p>;
   else {
-    console.log("data", data);
     var length = data.getTickets.length;
     for (var i = 0; i < length; i++) {
 

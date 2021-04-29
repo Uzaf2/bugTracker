@@ -1,9 +1,7 @@
 
-import React, {useCallback, useState} from 'react';
+import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import Chart from "react-google-charts";
-
-
 
 function TicketTypePieChart(props) {
 var counterValue = 0;
@@ -11,29 +9,22 @@ var counterValue = 0;
     var otherComments = 0;
     var BugsErrors = 0; 
     var trainingDocuments = 0;
-    console.log("Passing over things !!!!!", counterValue);
     const { loading, data } = useQuery(GET_TICKETS);
     var inputArray= [];
-
-
 
  if (loading)
       return <p>Loading...</p>;
 
     else {
-    
-    console.log("data",data);
-        
+            
         if (counterValue ===0)
         {
         const length = data.getTickets.length;
     
-     
         for (var i =0;i<length;i++)
-        {
-            
+        {            
           var value = data.getTickets[i].type;
-          console.log("Value", value);
+
         if (value === "Feature Requests")
         {
             featureRequests = featureRequests +1;
@@ -50,9 +41,7 @@ var counterValue = 0;
         {
             trainingDocuments = trainingDocuments + 1;
         }
-      
        }
-      
         counterValue = counterValue + 1;
         }
     
@@ -63,7 +52,6 @@ var counterValue = 0;
     inputArray.push(['Bugs/Error', BugsErrors]);
     inputArray.push(['Training/Document Requests', trainingDocuments]);
 
-   
     }
   
   return (
@@ -75,7 +63,6 @@ var counterValue = 0;
   loader={<div>Loading Chart</div>}
   data={inputArray}
   options={{
-    title: 'Tickets By Type',
     backgroundColor: "#EEEEEE"
     // Just add this option
   }}

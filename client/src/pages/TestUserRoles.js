@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import '../css/manageUserRoles.css';
 import UserTable from '../components/TestUserTable';
 import SideAndNavbar from '../components/SideAndNavbar';
@@ -28,9 +26,6 @@ function TestUserRoles(props) {
      
       },
       onError(err) {
-          //.graphQLErrors[0].extensions.exception.errors
-         // setErrors(err);
-          console.log("Errors from create tickets", err);
       },
       variables:values
   });

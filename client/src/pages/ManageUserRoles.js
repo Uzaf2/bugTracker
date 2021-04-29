@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import '../css/manageUserRoles.css';
 import UserTable from '../components/UserTable';
 import SideAndNavbar from '../components/SideAndNavbar';
 import Button from '@material-ui/core/Button';
@@ -10,9 +8,97 @@ import { useForm } from '../util/hooks';
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 
+const useStyles = makeStyles({
+  root: {
+    width: '100%',
+
+  },
+  banner:{
+    backgroundColor: '#262B40',
+    height: '5%',
+    width:'93%',
+    padding: '2%',
+    marginLeft:'1%'
+    },
+    heading:{
+      color: 'white'
+    },
+  container: {
+    maxHeight: 440,
+  },
+  firstDiv: {
+    marginLeft: '60px'
+  },
+  bottomDiv: {
+    height:'10%',
+    marginLeft:'20%',
+    marginTop: '20px'
+  }, btn1: {
+    marginTop: '20px'
+  },
+  btn2: {
+    marginTop: '20px'
+  },
+  root: {
+    width: '100%',
+},
+container: {
+    maxHeight: 440,
+},
+label: {
+    fontSize: 12,
+    marginLeft: '30%',
+    fontFamily: 'sans-serif',
+    fontStyle:'italic',
+    fontWeight:'600'
+},
+input:{
+    width: '100%',
+    padding: '12px 20px',
+    margin: '8px 0',
+    display: 'inline-block',
+    borderWidth: '1px',
+    borderColor: '#ddd',
+    borderRadius: '4px', 
+    boxSizing: 'border-box',
+    marginLeft: '25%',
+    marginRight: '30%'
+},
+submit:{
+    width: '60%',
+    height: '8%',
+    backgroundColor: '#262B40',
+    color: 'white',
+    padding: '14px 20px',
+    margin: '8px 0',
+    display: 'inline-block',
+    borderWidth: '4px',
+    borderRadius: '10px', 
+    marginLeft: '15%',
+    marginRight: '30%',
+    '&:hover': {
+        background: "#F5A623",
+        borderRadius: '25px'
+     },
+},
+description: {
+width: '530px',
+height: '200px',
+marginLeft: '30%',
+marginRight: '30%'
+},
+title: {
+  width: '50%',
+  marginLeft: "43%",
+  fontSize: 18,
+  fontWeight: '800',
+  fontFamily: 'sans-serif'
+}
+});
 
 function ManageUserRoles(props) {
 
+  const classes = useStyles();
   const [errors, setErrors]= useState({});
   const [usersValue, setUserValue] = useState({});
 
@@ -28,9 +114,6 @@ function ManageUserRoles(props) {
      
       },
       onError(err) {
-          //.graphQLErrors[0].extensions.exception.errors
-         // setErrors(err);
-          console.log("Errors from create tickets", err);
       },
       variables:values
   });
@@ -48,7 +131,6 @@ function ManageUserRoles(props) {
   }
 
   function assignRole () {
-    console.log("Assign Role !!!");
     assign();
 }
 
@@ -62,10 +144,10 @@ function ManageUserRoles(props) {
         <div class="leftSide">
         
           <div class="custom-select1">
-          <h2>Manage User Roles</h2>
-            <label for="cars" class="label1" className="part1">Select 1 or more Users:</label>
+          <h2 className={classes.title}>Manage User Roles</h2>
+            <label for="cars" className={classes.label}>Select 1 or more Users:</label>
             <br/>
-            <select id="name" class="select1" name="name" onChange={onChange} value={values.name}>
+            <select className={classes.input} id="name" name="name" onChange={onChange} value={values.name}>
          {rows.map(time => {
            return (
              <option value={time}> {time} </option>
@@ -75,9 +157,9 @@ function ManageUserRoles(props) {
           </div>
           
           <div class="custom-select2">
-            <label for="cars" class="label2" className="part2">Select the Role to assign:</label>
+            <label for="cars" class="label2" className={classes.label}>Select the Role to assign:</label>
             <br/>
-            <select id="role" class="select2" name="role" onChange={onChange} value={values.role}>
+            <select className={classes.input} id="role" name="role" onChange={onChange} value={values.role}>
               <option value="0">--Select Role/None--:</option>
               <option value="Admin">Admin</option>
               <option value="Demo Admin">Demo_Admin</option>
@@ -86,7 +168,7 @@ function ManageUserRoles(props) {
             </select>
           </div>
 
-          <Button class="assignButton" className="button1" variant="contained" color="primary" onClick={assignRole()}>
+          <Button className={classes.submit} variant="contained" color="primary" onClick={assignRole()}>
           Assign
           </Button>
          </div>

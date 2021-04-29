@@ -1,15 +1,8 @@
-import { React, useState, useContext } from 'react';
-import Button from '@material-ui/core/Button';
+import { React } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { TextField } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import gql from 'graphql-tag';
-import { useMutation } from '@apollo/react-hooks';
-import { useForm } from '../util/hooks';
-import { Input } from 'semantic-ui-react'
 import AccountsImg from '../icons/images.svg';
 import '../css/accounts.css';
 import { useHistory } from "react-router-dom";

@@ -59,6 +59,10 @@
     grid-area: footer;
   }
 
+  .assignButton:hover {
+    background-color: #8F3985; /* Green */
+    color: white;
+  }
   .label1 {
    padding-left: 50px;
    grid-area: header;
@@ -97,7 +101,6 @@
 .leftSide {
 width: 100%;
 height: 80%;
-background-color: #abc;
 display: grid;
 grid-template-areas: "header"
 "body"
@@ -110,5 +113,5 @@ grid-template-columns: 1fr;
 .rightSide {
   height: 80%;
   width:100%;
-  background-color: #687;
+
 }

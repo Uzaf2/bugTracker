@@ -1,33 +1,37 @@
-.ticketsTable{
-    margin: 0; 
- }
- 
- .assignedPersonnel{
-     float: left;
-     width: 50%;
-     padding: 5px;
- }
- 
- .main{
-     margin-left:-5px;
-     margin-right:-5px;
- 
- }
- 
- .firstDiv {
-     margin-left: 60px;
- }
- 
- .secondMain{
-     float: left;
-     width: 40%;
-     padding: 0px;
- }
- 
- .bottomDiv{
-     float: right;
-     margin-right: 600px;
-     margin-top:10px;
-     height: 5%;
- }
- 
+body {
+    font-family: Arial;
+    color:black;
+  }
+  
+  .split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .left {
+    left: 0;
+    margin-left: 10%;
+  }
+  
+  .right {
+    right: 0;
+    margin-right: 10%;
+  }
+  
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .centered img {
+    width: 150px;
+    border-radius: 50%;
+  }

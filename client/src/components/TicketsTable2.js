@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -9,10 +9,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { useQuery, gql } from '@apollo/client';
-import SideAndNavbar from './SideAndNavbar';
 import { useHistory } from "react-router-dom";
 import '../css/projectTable.css';
-import {useMutation } from '@apollo/client';
 
 const useStyles = makeStyles({
   banner:
@@ -66,8 +64,6 @@ if (loading1)
     return <p>Loading...</p>;
   else {
 
-    console.log("data1",data1);
-    console.log("data1", data1.getTicketsByProjectId.length);
     if(data1.getTicketsByProjectId!=null)
     {
       if (data1.getTicketsByProjectId.length > 0)
@@ -77,7 +73,6 @@ if (loading1)
       {
         for (var i=0;i<data1.getTicketsByProjectId.length;i++)
         {
-          console.log("Value: ", data1.getTicketsByProjectId[i]);
           rows[i] = createData(data1.getTicketsByProjectId[i].title, data1.getTicketsByProjectId[i].description,
             data1.getTicketsByProjectId[i].description,data1.getTicketsByProjectId[i].status,
             data1.getTicketsByProjectId[i].createdAt);

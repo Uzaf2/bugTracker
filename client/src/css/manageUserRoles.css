@@ -68,6 +68,12 @@
   grid-area: footer;
 }
 
+.assignButton:hover {
+  background-color: #8F3985;
+  /* Green */
+  color: white;
+}
+
 .label1 {
   padding-left: 50px;
   -ms-grid-row: 1;
@@ -113,7 +119,6 @@
 .leftSide {
   width: 100%;
   height: 80%;
-  background-color: #abc;
   display: -ms-grid;
   display: grid;
       grid-template-areas: "header" "body" "footer";
@@ -126,6 +131,5 @@
 .rightSide {
   height: 80%;
   width: 100%;
-  background-color: #687;
 }
 /*# sourceMappingURL=manageUserRoles.css.map */

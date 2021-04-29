@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
-import Paper from '@material-ui/core/Paper';
-import gql from 'graphql-tag';
 import SideAndNavbar from '../components/SideAndNavbar';
-import { useMutation } from '@apollo/react-hooks';
-import { useForm } from '../util/hooks';
-import ProjectTable2 from '../components/ProjectTable2';
 import AssignedPersonnel from '../components/AssignedPersonnel';
-import TicketsTable2 from '../components/TicketsTable2';
 import '../css/projectUserAssign.css';
-import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import AssignUser2 from './AssignUser2';
@@ -43,51 +36,88 @@ const useStyles = makeStyles({
     },
     btn2: {
       marginTop: '20px'
-    }
+    },
+    root: {
+      width: '100%',
+  },
+  container: {
+      maxHeight: 440,
+  },
+  label: {
+      fontSize: 12,
+      marginLeft: '30%',
+      fontFamily: 'sans-serif',
+      fontStyle:'italic',
+      fontWeight:'600'
+  },
+  input:{
+      width: '40%',
+      padding: '12px 20px',
+      margin: '8px 0',
+      display: 'inline-block',
+      borderWidth: '1px',
+      borderColor: '#ddd',
+      borderRadius: '4px', 
+      boxSizing: 'border-box',
+      marginLeft: '30%',
+      marginRight: '30%'
+  },
+  submit:{
+      width: '40%',
+      backgroundColor: '#262B40',
+      color: 'white',
+      padding: '14px 20px',
+      margin: '8px 0',
+      display: 'inline-block',
+      borderWidth: '4px',
+      borderRadius: '4px', 
+      marginLeft: '30%',
+      marginRight: '30%',
+      '&:hover': {
+          background: " #F5A623",
+       },
+  },
+description: {
+  width: '530px',
+  height: '200px',
+  marginLeft: '30%',
+  marginRight: '30%'
+},
+title: {
+    marginTop: '10%',
+    paddingTop: '100px',
+    marginLeft: "43%",
+    fontSize: 18,
+    fontWeight: '800',
+    fontFamily: 'sans-serif'
+}
   });
+
+
 
 
 function ProjectUserAssign(props) {
     const classes = useStyles();
     const history = useHistory();
 
-    console.log(props);
     var value =  props.history.location.state.index;
-
-/*
-function AssignUser() {
-  history.push({
-    pathname: '/AssignUser',
-    search: '?update=true',  // query string
-    state: {  // location state
-      index: value, 
-    },
-  }); 
-
-  console.log("Value from index", value);
-  }
-  */
-
 
  return (
 <body>
     <SideAndNavbar/>
       
-    <div className={classes.bottomDiv}>
-    </div>
-     
-    <div className="main">
-    <div className="assignedPersonnel">
-    <AssignedPersonnel index={value}/>
-    <AssignUser2 index={value}/>
-    </div>
+    <div class="split left">
+  <div class="centered">
+  <AssignUser2 index={value}/>
+  </div>
+</div>
 
-    <div>
+<div class="split right">
+  <div class="centered">
+  <AssignedPersonnel index={value}/>
    
-    </div>
-    
-    </div>
-
+  </div>
+</div>
   
     
     

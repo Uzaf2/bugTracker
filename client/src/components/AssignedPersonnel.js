@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, { useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -9,11 +9,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { useQuery, gql } from '@apollo/client';
-import SideAndNavbar from './SideAndNavbar';
 import { useHistory } from "react-router-dom";
 import '../css/projectTable.css';
-import { useMutation } from '@apollo/react-hooks';
-import query from'./AssignedPersonnelQuery.js';
 
 const useStyles = makeStyles({
   banner:
@@ -64,42 +61,26 @@ function AssignedDeveloper(props) {
 });
 
   var rows = [];
-  console.log("Error", errors)
   if (loading)
     return <p>Loading...</p>;
   else {
    
-    console.log("Data",data.getProjectsAndUsers);
-    console.log("Length",data.getProjectsAndUsers.length);
-  
     var length = data.getProjectsAndUsers.length;
-    //var length3 = data.getProjectsAndUsers[index].users.length;
    for (var k = 0; k < length; k++)
     {
           console.log("in loop",data.getProjectsAndUsers[k]);
           var name = (data.getProjectsAndUsers[k].username);
-
           var email = (data.getProjectsAndUsers[k].email);
-
-          //var creationTime = (data.getProjectsAndUsers[k].creationTime);
-
           var role = (data.getProjectsAndUsers[k].role);
-
-
-          //var access = (data.getProjectsAndUsers[k].access);
 
           JSON.stringify(name); 
           JSON.stringify(email); 
-          //JSON.stringify(creationTime); 
           JSON.stringify(role); 
-          //JSON.stringify(access); 
 
           rows.push({
             username: name,
             email: email,
-            //creationTime: creationTime,
             role: role,
-            //access: access
           });
     }
   }

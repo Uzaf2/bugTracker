@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-//import '../css/createProject.css';
-//import '../css/main.css';
 import { makeStyles } from '@material-ui/core/styles';
 import { useQuery, gql } from '@apollo/client';
 import { useHistory } from "react-router-dom";
@@ -16,7 +14,6 @@ const useStyles = makeStyles({
 });
 
 function AssignUser2(props) {
-    //console.log("props", props);
 
     const history = useHistory();
     const classes = useStyles();
@@ -32,7 +29,6 @@ function AssignUser2(props) {
     const [assignUser,{loading1} ] = useMutation(ASSIGN_USER, {
       update(_,{data}){
 
-        console.log("Mutation done")
         success();
       }, 
       onError(err){
@@ -40,10 +36,6 @@ function AssignUser2(props) {
       }, variables: { userId, projectId }
      
   });
-
-   console.log("userId", userId);
-   console.log("projectId", projectId);
-    
   
   var rows= ['Select the user'];
   if (loading) 
@@ -58,7 +50,6 @@ function AssignUser2(props) {
 
   function AssignUser()
   {
-      console.log("Assign User !!");
     assignUser();
   }
 

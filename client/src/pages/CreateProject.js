@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import '../css/createProject.css';
 import gql from 'graphql-tag';
 import SideAndNavbar from '../components/SideAndNavbar';
 import { useMutation } from '@apollo/react-hooks';
@@ -75,11 +74,8 @@ function CreateProject(props) {
     
     const [create, {loading}] = useMutation (CREATE_PROJECT,{
         update(_,  {data}){
-            //console.log("In the update function of the create Project page");
-            console.log("Data from login",data);
         },
         onError(err) {
-            console.log(err);
             setErrors(err.graphQLErrors[0].extensions.exception.errors);
         },
         variables:values

@@ -1,10 +1,7 @@
 
-import React, {useCallback, useState} from 'react';
-
+import React from 'react';
 import Chart from "react-google-charts";
 import { useQuery, gql } from '@apollo/client';
-
-
 
 function TicketStatusBarChart(props) {
     var counterValue = 0;
@@ -27,7 +24,7 @@ function TicketStatusBarChart(props) {
         for (var i =0;i<length;i++)
         {
 
-              var value = data.getTickets[i].status;
+        var value = data.getTickets[i].status;
 
 
         if (value === "completed")
@@ -74,14 +71,13 @@ function TicketStatusBarChart(props) {
     ['In Progress', inProgress, 'gold', null],
   ]}
   options={{
-    title: 'Number of Tickets by Status',
     width: 500,
     height: 300,
     bar: { groupWidth: '95%' },
     legend: { position: 'none' },
     backgroundColor: "#EEEEEE"
   }}
-  // For tests
+
   rootProps={{ 'data-testid': '6' }}
 />
 </div>
