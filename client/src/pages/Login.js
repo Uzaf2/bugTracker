@@ -1,5 +1,5 @@
 
-import { React, useState}from 'react';
+import { React, useState, useContext}from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -12,6 +12,7 @@ import { useHistory } from "react-router-dom";
 import { useForm } from '../util/hooks';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
+import { AuthContext } from '../context/auth';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -60,6 +61,8 @@ const useStyles = makeStyles((theme) => ({
   const font =  "'Merriweather', serif";
   
   function Login (props) {
+    
+    const context = useContext (AuthContext);
     const [ errors, setErrors ] = useState({});
     const { onChange, onSubmit, values } = useForm(loginUser,{
         username: '',
@@ -67,9 +70,11 @@ const useStyles = makeStyles((theme) => ({
     });
 
     const [login, {loading} ] = useMutation(LOGIN_USER, {
-        update(_,{data}){
-            props.history.push('/ManageUserRoles');
-        }, 
+        update(_, { data: { login: userData }}){
+        context.login(userData);
+        console.log("UserData", userData);
+        props.history.push('/ManageUserRoles');
+        },
         onError(err){
             setErrors(err.graphQLErrors[0].extensions.exception.errors)
         }, variables : values
@@ -164,6 +169,7 @@ mutation login($username:String! $password: String!) {
     email
     username
     creationTime
+    token
     }
 }`;
 

@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const { UserInputError } = require('apollo-server');
 const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
@@ -109,7 +110,7 @@ module.exports = {
             }
 
             const token = generateToken(user);
-
+            console.log("Token in the login", token);
             return {
                 ...user._doc,
                 id:user._id,

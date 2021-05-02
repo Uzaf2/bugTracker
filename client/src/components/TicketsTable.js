@@ -86,8 +86,9 @@ function TicketsTable() {
 
   function HandleOnClick(props, rowsArray) {
    
+    console.log("Props", props);
     history.push({
-      pathname: '/TicketDetails',
+      pathname: '/TicketDetailsComponent',
       search: '?update=true',  // query string
       state: {  // location state
         index: props, 
@@ -179,25 +180,4 @@ const FETCH_PROJECTS_QUERY = gql`
       }
 }`;
 
-
 export default TicketsTable;
-
-/*
-title
-description
-assignedDeveloper
-submitter
-priority
-status
-type
-createdAt
-updatedAt
-
-
-
-username
-    email
-    creationTime
-    role
-    access
-    */

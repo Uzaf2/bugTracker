@@ -77,6 +77,15 @@ module.exports = {
             catch (err) {
                 throw new Error(err);
             }
+        },  async getTicketById(_,{ id }) 
+        {
+            try {
+                const tickets = await Ticket.find().sort({ createdAt: -1 });
+                return tickets[id-1];
+            }
+            catch (err) {
+                throw new Error(err);
+            }
         },
         async getTicketsByProjectId(_,{id})
         {

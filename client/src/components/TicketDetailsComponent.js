@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -9,71 +9,71 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { useQuery, gql } from '@apollo/client';
-import SideAndNavbar from '../components/SideAndNavbar';
+import SideAndNavbar from './SideAndNavbar';
 import { useHistory } from "react-router-dom";
-import '../css/projectTable.css';
+import '../css/ticketsDetails.css';
 
 const useStyles = makeStyles({
   root: {
-    width: '150%',
-    marginTop: '15px'
+    width: '1000px',
+    marginLeft: '5.5%',
+    marginTop:'5%'
   },
   banner:{
-    backgroundColor: '#262B40',
-    height: '15%',
-    width:'93%',
-    padding: '2%',
-    marginLeft:'1%'
-    },
-    heading:{
-      color: 'white'
-    },
+  backgroundColor: '#262B40',
+  height: '15%',
+  width:'93%',
+  padding: '2%',
+  marginLeft:'1%'
+  },
+  
+  heading:{
+    color: 'white'
+  },
   container: {
     maxHeight: 440,
   },
-  main:{
-    display: 'inline-block',
-    textAlign:'left',
-    marginLeft:'20%'
-  },
-  btn1: {
-    marginTop: '20px'
-  }
 });
 
 const columns = [
-  { id: 'name', label: 'Name', minWidth: 170 },
+  { id: 'name', label: 'Name', minWidth: 100 },
   { id: 'description', label: 'Description', minWidth: 100 },
-  {
-    id: 'details',
-    label: 'Details',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
-  },
+  { id: 'priority', label: 'Priority', minWidth: 100 },
+  { id: 'status', label: 'Status', minWidth: 100 },
+  { id: 'created', label: 'Creation Time and Date', minWidth: 100 },
 ];
 
-function createData(name, description, details) {
-  return { name, description, details };
+function createData(name, description, priority, status, created) {
+  return { name, description, priority, status, created };
 }
 
-function ManageProjectUsers() {
+function TicketDetailsComponent(props ) {
 
-  var i;
   var valueNumber = 0;
   const history = useHistory();
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const { loading, data } = useQuery(FETCH_PROJECTS_QUERY);
+  var index = props.history.location.state.index;
+
+ const {loading, data} = useQuery (FETCH_PROJECTS_QUERY,{
+  variables: { id: String(index)}
+  });
+  
   var rows = [];
   if (loading)
     return <p>Loading...</p>;
   else {
-    var length = data.getProjects.length;
-    for (var i = 0; i < length; i++) {
-      rows[i] = createData(data.getProjects[i].name, data.getProjects[i].description, 'Manage Users')
-    }
+
+
+     var time = data.getTicketById.createdAt.split('T')[1];
+     var date = data.getTicketById.createdAt.substring(0, data.getTicketById.createdAt.indexOf("T"));
+     
+     time = time.slice(0, -5); 
+     var dateTime = date+ "\t\t"+time;
+
+    rows[0] = createData(data.getTicketById.title, data.getTicketById.description 
+    ,data.getTicketById.priority, data.getTicketById.status, dateTime);
   }
 
   const handleChangePage = (event, newPage) => {
@@ -87,11 +87,8 @@ function ManageProjectUsers() {
 
   function HandleOnClick(props, rowsArray) {
    
-   console.log("Props :", props);
-   console.log("Value of :", props);
-
     history.push({
-      pathname: '/ProjectUserAssign',
+      pathname: '/TicketDetails',
       search: '?update=true',  // query string
       state: {  // location state
         index: props, 
@@ -101,43 +98,25 @@ function ManageProjectUsers() {
 
   }
 
-  function AssignUser() {
-    //history.push('/AssignUser');
-    history.push({
-      pathname: '/AssignUser',
-      search: '?update=true',  // query string
-      state: {  // location state
-        update: true, 
-      },
-    }); 
-  }
-
-  function CreateTicket() {
-    history.push('/CreateTicket');
-  }
-
   function RenderElement(value, value2, value3) {
-    var one = "CreateProject";
-    
-    if (value2.id === "details") {
+    if (value2.id === "editDetails") {
       return <a  onClick={() => HandleOnClick(value3, rows)} className="link"> {value} </a>;
     }
     else {
       return value;
     }
   }
+
   return (
     <body>
       <div>
         <SideAndNavbar></SideAndNavbar>
-     
-        <div id="main" className="main" className={classes.main}>
+        <div id="main" class="main">
           <Paper className={classes.root}>
           <div className={classes.banner}>
-          <h3 className={classes.heading}>Your Projects</h3>
-          <p className={classes.heading}>Manage the users for your Projects</p>
+          <h3 className={classes.heading}>Tickets Table</h3>
+          <p className={classes.heading}>All the tickets you have in the database</p>
           </div>
-         
             <TableContainer className={classes.container}>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>
@@ -161,8 +140,8 @@ function ManageProjectUsers() {
                         {columns.map((column) => {
                           const value = row[column.id];
                           return (
-                            <TableCell key={column.id} align={column.align}>
-                              {RenderElement(value, column, valueNumber)}
+                            <TableCell key={column.id} align={column.align}>    
+                                {RenderElement(value, column, valueNumber)}
                             </TableCell>
                           );
                         })}
@@ -181,23 +160,29 @@ function ManageProjectUsers() {
               onChangePage={handleChangePage}
               onChangeRowsPerPage={handleChangeRowsPerPage}
             />
-          </Paper>    
+          </Paper>
         </div>
       </div>
     </body>
   );
 }
 
-
 const FETCH_PROJECTS_QUERY = gql`
-{
-  getProjects{
-  name
-  description
-  id
-}
+query
+    getTicketById($id: String!){
+    getTicketById (id: $id) {
+    assignedProject
+    assignedDeveloper
+    title
+    description
+    priority
+    status
+    type
+    createdAt
+    updatedAt
+   }
 }`;
 
 
+export default TicketDetailsComponent;
 
-export default ManageProjectUsers;

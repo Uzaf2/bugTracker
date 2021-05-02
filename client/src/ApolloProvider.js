@@ -11,6 +11,15 @@ const httpLink = createHttpLink({
     uri:'http://localhost:5000'
 })
 
+const authLink = setContext(()=>{
+    const token = localStorage.getItem('jwtToken');
+    return {
+        headers: {
+            Authorization: token ? `Bearer ${token}`: ''
+        }
+    }
+})
+
 /*
 const authLink = setContext(()=>{
     const token = localStorage.getItem('jwtToken');
@@ -19,7 +28,7 @@ const authLink = setContext(()=>{
 */
 
 const client = new ApolloClient({
-    link: httpLink,
+   link: authLink.concat(httpLink),
     cache: new InMemoryCache()
 })
 

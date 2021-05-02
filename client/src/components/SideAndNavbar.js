@@ -1,11 +1,12 @@
 import '../css/main.css';
+import {useContext} from 'react';
 import grid from '../icons/grid-outline.svg';
 import homeIcon from '../icons/home-outline.svg';
 import layers from '../icons/layers-outline.svg';
 import peopleCirle from '../icons/people-circle-outline.svg';
 import personAddOutline from '../icons/person-add-outline.svg';
 import { useHistory } from "react-router-dom";
-
+import { AuthContext } from '../context/auth';
 
 /*
         <a className="section" href="#section" onClick={openNav}>
@@ -16,6 +17,7 @@ import { useHistory } from "react-router-dom";
           </a>
           */
 function SideAndNavbar(props) {
+  const {user, logout} = useContext(AuthContext);
   const history = useHistory();
  
   function openNav(e) {
@@ -81,7 +83,7 @@ function SideAndNavbar(props) {
   }
 
   function handleClick(){
-    history.push('./ManageUserRoles');
+    history.push('./Dashboard');
   }
 
   return (
@@ -114,7 +116,7 @@ function SideAndNavbar(props) {
         </div>
       <div class="topnav">
         <a onClick={handleClick} href="#home">Home</a>
-        <a href="#about">Logout</a>
+        <a href="#about" onClick={logout}>Logout</a>
       </div>
       <div id="main" class="main">
       </div>

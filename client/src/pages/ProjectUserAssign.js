@@ -96,8 +96,9 @@ title: {
 function ProjectUserAssign(props) {
     const classes = useStyles();
     const history = useHistory();
+     console.log("Value",props);
     var value =  props.history.location.state.index;
-
+   
  return (
 <body>
     <SideAndNavbar/>
