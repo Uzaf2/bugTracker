@@ -12,12 +12,14 @@ import { useQuery, gql } from '@apollo/client';
 import SideAndNavbar from './SideAndNavbar';
 import { useHistory } from "react-router-dom";
 import '../css/ticketsDetails.css';
+import { useMutation } from '@apollo/react-hooks';
 
 const useStyles = makeStyles({
   root: {
-    width: '1000px',
-    marginLeft: '5.5%',
-    marginTop:'5%'
+    width: '500px',
+    marginLeft: '10%',
+    marginTop:'5%',
+    height: "300px"
   },
   banner:{
   backgroundColor: '#262B40',
@@ -31,50 +33,94 @@ const useStyles = makeStyles({
     color: 'white'
   },
   container: {
-    maxHeight: 440,
+    maxHeight: 300,
   },
 });
 
 const columns = [
   { id: 'name', label: 'Name', minWidth: 100 },
   { id: 'description', label: 'Description', minWidth: 100 },
+  { id: 'assignedProject', label: 'Assigned Project', minWidth: 100 },
+  { id: 'assignedDeveloper', label: 'Assigned Developer', minWidth: 100 },
   { id: 'priority', label: 'Priority', minWidth: 100 },
   { id: 'status', label: 'Status', minWidth: 100 },
+  { id: 'type', label: 'type', minWidth: 100 },
   { id: 'created', label: 'Creation Time and Date', minWidth: 100 },
+  { id: 'updatedAt', label: 'Updated Time', minWidth: 100 },
 ];
 
-function createData(name, description, priority, status, created) {
-  return { name, description, priority, status, created };
+function createData(name, description, assignedProject, assignedDeveloper, priority, status, type, created, updatedAt) {
+  return { name, description,assignedProject, assignedDeveloper, priority, status, type, created, updatedAt };
 }
+
+ var counter = 0;
 
 function TicketDetailsComponent(props ) {
 
+ 
   var valueNumber = 0;
+  var assignedProject = 0;
+  var assignedDeveloper = 0;
+  var userData = "";
+  var projectData = ""
+  var assignedProjectName = "";
+  var assignedDeveloperName = "";
   const history = useHistory();
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   var index = props.history.location.state.index;
 
- const {loading, data} = useQuery (FETCH_PROJECTS_QUERY,{
-  variables: { id: String(index)}
-  });
+
+  const {loading, data} = useQuery (FETCH_TICKETS_QUERY,{
+    variables: { id: String(index)}
+    });
+
+const {loading:loading1, data:data1} = useQuery (FETCH_USERS_QUERY);
+const {loading:loading2, data:data2} = useQuery (FETCH_PROJECTS_QUERY);
+
+    var rows= [];
+
+    if (loading)
+      return <p>Loading...</p>;
+    else {
+
+      var time = data.getTicketById.createdAt.split('T')[1];
+      var date = data.getTicketById.createdAt.substring(0, data.getTicketById.createdAt.indexOf("T"));
+       
+      time = time.slice(0, -5); 
+      var dateTime = date+ "\t\t"+time;
   
-  var rows = [];
-  if (loading)
-    return <p>Loading...</p>;
-  else {
+      
+      assignedProject = data.getTicketById.assignedProject;
+      assignedDeveloper = data.getTicketById.assignedDeveloper;
 
+      if (data1!=null)
+      {
+        for (var i=0;i< data1.getUsers.length;i++)
+        {
+          if (data1.getUsers[i].id === assignedDeveloper[0])
+          {
+              assignedProjectName = data1.getUsers[i].username;
+          }
+        }
+      }
+      if (data2!=null)
+      {
+        for (var i=0;i< data2.getProjects.length;i++)
+        {
+          if (data2.getProjects[i].id === assignedProject[0])
+          {
+            assignedDeveloperName = data2.getProjects[i].name;
+          }
+        }
+      }
 
-     var time = data.getTicketById.createdAt.split('T')[1];
-     var date = data.getTicketById.createdAt.substring(0, data.getTicketById.createdAt.indexOf("T"));
-     
-     time = time.slice(0, -5); 
-     var dateTime = date+ "\t\t"+time;
+      rows[0] = createData(data.getTicketById.title, data.getTicketById.description, assignedProjectName, assignedDeveloperName
+      ,data.getTicketById.priority,data.getTicketById.status, data.getTicketById.type , dateTime, data.getTicketById.updatedAt);
 
-    rows[0] = createData(data.getTicketById.title, data.getTicketById.description 
-    ,data.getTicketById.priority, data.getTicketById.status, dateTime);
-  }
+      console.log("Rows 0", rows[0]);
+    } 
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -114,52 +160,62 @@ function TicketDetailsComponent(props ) {
         <div id="main" class="main">
           <Paper className={classes.root}>
           <div className={classes.banner}>
-          <h3 className={classes.heading}>Tickets Table</h3>
-          <p className={classes.heading}>All the tickets you have in the database</p>
+          <h3 className={classes.heading}>Details for the Ticket</h3>
+          <p className={classes.heading}></p>
           </div>
-            <TableContainer className={classes.container}>
-              <Table stickyHeader aria-label="sticky table">
-                <TableHead>
-                  <TableRow>
-                    {columns.map((column) => (
-                      <TableCell
-                        key={column.id}
-                        align={column.align}
-                        style={{ minWidth: column.minWidth }}
-                      >
-                        {column.label}
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    valueNumber++;
-                    return (
-                      <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                        {columns.map((column) => {
-                          const value = row[column.id];
-                          return (
-                            <TableCell key={column.id} align={column.align}>    
-                                {RenderElement(value, column, valueNumber)}
-                            </TableCell>
-                          );
-                        })}
-                      </TableRow>
-                    );
-                  })}
-                </TableBody>
-              </Table>
-            </TableContainer>
-            <TablePagination
-              rowsPerPageOptions={[10, 25, 100]}
-              component="div"
-              count={rows.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              onChangePage={handleChangePage}
-              onChangeRowsPerPage={handleChangeRowsPerPage}
-            />
+          <TableContainer component={Paper}>
+      <Table className={classes.table} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell align="right">Ticket Title</TableCell>
+            <TableCell align="right">Ticket Description</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+            <TableRow>
+              <TableCell align="right">{rows[0].name}</TableCell>
+              <TableCell align="right">{rows[0].description}</TableCell>
+            </TableRow>
+        </TableBody>
+        <TableHead>
+          <TableRow>
+            <TableCell align="right">Assigned Project</TableCell>
+            <TableCell align="right">Assigned Developer</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+            <TableRow>
+              <TableCell align="right">{rows[0].assignedProject}</TableCell>
+              <TableCell align="right">{rows[0].assignedDeveloper}</TableCell>
+            </TableRow>
+        </TableBody>
+        <TableHead>
+          <TableRow>
+            <TableCell align="right">Priority</TableCell>
+            <TableCell align="right">Status</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+            <TableRow>
+              <TableCell align="right">{rows[0].priority}</TableCell>
+              <TableCell align="right">{rows[0].status}</TableCell>
+            </TableRow>
+        </TableBody>
+        <TableHead>
+          <TableRow>
+            <TableCell align="right">Type</TableCell>
+            <TableCell align="right">Creation Time (Day and Time)</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+            <TableRow>
+              <TableCell align="right">{rows[0].type}</TableCell>
+              <TableCell align="right">{rows[0].created}</TableCell>
+            </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
+            
           </Paper>
         </div>
       </div>
@@ -167,7 +223,7 @@ function TicketDetailsComponent(props ) {
   );
 }
 
-const FETCH_PROJECTS_QUERY = gql`
+const FETCH_TICKETS_QUERY = gql`
 query
     getTicketById($id: String!){
     getTicketById (id: $id) {
@@ -183,6 +239,28 @@ query
    }
 }`;
 
+const FETCH_USERS_QUERY = gql `
+{
+  getUsers {
+    id
+    username
+    email
+    creationTime
+    role
+    access
+}
+}`;
+
+const FETCH_PROJECTS_QUERY = gql `
+{
+  getProjects {
+    id
+    name
+    description
+    users
+    tickets
+}
+}`;
 
 export default TicketDetailsComponent;
 

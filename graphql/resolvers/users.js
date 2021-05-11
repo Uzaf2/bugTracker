@@ -7,6 +7,7 @@ const { validateLoginInput, validateRegisterInput } = require ('../../utils/vali
 var mongoose = require('mongoose');
 const { UniqueArgumentNamesRule } = require('graphql');
 const { SECRET_KEY } = require ('../../config');
+const jsonwebtoken = require('jsonwebtoken')
 
 function generateToken(user){
 
@@ -38,16 +39,6 @@ module.exports = {
             catch(err){
                 throw new Error(err);
             }
-        }
-        ,
-        async getUser(_,{userId},){
-            try {
-                const user = await User.findById(userId);
-                return user;
-            }
-            catch (err){
-                throw new Error (err);
-            }
         },
         async getUsers(_, {},) {
             try {
@@ -58,8 +49,30 @@ module.exports = {
                 throw new Error (err);
             }
         }
-    },
+    }, 
     Mutation: {
+        async getUser(_,{userId},){
+            try {
+                console.log("userId", userId);
+                const user = await User.findById(userId);
+                return user;
+            }
+            catch (err) {
+                throw new Error (err);
+            }
+        },
+        async demoLogin(_,{})
+        {
+            var username = "usman";
+            const user = await User.findOne({username});
+            const token = generateToken(user);
+         
+            return {
+                ...user._doc,
+                id:user._id,
+                token
+         };
+        },
         async register (_, { registerInput: { username, email, password, confirmPassword }}) {
 
            const { errors, valid } = validateRegisterInput(username,email, password, confirmPassword);
@@ -93,6 +106,7 @@ module.exports = {
                 id: res._id,
               };
         },
+        
         async login (_, {username, password}) {
 
             const {errors, valid} = validateLoginInput(username, password);

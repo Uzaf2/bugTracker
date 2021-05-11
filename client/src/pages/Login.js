@@ -69,15 +69,27 @@ const useStyles = makeStyles((theme) => ({
         password: ''
     });
 
-    const [login, {loading} ] = useMutation(LOGIN_USER, {
+    const [login, {loading1} ] = useMutation(LOGIN_USER, {
         update(_, { data: { login: userData }}){
-        context.login(userData);
         console.log("UserData", userData);
+        context.login(userData);
         props.history.push('/ManageUserRoles');
         },
         onError(err){
-            setErrors(err.graphQLErrors[0].extensions.exception.errors)
+        setErrors(err.graphQLErrors[0].extensions.exception.errors)
         }, variables : values
+    });
+
+    const [demoLogin, {loading} ] = useMutation(DEMO_LOGIN, {
+        update(_, { data: { demoLogin: userData2 }}){
+        console.log("UserData", userData2);
+        context.login(userData2);
+        props.history.push('/ManageUserRoles');
+        },
+        onError(err){
+            console.log(err);
+        setErrors(err.graphQLErrors[0].extensions.exception.errors)
+        }
     });
 
     function loginUser() {
@@ -90,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
     }
 
     function handleClickDemo() {
-        history.push("/ManageUserRoles");
+        demoLogin();
     }
   
     const styles = useStyles();
@@ -169,6 +181,13 @@ mutation login($username:String! $password: String!) {
     email
     username
     creationTime
+    token
+    }
+}`;
+
+const DEMO_LOGIN = gql `
+mutation  {
+    demoLogin { 
     token
     }
 }`;

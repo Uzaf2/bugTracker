@@ -28,6 +28,7 @@ module.exports = {
                 throw new Error(err);
             }
         },
+       
         async getProjects(_, { },) {
             try {
                 const projects = await Project.find().sort({ createdAt: -1 });
@@ -64,6 +65,15 @@ module.exports = {
                 throw new Error(err);
             }
            
+        },
+         async getProject(_, {projectId},) {
+            try {
+                const project = await Project.findById(projectId);
+                return project;
+            }
+            catch (err){
+                throw new Error (err);
+            }
         },
         async assignUser(_, { projectId, userId }) {
             

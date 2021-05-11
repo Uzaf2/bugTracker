@@ -9,6 +9,12 @@ input RegisterInput  {
     email: String !
 }
 
+type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
+}
+
 type User{
     id: ID!
     username: String !
@@ -56,11 +62,14 @@ type Query {
 }
 
 type Mutation {
+    getUser( userId: String! ): User !
+    getProject( projectId: String! ): Project !
     register(registerInput:RegisterInput): User !
     login(username: String!, password: String!): User !
     createProject(name: String!, description: String): Project!
     assignUser(projectId: String !, userId: String ! ): Project!
     createTicket(title: String!, description: String!, assignedProjectInput: String!, assignedDeveloperInput: String!, priority: String!, type: String!, status: String!): Ticket!
     assignRole (name: String!, role: String !): String !
+    demoLogin: User!
 }
 `;

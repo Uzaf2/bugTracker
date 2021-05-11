@@ -70,7 +70,7 @@ function CreateTicket() {
       
     <div className={classes.bottomDiv}>
     <Button variant="contained" color="primary" onClick={AssignUser} className={classes.btn1}>Assign User</Button>
-      <Button variant="contained" color="primary" onClick={CreateTicket} className={classes.btn2}>Create Ticket</Button>
+    <Button variant="contained" color="primary" onClick={CreateTicket} className={classes.btn2}>Create Ticket</Button>
     </div>
      
     <div className="firstDiv" className={classes.firstDiv}>
