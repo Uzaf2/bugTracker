@@ -132,6 +132,7 @@ module.exports = {
             };
         },
         async assignRole(_, {name, role}){
+            try {
             //console.log("Values in the AssignRole function", name,"Role :", role);
 
             const userObj = await User.findOneAndUpdate({username:name}, {role, role});
@@ -167,8 +168,14 @@ module.exports = {
               
               */
 
-            await userObj.save();
-            return "";
+            await userObj.save();        
+            const users = await User.find().sort({createdAt : -1});
+            return users;
+            
+        }
+        catch(err){
+            throw new Error (err);
+        }
         }
     }
 };

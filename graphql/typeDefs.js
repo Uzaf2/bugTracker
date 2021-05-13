@@ -69,7 +69,7 @@ type Mutation {
     createProject(name: String!, description: String): Project!
     assignUser(projectId: String !, userId: String ! ): Project!
     createTicket(title: String!, description: String!, assignedProjectInput: String!, assignedDeveloperInput: String!, priority: String!, type: String!, status: String!): Ticket!
-    assignRole (name: String!, role: String !): String !
+    assignRole (name: String!, role: String !): [User] !
     demoLogin: User!
 }
 `;

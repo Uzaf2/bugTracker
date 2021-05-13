@@ -7,6 +7,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { useForm } from '../util/hooks';
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
+import { FETCH_USERS_QUERY } from '../util/graphql';
 
 const useStyles = makeStyles({
   root: {
@@ -110,12 +111,19 @@ function ManageUserRoles(props) {
   const { loading, data } = useQuery(FETCH_USERS_QUERY);
   
   const [assign, {loading:assignLoading}] = useMutation (ASSIGN_ROLE,{
-      update(_,  {data}){
-     
-      },
-      onError(err) {
-      },
-      variables:values
+    onError(err) {
+    },
+    variables:values,
+      update(proxy,  result ){
+        const data = proxy.readQuery({ query: FETCH_USERS_QUERY });
+        //console.log("Data", data.getUsers);
+        //data.getUsers = result.assignRole;
+        //console.log("Data", data.getUsers);
+        proxy.writeQuery({ query: FETCH_USERS_QUERY, data});
+        //console.log();
+        
+        console.log("Result", result);
+      }
   });
   
   
@@ -185,18 +193,16 @@ function ManageUserRoles(props) {
 const ASSIGN_ROLE = gql`
   mutation  assignRole ($name: String! $role: String!){
     assignRole (name: $name role: $role) 
-  }`;
-
-  const FETCH_USERS_QUERY = gql`
-{
-  getUsers {
-  username
+  {
+    username
   id
   email
   creationTime
   role
   access
-}
-}`;
+  }
+  }`;
+
+ 
 
 export default ManageUserRoles;

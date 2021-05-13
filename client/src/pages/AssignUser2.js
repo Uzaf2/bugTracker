@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useQuery, gql } from '@apollo/client';
 import { useHistory } from "react-router-dom";
 import { useMutation } from '@apollo/react-hooks';
+import {FETCH_PROJECT_ASSIGNED_PROSONNEL_QUERY} from '../util/graphql';
 
 
 const useStyles = makeStyles({
@@ -106,8 +107,7 @@ function AssignUser2(props) {
     const [ errors, setErrors ] = useState({});
 
     const [assignUser,{loading1} ] = useMutation(ASSIGN_USER, {
-      update(_,{data}){
-
+      update(proxy,result){
         success();
       }, 
       onError(err){

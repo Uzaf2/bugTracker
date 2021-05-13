@@ -56,7 +56,7 @@ function AssignedDeveloper(props) {
   const [ rowsPerPage, setRowsPerPage ] = React.useState(10);
   const [ errors, setErrors ] = useState({});
  
- const {loading, data} = useQuery (FETCH_PROJECTS_QUERY,{
+ const {loading, data} = useQuery (FETCH_PROJECT_ASSIGNED_PROSONNEL_QUERY,{
   variables: { name: String(props.index)}
 });
 
@@ -153,7 +153,7 @@ function AssignedDeveloper(props) {
   );
 }
 
-const FETCH_PROJECTS_QUERY = gql`
+const FETCH_PROJECT_ASSIGNED_PROSONNEL_QUERY = gql`
   query  getProjectsAndUsers ($name: String!){
     getProjectsAndUsers (name: $name) {
       id 

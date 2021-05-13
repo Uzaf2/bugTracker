@@ -59,7 +59,10 @@ module.exports = {
     
                 const project = await newProject.save();
     
-                return project;
+                return {
+                    ...project._doc,
+                    id:project._id,
+             };
             }
             catch(err){
                 throw new Error(err);

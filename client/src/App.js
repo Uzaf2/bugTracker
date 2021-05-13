@@ -40,11 +40,6 @@ import CreateProject from './pages/CreateProject';
 ///////////////////////////////////////////////////////////
 
 
-const client = new ApolloClient({
-  uri: 'http://localhost:5000/',
-  cache: new InMemoryCache()
-});
-
 function App() {
   return (
         <AuthProvider>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import gql from 'graphql-tag';
 import SideAndNavbar from '../components/SideAndNavbar';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useForm } from '../util/hooks';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { FETCH_PROJECTS_QUERY, FETCH_USERS_QUERY } from '../util/graphql';
 
 const useStyles = makeStyles({
     root: {
@@ -72,8 +72,13 @@ function CreateProject(props) {
         description: ''
     });
     
+    const { loading:loading1, data:data1 } = useQuery(FETCH_PROJECTS_QUERY);
+
     const [create, {loading}] = useMutation (CREATE_PROJECT,{
-        update(_,  {data}){
+        update(proxy, result){
+        const data = proxy.readQuery({ query: FETCH_PROJECTS_QUERY });
+    
+        proxy.writeQuery({ query: FETCH_PROJECTS_QUERY, data:{getProjects:[result.data.createProject, ...data.getProjects],},});
         },
         onError(err) {
             setErrors(err.graphQLErrors[0].extensions.exception.errors);
@@ -128,7 +133,7 @@ function CreateProject(props) {
 const CREATE_PROJECT =  gql `
 mutation createProject($name: String! $description: String!) {
     createProject(name:$name description: $description) {
-        name description
+        name description id
     }     
 }`;
 
