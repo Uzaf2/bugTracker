@@ -84,6 +84,7 @@ function CreateTicket(props) {
         update(_,  {data}){
         },
         onError(err) {
+            console.log("Error", err);
         },
         variables:values
     });

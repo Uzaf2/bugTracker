@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useQuery, gql } from '@apollo/client';
 import { useHistory } from "react-router-dom";
@@ -106,6 +106,10 @@ function AssignUser2(props) {
 
     const [ errors, setErrors ] = useState({});
 
+    useEffect(() => {
+      assignUser();
+    }, [userId, projectId]);
+
     const [assignUser,{loading1} ] = useMutation(ASSIGN_USER, {
       update(proxy,result){
         success();
@@ -127,10 +131,12 @@ function AssignUser2(props) {
       }    
   }
 
+  /*
   function AssignUser()
   {
     assignUser();
   }
+  */
 
   function success() {
     alert("User assignned to the project");
@@ -153,7 +159,7 @@ function AssignUser2(props) {
     setUserId(data.getUsers[indexValue].id);
     setProjectId(projectsQuery.data.getProjects[index].id);
 
-    AssignUser();
+    //AssignUser();
   }  
 
       

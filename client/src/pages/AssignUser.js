@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SideAndNavbar from '../components/SideAndNavbar';
 import { makeStyles } from '@material-ui/core/styles';
 import { useQuery, gql } from '@apollo/client';
@@ -75,6 +75,10 @@ function AssignUser(props) {
 
     const [ errors, setErrors ] = useState({});
 
+    useEffect(() => {
+      assignUser();
+  }, [userId, projectId]);
+
     const [assignUser,{loading1} ] = useMutation(ASSIGN_USER, {
       update(_,{data}){
 
@@ -97,10 +101,12 @@ function AssignUser(props) {
         }    
     }
 
+    /*
     function AssignUser()
     {
       assignUser();
     }
+    */
 
     function success() {
       alert("User assignned to the project");
@@ -123,7 +129,7 @@ function AssignUser(props) {
         setUserId(data.getUsers[indexValue].id);
         setProjectId(projectsQuery.data.getProjects[index].id);
 
-        AssignUser();
+        //AssignUser();
       }  
       
  return (
