@@ -100,7 +100,8 @@ function AssignUser2(props) {
     const [formError,setFormError] = useState(false);
     const [userId, setUserId] = useState("");
     const [projectId, setProjectId] = useState("");
-    const index = props.index - 1;
+    const index = props.index;
+    console.log("Index", index);
     const { loading, data } = useQuery(FETCH_USERS_QUERY);
     const projectsQuery = useQuery(FETCH_PROJECTS_QUERY);
 
@@ -115,9 +116,9 @@ function AssignUser2(props) {
         const data = proxy.readQuery({ query: FETCH_PROJECT_ASSIGNED_PERSONNEL_QUERY,
           variables: { name: String(props.index)}
          });
-        var lengthValue = result.data.assignUser.length;
-        var element = result.data.assignUser [length -1 ];
-        proxy.writeQuery({ query: FETCH_PROJECT_ASSIGNED_PERSONNEL_QUERY, 
+          var lengthValue = result.data.assignUser.length;
+          var element = result.data.assignUser [lengthValue -1 ];
+          proxy.writeQuery({ query: FETCH_PROJECT_ASSIGNED_PERSONNEL_QUERY, 
           data:{getProjectsAndUsers:[element, ...data.getProjectsAndUsers],},
           variables: { name: String(props.index)}});
       }, 
@@ -154,6 +155,7 @@ function AssignUser2(props) {
 
     var x = document.getElementById("selectValue");
     const valueMatch = x.value;
+    console.log("x", x);
     var indexValue;
     const length = data.getUsers.length;
     for(var i=0;i<length;i++)
@@ -164,8 +166,11 @@ function AssignUser2(props) {
         }
     } 
 
+    console.log("IndexValue", indexValue);
+    console.log("index", index);
+    console.log("ProjectsQuery", projectsQuery);
     setUserId(data.getUsers[indexValue].id);
-    setProjectId(projectsQuery.data.getProjects[index].id);
+    setProjectId(projectsQuery.data.getProjects[index-1].id);
 
     //AssignUser();
   }  
