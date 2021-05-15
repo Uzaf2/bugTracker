@@ -78,8 +78,9 @@ module.exports = {
                 throw new Error (err);
             }
         },
-        async assignUser(_, { projectId, userId }) {
+        async assignUser(_, { projectId, userId, name }) {
             
+            try {
             //const userObj = authorization(context);
             const project = await Project.findById(projectId);
             console.log("Project", project);
@@ -106,8 +107,28 @@ module.exports = {
             }
             
             await project.save();
+
+                const index = name -1 ;
+                var usersArray = [];
+                const projects = await Project.find().sort({ createdAt: -1 });
+                const length = projects[index].users.length;
+                var userId = 0
+                var users = 0;
+
+                for (var i=0;i<length; i++)
+               {
+                  userId = projects[index].users[i];
+                  var usersValue =  await User.findOne( userId );
+                  usersArray.push(usersValue);
+               }
+
+               return usersArray;
+            }
+            catch(err){
+                throw new Error(err);
+            }
             
-            return project;
+           // return project;
         }
     }
 };

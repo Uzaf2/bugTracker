@@ -51,14 +51,13 @@ function AssignedDeveloper(props) {
   const history = useHistory();
   const classes = useStyles();
   const [ page, setPage ] = React.useState(0);
-
   const [ markersArray, setMarkersArray] = useState([]);
   const [ rowsPerPage, setRowsPerPage ] = React.useState(10);
   const [ errors, setErrors ] = useState({});
  
- const {loading, data} = useQuery (FETCH_PROJECT_ASSIGNED_PROSONNEL_QUERY,{
+ const {loading, data} = useQuery (FETCH_PROJECT_ASSIGNED_PERSONNEL_QUERY,{
   variables: { name: String(props.index)}
-});
+ });
 
   var rows = [];
   if (loading)
@@ -68,7 +67,6 @@ function AssignedDeveloper(props) {
     var length = data.getProjectsAndUsers.length;
    for (var k = 0; k < length; k++)
     {
-          console.log("in loop",data.getProjectsAndUsers[k]);
           var name = (data.getProjectsAndUsers[k].username);
           var email = (data.getProjectsAndUsers[k].email);
           var role = (data.getProjectsAndUsers[k].role);
@@ -98,7 +96,6 @@ function AssignedDeveloper(props) {
     <body>
       <div>
         <div id="main" class="main">
-         
           <Paper className={classes.root}>
             <TableContainer className={classes.container}>
             <div className={classes.banner}>
@@ -153,7 +150,7 @@ function AssignedDeveloper(props) {
   );
 }
 
-const FETCH_PROJECT_ASSIGNED_PROSONNEL_QUERY = gql`
+const FETCH_PROJECT_ASSIGNED_PERSONNEL_QUERY = gql`
   query  getProjectsAndUsers ($name: String!){
     getProjectsAndUsers (name: $name) {
       id 

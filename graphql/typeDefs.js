@@ -67,7 +67,7 @@ type Mutation {
     register(registerInput:RegisterInput): User !
     login(username: String!, password: String!): User !
     createProject(name: String!, description: String): Project!
-    assignUser(projectId: String !, userId: String ! ): Project!
+    assignUser(projectId: String !, userId: String !, name: String! ): [User]!
     createTicket(title: String!, description: String!, assignedProjectInput: String!, assignedDeveloperInput: String!, priority: String!, type: String!, status: String!): Ticket!
     assignRole (name: String!, role: String !): [User] !
     demoLogin: User!

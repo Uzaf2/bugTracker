@@ -112,11 +112,19 @@ function AssignUser2(props) {
 
     const [assignUser,{loading1} ] = useMutation(ASSIGN_USER, {
       update(proxy,result){
-        success();
+        const data = proxy.readQuery({ query: FETCH_PROJECT_ASSIGNED_PERSONNEL_QUERY,
+          variables: { name: String(props.index)}
+         });
+        var lengthValue = result.data.assignUser.length;
+        var element = result.data.assignUser [length -1 ];
+        proxy.writeQuery({ query: FETCH_PROJECT_ASSIGNED_PERSONNEL_QUERY, 
+          data:{getProjectsAndUsers:[element, ...data.getProjectsAndUsers],},
+          variables: { name: String(props.index)}});
       }, 
       onError(err){
-          setErrors(err.graphQLErrors[0].extensions.exception.errors)
-      }, variables: { userId, projectId }
+          console.log("Errors: ", err);
+          //setErrors(err.graphQLErrors[0].extensions.exception.errors)
+      }, variables: { userId, projectId, name: String(props.index) }
      
   });
   
@@ -202,9 +210,26 @@ const FETCH_PROJECTS_QUERY = gql`
 }`;
 
 const ASSIGN_USER =  gql `
-mutation assignUser($projectId: String! $userId: String!) {
-  assignUser(projectId:$projectId userId: $userId) {
-        name description id
+mutation assignUser($projectId: String! $userId: String!, $name: String !) {
+  assignUser(projectId:$projectId userId: $userId, name: $name) {
+    id 
+    username
+    email
+    creationTime
+    role 
+    access
     }     
 }`;
+
+const FETCH_PROJECT_ASSIGNED_PERSONNEL_QUERY = gql`
+  query  getProjectsAndUsers ($name: String!){
+    getProjectsAndUsers (name: $name) {
+      id 
+      username
+      email
+      creationTime
+      role 
+      access
+  }
+  }`;
 export default AssignUser2;

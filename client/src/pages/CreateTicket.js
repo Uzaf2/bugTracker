@@ -82,6 +82,7 @@ function CreateTicket(props) {
     
     const [create, {loading}] = useMutation (CREATE_TICKET,{
         update(_,  {data}){
+           success();
         },
         onError(err) {
             console.log("Error", err);
@@ -147,6 +148,10 @@ function CreateTicket(props) {
         }
     }
     
+    function success() {
+        alert("New Ticket Created");
+    }
+
     function createProject () {
         create();
     }

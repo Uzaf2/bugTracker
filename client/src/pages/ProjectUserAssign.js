@@ -96,27 +96,27 @@ title: {
 function ProjectUserAssign(props) {
     const classes = useStyles();
     const history = useHistory();
-     console.log("Value",props);
+    console.log("Value",props);
     var value =  props.history.location.state.index;
    
  return (
 <body>
     <SideAndNavbar/>
       
-    <div class="split left">
-  <div class="centered1">
-  <AssignUser2 index={value}/>
-  </div>
-</div>
+   <div class="split left">
+   <div class="centered1">
+   <AssignUser2 index={value}/>
+   </div>
+   </div>
 
-<div class="split right">
-  <div class="centered2">
-  <AssignedPersonnel index={value}/>
+   <div class="split right">
+   <div class="centered2">
+   <AssignedPersonnel index={value}/>
    
-  </div>
-</div>
+   </div>
+   </div>
   
-   </body>
+</body>
  )
 }
 
