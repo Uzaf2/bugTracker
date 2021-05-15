@@ -61,7 +61,13 @@ function AssignUser() {
 }
 
 function CreateTicket() {
-  history.push('/CreateTicket');
+  history.push({
+    pathname: '/CreateTicket',
+    search: '?update=true',  // query string
+    state: {  // location state
+      index: value, 
+    },
+  }); 
 }
 
  return (
@@ -70,7 +76,7 @@ function CreateTicket() {
       
     <div className={classes.bottomDiv}>
     <Button variant="contained" color="primary" onClick={AssignUser} className={classes.btn1}>Assign User</Button>
-    <Button variant="contained" color="primary" onClick={CreateTicket} className={classes.btn2}>Create Ticket</Button>
+    <Button variant="contained" color="primary" onClick={CreateTicket} className={classes.btn2} >Create Ticket</Button>
     </div>
      
     <div className="firstDiv" className={classes.firstDiv}>

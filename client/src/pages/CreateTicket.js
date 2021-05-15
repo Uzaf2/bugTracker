@@ -68,6 +68,7 @@ function CreateTicket(props) {
 
     const classes = useStyles();
 
+    const index = props.history.location.state.index;
     const [errors, setErrors]= useState({});
     const {onChange, onSubmit, values}= useForm(createProject, {
         
@@ -80,8 +81,25 @@ function CreateTicket(props) {
         status: ''
     });
     
+  console.log("index", index);
+  const { loading:loading1, data} = useQuery(FETCH_TICKETS_QUERY,{
+          variables: { id: String(index)}
+         });
+
+        
+
+   
+
     const [create, {loading}] = useMutation (CREATE_TICKET,{
-        update(_,  {data}){
+        update(proxy,  result){
+            console.log("Data", result);
+
+        const data = proxy.readQuery({ query: FETCH_TICKETS_QUERY,
+          variables: { id: String(index)}
+         });
+
+          proxy.writeQuery({ query: FETCH_TICKETS_QUERY, data:{getTicketsByProjectId:[result.data.createTicket, ...data.getTicketsByProjectId],},
+          variables: { id: String(index)}});
            success();
         },
         onError(err) {
@@ -92,6 +110,7 @@ function CreateTicket(props) {
 
     const {loading:usersloading, data: users} = useQuery (GET_USERS);
     const {loading:projectsloading, data:projects} = useQuery (GET_PROJECTS);
+
     
     if (projects!=null)
     {       
@@ -278,4 +297,19 @@ const GET_PROJECTS = gql`
         tickets 
     }
 }  `;
+
+const FETCH_TICKETS_QUERY =  gql `
+query
+  getTicketsByProjectId($id: String!){
+    getTicketsByProjectId (id: $id) {
+      id
+      title
+      description
+      priority
+      status
+      type
+      createdAt
+    }
+  }
+`;
 export default CreateTicket;
