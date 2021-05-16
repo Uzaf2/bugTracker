@@ -89,7 +89,7 @@ function ProjectTable() {
   function HandleOnClick(props, rowsArray) {
    
     history.push({
-      pathname: '/ProjectDetails2',
+      pathname: '/ProjectDetails',
       search: '?update=true',  // query string
       state: {  // location state
         index: props, 

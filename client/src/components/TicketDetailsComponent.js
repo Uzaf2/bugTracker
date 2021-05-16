@@ -55,7 +55,7 @@ function createData(name, description, assignedProject, assignedDeveloper, prior
 
  var counter = 0;
 
-function TicketDetailsComponent(props ) {
+function TicketDetailsComponent(props) {
 
  
   var valueNumber = 0;
@@ -118,8 +118,6 @@ const {loading:loading2, data:data2} = useQuery (FETCH_PROJECTS_QUERY);
 
       rows[0] = createData(data.getTicketById.title, data.getTicketById.description, assignedProjectName, assignedDeveloperName
       ,data.getTicketById.priority,data.getTicketById.status, data.getTicketById.type , dateTime, data.getTicketById.updatedAt);
-
-      console.log("Rows 0", rows[0]);
     } 
 
   const handleChangePage = (event, newPage) => {

@@ -48,13 +48,13 @@ container: {
 },
 label: {
     fontSize: 12,
-    marginLeft: '30%',
+    marginLeft: '20%',
     fontFamily: 'sans-serif',
     fontStyle:'italic',
     fontWeight:'600'
 },
 input:{
-    width: '100%',
+    width: '60%',
     padding: '12px 20px',
     margin: '8px 0',
     display: 'inline-block',
@@ -62,7 +62,7 @@ input:{
     borderColor: '#ddd',
     borderRadius: '4px', 
     boxSizing: 'border-box',
-    marginLeft: '25%',
+    marginLeft: '15%',
     marginRight: '30%'
 },
 submit:{
@@ -90,7 +90,7 @@ marginRight: '30%'
 },
 title: {
   width: '50%',
-  marginLeft: "43%",
+  marginLeft: "20%",
   fontSize: 18,
   fontWeight: '800',
   fontFamily: 'sans-serif'
@@ -116,13 +116,7 @@ function ManageUserRoles(props) {
     variables:values,
       update(proxy,  result ){
         const data = proxy.readQuery({ query: FETCH_USERS_QUERY });
-        //console.log("Data", data.getUsers);
-        //data.getUsers = result.assignRole;
-        //console.log("Data", data.getUsers);
         proxy.writeQuery({ query: FETCH_USERS_QUERY, data});
-        //console.log();
-        
-        console.log("Result", result);
       }
   });
   

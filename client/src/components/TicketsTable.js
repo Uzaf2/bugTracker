@@ -33,6 +33,11 @@ const useStyles = makeStyles({
   container: {
     maxHeight: 440,
   },
+  main:{
+    display: 'inline-block',
+    textAlign:'left',
+    marginLeft:'20%'
+  },
 });
 
 const columns = [
@@ -86,7 +91,6 @@ function TicketsTable() {
 
   function HandleOnClick(props, rowsArray) {
    
-    console.log("Props", props);
     history.push({
       pathname: '/TicketDetailsComponent',
       search: '?update=true',  // query string
@@ -111,7 +115,7 @@ function TicketsTable() {
     <body>
       <div>
         <SideAndNavbar></SideAndNavbar>
-        <div id="main" class="main">
+        <div id="main" class="main" className={classes.main}>
           <Paper className={classes.root}>
           <div className={classes.banner}>
           <h3 className={classes.heading}>Tickets Table</h3>

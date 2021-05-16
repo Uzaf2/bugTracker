@@ -10,8 +10,9 @@ a:hover {
   }
 
 .main{
-    float: right;
-    margin-left: 20px;
+    display: inline-block;
+    text-align:left;
+    margin-left:18%;
 }
 
 .bottomDiv{

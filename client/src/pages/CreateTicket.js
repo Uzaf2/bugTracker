@@ -81,19 +81,12 @@ function CreateTicket(props) {
         status: ''
     });
     
-  console.log("index", index);
-  const { loading:loading1, data} = useQuery(FETCH_TICKETS_QUERY,{
+    const { loading:loading1, data} = useQuery(FETCH_TICKETS_QUERY,{
           variables: { id: String(index)}
          });
 
-        
-
-   
-
     const [create, {loading}] = useMutation (CREATE_TICKET,{
         update(proxy,  result){
-            console.log("Data", result);
-
         const data = proxy.readQuery({ query: FETCH_TICKETS_QUERY,
           variables: { id: String(index)}
          });

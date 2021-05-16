@@ -71,7 +71,6 @@ const useStyles = makeStyles((theme) => ({
 
     const [login, {loading1} ] = useMutation(LOGIN_USER, {
         update(_, { data: { login: userData }}){
-        console.log("UserData", userData);
         context.login(userData);
         props.history.push('/ManageUserRoles');
         },
@@ -82,12 +81,11 @@ const useStyles = makeStyles((theme) => ({
 
     const [demoLogin, {loading} ] = useMutation(DEMO_LOGIN, {
         update(_, { data: { demoLogin: userData2 }}){
-        console.log("UserData", userData2);
         context.login(userData2);
         props.history.push('/ManageUserRoles');
         },
         onError(err){
-            console.log(err);
+        console.log(err);
         setErrors(err.graphQLErrors[0].extensions.exception.errors)
         }
     });

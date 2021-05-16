@@ -79,7 +79,6 @@ function AssignUser(props) {
       assignUser();
   }, [userId, projectId]);
 
-  console.log("Index", index);
     const [assignUser,{loading1} ] = useMutation(ASSIGN_USER, {
       update(proxy,result){
        
@@ -88,8 +87,6 @@ function AssignUser(props) {
          });
         var lengthValue = result.data.assignUser.length;
         var element = result.data.assignUser [lengthValue -1 ];
-        console.log("Element", result);
-        console.log("Data", data);
         proxy.writeQuery({ query: FETCH_PROJECT_ASSIGNED_PERSONNEL_QUERY, 
           data:{getProjectsAndUsers:[element, ...data.getProjectsAndUsers],},
           variables: { name: String(index)}});

@@ -86,10 +86,7 @@ function ManageProjectUsers() {
   };
 
   function HandleOnClick(props, rowsArray) {
-   
-   console.log("Props :", props);
-   console.log("Value of :", props);
-
+  
     history.push({
       pathname: '/ProjectUserAssign',
       search: '?update=true',  // query string
