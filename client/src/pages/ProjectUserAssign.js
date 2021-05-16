@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SideAndNavbar from '../components/SideAndNavbar';
-import AssignedPersonnel from '../components/AssignedPersonnel';
+import AssignedPersonnel2 from '../components/AssignedPersonnel2';
 import '../css/projectUserAssign.css';
 import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
@@ -110,7 +110,7 @@ function ProjectUserAssign(props) {
 
    <div class="split right">
    <div class="centered2">
-   <AssignedPersonnel index={value}/>
+   <AssignedPersonnel2 index={value}/>
    
    </div>
    </div>

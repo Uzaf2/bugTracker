@@ -44,8 +44,8 @@
 .wrapper {
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: 20% 20% 20% 20%;
-    grid-template-rows: 10% 35% 50%;
+    grid-template-columns: 21% 21% 21% 21%;
+    grid-template-rows: 8% 30% 62%;
     width: 90vw;
     height: 90vh;
     background-color: #fff;
@@ -56,7 +56,7 @@
     background-color: #444;
     color: #fff;
     border-radius: 5px;
-    padding: 20px;
+    padding: 0px;
     font-size: 150%;
 
   }

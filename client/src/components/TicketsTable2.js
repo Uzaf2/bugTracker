@@ -94,7 +94,7 @@ if (loading1)
   return (
     <body>
       <div>
-        <div id="main" class="main">
+        <div>
           <Paper className={classes.root}>
             <TableContainer className={classes.container}>
               <div className={classes.banner}>

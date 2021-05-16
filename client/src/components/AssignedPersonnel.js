@@ -16,13 +16,14 @@ const useStyles = makeStyles({
   banner:
   {
   backgroundColor: '#262B40',
-  height: '5%',
+  height: '120px',
   width:'93%',
   padding: '2%',
   marginLeft:'1%'
   },
   heading:{
-    color: 'white'
+    color: 'white',
+    padding: '0'
   },
   root: {
     width: '100%',
@@ -95,7 +96,7 @@ function AssignedDeveloper(props) {
   return (
     <body>
       <div>
-        <div id="main" class="main">
+        <div >
           <Paper className={classes.root}>
             <TableContainer className={classes.container}>
             <div className={classes.banner}>

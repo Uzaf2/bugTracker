@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   banner:
   {
   backgroundColor: '#262B40',
-  height: '5%',
+  height: '50px',
   width:'93%',
   padding: '2%',
   marginLeft:'1%',
