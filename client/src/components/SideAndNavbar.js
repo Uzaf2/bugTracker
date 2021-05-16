@@ -118,8 +118,6 @@ function SideAndNavbar(props) {
         <a onClick={handleClick} href="#home">Home</a>
         <a href="#about" onClick={logout}>Logout</a>
       </div>
-      <div id="main" class="main">
-      </div>
     </body>
   );
 }

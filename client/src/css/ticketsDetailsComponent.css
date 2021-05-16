@@ -3,13 +3,16 @@ a{
     text-decoration: underline;
 }
   
+
 a:hover {
     color: #262B40;
     cursor: pointer;
   }
 
 .main{
-    float: left;
+    display: inline-block;
+    text-align:left;
+    margin-left:18%;
 }
 
 .bottomDiv{

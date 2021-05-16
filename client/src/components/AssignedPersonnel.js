@@ -10,7 +10,7 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { useQuery, gql } from '@apollo/client';
 import { useHistory } from "react-router-dom";
-import '../css/projectTable.css';
+import '../css/assignedpersonnel.css';
 
 const useStyles = makeStyles({
   banner:
@@ -95,7 +95,7 @@ function AssignedDeveloper(props) {
   return (
     <body>
       <div>
-        <div id="main" class="main">
+        <div id="main" class="main" className={classes.main}>
           <Paper className={classes.root}>
             <TableContainer className={classes.container}>
             <div className={classes.banner}>

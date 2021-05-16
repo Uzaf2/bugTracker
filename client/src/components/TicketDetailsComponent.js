@@ -11,7 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import { useQuery, gql } from '@apollo/client';
 import SideAndNavbar from './SideAndNavbar';
 import { useHistory } from "react-router-dom";
-import '../css/ticketsDetails.css';
+import '../css/ticketsDetailsComponent.css';
 import { useMutation } from '@apollo/react-hooks';
 
 const useStyles = makeStyles({
@@ -28,13 +28,15 @@ const useStyles = makeStyles({
   padding: '2%',
   marginLeft:'1%'
   },
-  
   heading:{
     color: 'white'
   },
-  container: {
-    maxHeight: 300,
-  },
+  main: {
+    marginBottom: '500px',
+    marginLeft:'20%',
+    marginTop:'10px',
+    display: 'inline-block'
+  }
 });
 
 const columns = [
@@ -155,7 +157,7 @@ const {loading:loading2, data:data2} = useQuery (FETCH_PROJECTS_QUERY);
     <body>
       <div>
         <SideAndNavbar></SideAndNavbar>
-        <div id="main" class="main">
+        <div id="main" class="main" className={classes.main}>
           <Paper className={classes.root}>
           <div className={classes.banner}>
           <h3 className={classes.heading}>Details for the Ticket</h3>
