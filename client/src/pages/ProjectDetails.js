@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../css/main.css';
 import SideAndNavbar from '../components/SideAndNavbar';
 import ProjectTable2 from '../components/ProjectTable2';
 import AssignedPersonnel from '../components/AssignedPersonnel';
@@ -74,22 +73,23 @@ function CreateTicket() {
 <body>
     <SideAndNavbar/>
       
-    <div className={classes.bottomDiv}>
+    <div class="test">
+    <div class="wrapper">
+    <div class="box a">
+
     <Button variant="contained" color="primary" onClick={AssignUser} className={classes.btn1}>Assign User</Button>
     <Button variant="contained" color="primary" onClick={CreateTicket} className={classes.btn2} >Create Ticket</Button>
     </div>
-     
-    <div className="firstDiv" className={classes.firstDiv}>
-    
-    <ProjectTable2 index={value}/> 
-    </div>
-    <div className="main">
-    <div className="assignedPersonnel">
-    <AssignedPersonnel index={value}/>
-    </div>
-    <div className="secondMain" class="secondMain">
-    <TicketsTable2 className="ticketsTable" index={value}/>
-    </div>
+  <div class="box b">
+  <ProjectTable2 index={value}/> 
+  </div>
+  <div class="box c">
+  <AssignedPersonnel index={value}/>
+  </div>
+  <div class="box d">
+  <TicketsTable2 className="ticketsTable" index={value}/>
+  </div>
+  </div>
     </div>
     
     

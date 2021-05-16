@@ -98,7 +98,7 @@ if (loading1)
           <Paper className={classes.root}>
             <TableContainer className={classes.container}>
               <div className={classes.banner}>
-            <h3 className={classes.heading}>Tickets for the Project</h3>
+            <h5 className={classes.heading}>Tickets for the Project</h5>
             </div>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>

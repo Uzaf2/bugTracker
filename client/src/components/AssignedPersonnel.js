@@ -95,11 +95,11 @@ function AssignedDeveloper(props) {
   return (
     <body>
       <div>
-        <div id="main" class="main" className={classes.main}>
+        <div id="main" class="main">
           <Paper className={classes.root}>
             <TableContainer className={classes.container}>
             <div className={classes.banner}>
-          <h3 className={classes.heading}>AssignedPersonnel</h3>
+          <h5 className={classes.heading}>AssignedPersonnel</h5>
           <p className={classes.heading}>Users assigned to this Project</p>
           </div>
               <Table stickyHeader aria-label="sticky table">

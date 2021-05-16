@@ -9,11 +9,7 @@ a:hover {
     cursor: pointer;
   }
 
-.main{
-    display: inline-block;
-    text-align:left;
-    margin-left:18%;
-}
+
 
 .bottomDiv{
     float: right;

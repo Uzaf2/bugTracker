@@ -20,13 +20,16 @@ const useStyles = makeStyles({
   height: '5%',
   width:'93%',
   padding: '2%',
-  marginLeft:'1%'
+  marginLeft:'1%',
+  fontSize: '12'
   },
   heading:{
-    color: 'white'
+    color: 'white',
+    
   },
   root: {
-    width: '170%',
+    width: '100%',
+   
   },
   container: {
     maxHeight: 440,
@@ -73,13 +76,12 @@ function ProjectTable2(props) {
 
   return (
     <body>
-      <div className="Table">
-        <div id="main" class="main">
+      <div>
+        <div>
           <Paper className={classes.root}>
             <TableContainer className={classes.container}>
-              
             <div className={classes.banner}>
-          <h3 className={classes.heading}>Project Details</h3>
+          <h5 className={classes.heading}>Project Details</h5>
           </div>
 
               <Table stickyHeader aria-label="sticky table">
