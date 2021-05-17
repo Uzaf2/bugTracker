@@ -37,7 +37,7 @@ const columns = [
   { id: 'username', label: 'Username', minWidth: 170 },
   { id: 'email', label: 'Email', minWidth: 100 },
   //{ id: 'creationTime', label: 'Created', minWidth: 100 },
-  { id: 'role', label: 'Role', minWidth: 100 },
+  { id: 'role', label: 'Role', minWidth: 200 },
   //{ id: 'access', label: 'Access', minWidth: 100 }
 ];
 
@@ -98,11 +98,11 @@ function AssignedDeveloper2(props) {
       <div>
         <div id="main" class="main">
           <Paper className={classes.root}>
-            <TableContainer className={classes.container}>
             <div className={classes.banner}>
-          <h5 className={classes.heading}>AssignedPersonnel</h5>
+          <h4 className={classes.heading}>AssignedPersonnel</h4>
           <p className={classes.heading}>Users assigned to this Project</p>
           </div>
+          <TableContainer className={classes.container}>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>

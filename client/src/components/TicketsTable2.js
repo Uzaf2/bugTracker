@@ -73,9 +73,16 @@ if (loading1)
       {
         for (var i=0;i<data1.getTicketsByProjectId.length;i++)
         {
+
+          var time = data1.getTicketsByProjectId[i].createdAt.split('T')[1];
+
+          var date = data1.getTicketsByProjectId[i].createdAt.substring(0, data1.getTicketsByProjectId[i].createdAt.indexOf("T"));
+          time = time.slice(0, -5); 
+          var dateTime = date+ "\t\t"+time;
+     
           rows[i] = createData(data1.getTicketsByProjectId[i].title, data1.getTicketsByProjectId[i].description,
             data1.getTicketsByProjectId[i].description,data1.getTicketsByProjectId[i].status,
-            data1.getTicketsByProjectId[i].createdAt);
+            dateTime);
         }
       }
     }

@@ -96,7 +96,7 @@ function AssignedDeveloper(props) {
   return (
     <body>
       <div>
-        <div >
+        <div>
           <Paper className={classes.root}>
             <TableContainer className={classes.container}>
             <div className={classes.banner}>
