@@ -108,10 +108,13 @@ const useStyles = makeStyles((theme) => ({
         <Container component="main" maxWidth="xs" className={useStyles.container} class="background">
             <CssBaseline />
             <div class="form">
+            <div class="heading">
+            <p>Bug Tracker Login</p>
+            </div>
             <div className={useStyles.paper} class="innerForm">
             <Typography component="h1" variant="h5" className={styles.fontType} style={{ marginBottom : "10px" }}>
             </Typography>
-                <form className={useStyles.form} class="formContainer1" onSubmit={onSubmit}>
+                <form  class="formContainer1" onSubmit={onSubmit}>
                     <Grid container spacing={2}>
                        
                         <Grid item xs={12}  >
@@ -153,10 +156,6 @@ const useStyles = makeStyles((theme) => ({
                     Login
                     </Typography>
                     </Button>
-                    
-                    <a href="#" className="signUp" onClick={handleClick}> Don't have an account? Sign Up ? </a>
-                    <p></p>
-                    <a href="#" className="signUp" onClick={handleClickDemo}> For Demo Account click here ! </a>
                  </form>
                  <div className="ui error message">
                     <ul className="list">
@@ -165,7 +164,13 @@ const useStyles = makeStyles((theme) => ({
                         ))}
                     </ul>
                 </div>
-            </div> 
+                </div> 
+                <div class= "signUp">
+             <a href="#"  onClick={handleClick}> Don't have an account? Sign Up ? </a>
+                    <p></p>
+            <a href="#" onClick={handleClickDemo}> For Demo Account click here ! </a>
+            </div>
+           
             </div>
         </Container>
     )
