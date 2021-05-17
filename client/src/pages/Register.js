@@ -9,6 +9,7 @@ import Container from '@material-ui/core/Container';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 import { useForm } from '../util/hooks';
+import '../css/register.css';
 
 const useStyles = makeStyles((theme) => ({
     inputType:{
@@ -85,7 +86,7 @@ function Register(props) {
     return (
         <Container component="main" maxWidth="xs" className={useStyles.container} class="background">
             <CssBaseline />
-            <div className="form">
+            <div className="formRegister">
                 <div className={useStyles.paper} class="innerForm">
                     <Typography component="h1" variant="h5" className={styles.fontType} style={{ marginBottom: "10px" }}>
                     </Typography>

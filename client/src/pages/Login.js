@@ -109,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
             <CssBaseline />
             <div class="form">
             <div class="heading">
-            <p>Bug Tracker Login</p>
+            <p> Bug Tracker Login</p>
             </div>
             <div className={useStyles.paper} class="innerForm">
             <Typography component="h1" variant="h5" className={styles.fontType} style={{ marginBottom : "10px" }}>
