@@ -73,20 +73,20 @@ function CreateTicket() {
 <body>
     <SideAndNavbar/>
       
-    <div class="test">
-    <div class="wrapper">
-    <div class="box a">
+    <div class="test1">
+    <div class="wrapper1">
+    <div class="box1 a1">
 
     <Button variant="contained" color="primary" onClick={AssignUser} className={classes.btn1}>Assign User</Button>
     <Button variant="contained" color="primary" onClick={CreateTicket} className={classes.btn2} >Create Ticket</Button>
     </div>
-  <div class="box b">
+  <div class="box1 b1">
   <ProjectTable2 index={value}/> 
   </div>
-  <div class="box c">
+  <div class="box1 c1">
   <AssignedPersonnel index={value}/>
   </div>
-  <div class="box d">
+  <div class="box1 d1">
   <TicketsTable2 className="ticketsTable" index={value}/>
   </div>
   </div>

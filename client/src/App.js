@@ -30,6 +30,7 @@ import ProjectUserAssign from './pages/ProjectUserAssign';
 import AssignUser2 from './pages/AssignUser2';
 import CreateTicket from './pages/CreateTicket';
 import CreateProject from './pages/CreateProject';
+import TicketDetailsPage from './pages/TicketDetailsPage';
 ///////////////////////////////////////////////////////////
 
 
@@ -63,6 +64,7 @@ function App() {
           <ProtectedRoute exact path="/AssignUser2" component={AssignUser2} />
           <ProtectedRoute exact path="/ProjectUserAssign" component={ProjectUserAssign} />
           <ProtectedRoute exact path="/CreateProject" component={CreateProject} />
+          <ProtectedRoute exact path="/TicketDetailsPage" component={TicketDetailsPage} />
           </Switch>
         </Router>
         </AuthProvider>

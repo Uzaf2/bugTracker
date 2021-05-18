@@ -3,7 +3,6 @@ a{
     text-decoration: underline;
 }
   
-
 a:hover {
     color: #262B40;
     cursor: pointer;
@@ -12,7 +11,7 @@ a:hover {
 .main{
     display: inline-block;
     text-align:left;
-    margin-left:18%;
+    margin-left:0%;
 }
 
 .bottomDiv{

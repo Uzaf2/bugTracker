@@ -22,7 +22,9 @@ const useStyles = makeStyles((theme) => ({
     },
     fontType:{
         fontFamily: font,
-        fontSize: 16
+        fontSize: 16,
+        color: 'white',
+        fontFamily:  "sans-serif"
     },
     '@global': {
         body: {
@@ -45,6 +47,8 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
         margin: theme.spacing(5, 0, 4),
+        height: '200px',
+         disableRipple: true 
     },
     container:{
         alignItems:"center",
@@ -151,6 +155,7 @@ const useStyles = makeStyles((theme) => ({
                         variant="contained"
                         className={useStyles.submit}
                         color="primary"
+                        class="btnSubmit"
                         style={{ marginTop : "10px" }}>
                     <Typography component="h1" variant="h5" className={styles.fontType}>
                     Login

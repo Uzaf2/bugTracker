@@ -17,7 +17,7 @@ import { useMutation } from '@apollo/react-hooks';
 const useStyles = makeStyles({
   root: {
     width: '500px',
-    marginLeft: '10%',
+    marginLeft: '0%',
     marginTop:'5%',
     height: "300px"
   },
@@ -32,10 +32,9 @@ const useStyles = makeStyles({
     color: 'white'
   },
   main: {
-    marginBottom: '500px',
-    marginLeft:'20%',
-    marginTop:'10px',
-    display: 'inline-block'
+    marginBottom: '0px',
+    marginLeft:'0%',
+    marginTop:'0px'
   }
 });
 
@@ -59,7 +58,6 @@ function createData(name, description, assignedProject, assignedDeveloper, prior
 
 function TicketDetailsComponent(props) {
 
- 
   var valueNumber = 0;
   var assignedProject = 0;
   var assignedDeveloper = 0;
@@ -71,9 +69,9 @@ function TicketDetailsComponent(props) {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  var index = props.history.location.state.index;
-
-
+  var index = props.index.history.location.state.index;
+  var array = props.index.history.location.state.array;
+  
   const {loading, data} = useQuery (FETCH_TICKETS_QUERY,{
     variables: { id: String(index)}
     });
@@ -156,7 +154,6 @@ const {loading:loading2, data:data2} = useQuery (FETCH_PROJECTS_QUERY);
   return (
     <body>
       <div>
-        <SideAndNavbar></SideAndNavbar>
         <div id="main" class="main" className={classes.main}>
           <Paper className={classes.root}>
           <div className={classes.banner}>

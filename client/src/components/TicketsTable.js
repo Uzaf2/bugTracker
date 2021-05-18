@@ -58,6 +58,7 @@ function TicketsTable() {
   var valueNumber = 0;
   const history = useHistory();
   const classes = useStyles();
+  var ticketsArray = [];
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const { loading, data } = useQuery(FETCH_PROJECTS_QUERY);
@@ -67,6 +68,8 @@ function TicketsTable() {
     return <p>Loading...</p>;
   else {
     var length = data.getTickets.length;
+    ticketsArray = data;
+    console.log("Data", data);
     for (var i = 0; i < length; i++) {
 
      var time = data.getTickets[i].createdAt.split('T')[1];
@@ -75,6 +78,7 @@ function TicketsTable() {
      time = time.slice(0, -5); 
      var dateTime = date+ "\t\t"+time;
 
+    
     rows[i] = createData(data.getTickets[i].title, data.getTickets[i].description 
     ,data.getTickets[i].priority, data.getTickets[i].status, dateTime, 'Edit Details');
     }
@@ -92,7 +96,7 @@ function TicketsTable() {
   function HandleOnClick(props, rowsArray) {
    
     history.push({
-      pathname: '/TicketDetailsComponent',
+      pathname: '/TicketDetailsPage',
       search: '?update=true',  // query string
       state: {  // location state
         index: props, 
@@ -104,7 +108,8 @@ function TicketsTable() {
 
   function RenderElement(value, value2, value3) {
     if (value2.id === "editDetails") {
-      return <a  onClick={() => HandleOnClick(value3, rows)} className="link"> {value} </a>;
+      console.log("value", value, "value2", value2, "value3", value3);
+      return <a  onClick={() => HandleOnClick(value3, ticketsArray)} className="link"> {value} </a>;
     }
     else {
       return value;
@@ -174,6 +179,7 @@ function TicketsTable() {
 const FETCH_PROJECTS_QUERY = gql`
 {
   getTickets{
+    id
     title
     description
     priority

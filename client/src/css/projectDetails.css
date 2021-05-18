@@ -33,7 +33,7 @@
 }
 
 
-.test {
+.test1 {
     float:right;
     margin-left: 20%;
     background-color: black;
@@ -41,7 +41,7 @@
     height: 100%;
 }
 
-.wrapper {
+.wrapper1 {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: 21% 21% 21% 21%;
@@ -52,7 +52,7 @@
     color: #444;
   }
 
-  .box {
+  .box1 {
     background-color: #444;
     color: #fff;
     border-radius: 5px;
@@ -61,19 +61,19 @@
 
   }
 
-  .a {
+  .a1 {
     grid-column: 1 / span 4;
     grid-row: 1;
   }
-  .b {
+  .b1 {
     grid-column: 1/ span 4 ;
     grid-row:  2;
   }
-  .c {
+  .c1 {
     grid-column: 1 / span 2  ;
     grid-row: 3 ;
   }
-  .d {
-    grid-column: 3 /  5 ;
+  .d1 {
+    grid-column: 3 / 5 ;
     grid-row: 3 ;
   }
