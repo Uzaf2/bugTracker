@@ -12,6 +12,7 @@ module.exports = {
             var assignedProject = [];
             var assignedDeveloper = [];
             var ticketsArray = [];
+            var comments = [];
 
             const assignedProjectValue = await Project.find({name:assignedProjectInput});
 
@@ -46,6 +47,7 @@ module.exports = {
                 assignedDeveloper,
                 priority,
                 status,
+                comments,
                 type,
                 createdAt: new Date().toISOString(),
                 updatedAt: new Date().toISOString()
@@ -64,6 +66,7 @@ module.exports = {
         await Project.findByIdAndUpdate({_id: projectId},{tickets: ticketsArray});
         const ticket = await newTicket.save();
 
+        console.log("New Tickets", ticket);
            return ticket;
         }
     },

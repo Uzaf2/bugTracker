@@ -67,6 +67,7 @@ type Query {
     getTickets: [Ticket]
     getTicketsByProjectId(id: String): [Ticket]!
     getTicketById(id: String!): Ticket!
+    getCommentsByTicketId(id: String!): [Comment]
 }
 
 type Mutation {
@@ -79,6 +80,6 @@ type Mutation {
     createTicket(title: String!, description: String!, assignedProjectInput: String!, assignedDeveloperInput: String!, priority: String!, type: String!, status: String!): Ticket!
     assignRole (name: String!, role: String !): [User] !
     demoLogin: User!
-    createComment(message: String!): Comment!
+    createComment(message: String!, id: String!): Comment!
 }
 `;

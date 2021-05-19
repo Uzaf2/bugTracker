@@ -11,6 +11,10 @@ const ticketSchema = new Schema ({
         type: Schema.Types.ObjectId,
         ref: 'AssignedDeveloper'
     }], 
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comments'
+    }],
     priority: String,
     status: String,
     type: String, 

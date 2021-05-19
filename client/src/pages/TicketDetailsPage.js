@@ -4,6 +4,7 @@ import '../css/ticketDetailsPage.css';
 import { makeStyles } from '@material-ui/core/styles';
 import TicketDetailsComponent from '../components/TicketDetailsComponent';
 import AddComment from '../components/AddComment';
+import DisplayComments from '../pages/DisplayComments';
 
 const useStyles = makeStyles({
     root: {
@@ -56,6 +57,7 @@ function TicketDetailsPage(props) {
     <AddComment index= {props}/>
   </div>
   <div class="boxOne c">
+  <DisplayComments index= {props}/>
   </div>
   <div class="boxOne d">
   </div>
