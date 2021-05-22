@@ -54,19 +54,32 @@ function AddComment(props) {
   const [messageValue, setMessage ]= useState("");
   const [ errors, setErrors ] = useState({});
 
-  console.log("Index", index);
-  console.log("Array", array.getTickets[index-1].id);
     
+  useEffect(() => {
+
+    create();
+    
+  }, [messageValue, ticketId]);
+
   const classes = useStyles();
   const {onChange, onSubmit, values}= useForm(createProject, {
       
       message:''
   });
 
+  
   const [create, {loading}] = useMutation (CREATE_COMMENT,{
     update(proxy,  result){
-    
-      console.log("Result", result);
+  
+      const data = proxy.readQuery({ query: DISPLAY_COMMENTS,
+        variables: { id: String(index)}
+       });
+       
+
+      proxy.writeQuery({ query: DISPLAY_COMMENTS, 
+      data:{getCommentsByTicketId:[result.data.createComment, ...data.getCommentsByTicketId],},
+      variables: { id: String(index)}});
+
        success();
     },
     onError(err) {
@@ -82,9 +95,7 @@ function AddComment(props) {
   function createProject () {
       setMessage(values.message);
       setTicketId(id);
-      console.log("Message :", messageValue);
-      console.log("Ticket Id :", ticketId);
-      create();
+      //create();
   }
 
   return (
@@ -102,7 +113,7 @@ function AddComment(props) {
             value={values.message}
             onChange={onChange}/>
              <Button className={classes.submit} variant="contained" color="primary" type="submit">
-             Create Ticket
+             Add Comment
             </Button>
           </form>
          
@@ -123,5 +134,16 @@ mutation
 }
 `;
 
+
+const DISPLAY_COMMENTS =  gql `
+query 
+    getCommentsByTicketId($id: String! ){
+    getCommentsByTicketId(id:$id) {
+        id
+        message
+        createdAt
+        commenter
+     }
+  } `;
 
 export default AddComment;

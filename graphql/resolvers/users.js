@@ -62,10 +62,14 @@ module.exports = {
                 throw new Error (err);
             }
         },
-        async demoLogin(_,{})
+        async demoLogin(_,{role})
         {
-            var username = "usman";
+            var username = "admin";
             const user = await User.findOne({username});
+    
+            user.role = role;
+            await user.save();
+
             const token = generateToken(user);
          
             return {

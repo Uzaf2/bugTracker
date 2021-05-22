@@ -23,6 +23,22 @@ function SideAndNavbar(props) {
   //console.log("AuthContext user", user);
   //console.log("user role", user.token);
 
+  console.log("User in side nav bar",user);
+  if (user!=null)
+  {
+    var count = Object.keys(user).length;
+    console.log("count",count);
+
+    if (count == 2)
+    {
+      user  = jwtDecode (localStorage.getItem('jwtToken'));
+    }
+    else if (count > 2)
+    {
+     
+    }
+  }
+  
   //    user  = jwtDecode (localStorage.getItem('jwtToken'));
       
   const history = useHistory();
@@ -89,6 +105,10 @@ function SideAndNavbar(props) {
      history.push('/AssignUser');
   }
 
+  function HandleOnClickUserProfile(){
+    history.push('/UserProfile');
+ }
+
   function handleClick(){
     history.push('./Dashboard');
   }
@@ -113,6 +133,19 @@ function SideAndNavbar(props) {
         </a>
         </React.Fragment>
         )}
+
+        {user && user.role === 'Demo Manager' && (
+            <React.Fragment>
+          <a href="#" className="section" onClick={HandleOnClickManageUserRoles}>
+          <img class="grid" id="grid1" src={homeIcon} alt="image al" />
+          <span class="navName" id="navName1">Manage Role Assignment</span>
+        </a>
+        <a href="#" className="section" onClick={HandleOnManageProjectUsers}>
+          <img class="grid" id="grid2" src={peopleCirle} alt="image al" />
+          <span class="navName" id="navName2">Manage Project Users</span>
+        </a>
+        </React.Fragment>
+        )}  
         
         <a href="#" className="section" onClick={HandleOnClickProjectTable}>
           <img class="grid" id="grid3" src={layers} alt="image al" />
@@ -122,7 +155,7 @@ function SideAndNavbar(props) {
           <img class="grid" id="grid4" src={layers} alt="image al" />
           <span class="navName" id="navName4">My Tickets</span>
         </a>
-        <a href="#" className="section">
+        <a href="#" className="section" onClick={HandleOnClickUserProfile}>
           <img class="grid" id="grid5" src={personAddOutline} alt="image al" />
           <span class="navName" id="navName5">User Profile</span>
         </a>

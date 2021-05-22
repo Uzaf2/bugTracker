@@ -13,6 +13,9 @@ import SideAndNavbar from './SideAndNavbar';
 import { useHistory } from "react-router-dom";
 import '../css/projectTable.css';
 import Button from '@material-ui/core/Button';
+import {useContext} from 'react';
+import { AuthContext } from '../context/auth';
+import jwtDecode from 'jwt-decode';
 
 const useStyles = makeStyles({
   root: {
@@ -59,6 +62,22 @@ function createData(name, description, details) {
 }
 
 function ProjectTable() {
+  var {user, logout} = useContext(AuthContext);
+
+  if (user!=null)
+  {
+    var count = Object.keys(user).length;
+    console.log("count",count);
+
+    if (count == 2)
+    {
+      user  = jwtDecode (localStorage.getItem('jwtToken'));
+    }
+    else if (count > 2)
+    {
+      
+    }
+  }
 
   var i;
   var valueNumber = 0;
@@ -132,8 +151,15 @@ function ProjectTable() {
         <SideAndNavbar></SideAndNavbar>
      
         <div id="main" className="main" className={classes.main}>
+
           <div>
+          {user && user.role === 'Demo Admin' && (
         <Button variant="contained" color="primary" onClick={CreateProject} className={classes.btn1}>Create Project</Button>
+          )}
+
+         {user && user.role === 'Demo Manager' && (
+        <Button variant="contained" color="primary" onClick={CreateProject} className={classes.btn1}>Create Project</Button>
+          )}
          </div>
           <Paper className={classes.root}>
           <div className={classes.banner}>

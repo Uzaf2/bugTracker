@@ -70,6 +70,7 @@ function CreateTicket(props) {
 
     const index = props.history.location.state.index;
     const [errors, setErrors]= useState({});
+
     const {onChange, onSubmit, values}= useForm(createProject, {
         
         title:'',

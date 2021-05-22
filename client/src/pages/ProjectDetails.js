@@ -7,6 +7,10 @@ import '../css/projectDetails.css';
 import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
+import {useContext} from 'react';
+import { AuthContext } from '../context/auth';
+import jwtDecode from 'jwt-decode';
+
 
 const useStyles = makeStyles({
     root: {
@@ -43,6 +47,23 @@ const useStyles = makeStyles({
 
 
 function ProjectDetails(props) {
+  var {user, logout} = useContext(AuthContext);
+
+  if (user!=null)
+  {
+    var count = Object.keys(user).length;
+    console.log("count",count);
+
+    if (count == 2)
+    {
+      user  = jwtDecode (localStorage.getItem('jwtToken'));
+    }
+    else if (count > 2)
+    {
+      
+    }
+  }
+
     const classes = useStyles();
   const history = useHistory();
 var value =  props.history.location.state.index;
@@ -77,7 +98,12 @@ function CreateTicket() {
     <div class="wrapper1">
     <div class="box1 a1">
 
+    {user && user.role === 'Demo Admin' && (
     <Button variant="contained" color="primary" onClick={AssignUser} className={classes.btn1}>Assign User</Button>
+    )}
+    {user && user.role === 'Demo Manager' && (
+    <Button variant="contained" color="primary" onClick={AssignUser} className={classes.btn1}>Assign User</Button>
+    )}
     <Button variant="contained" color="primary" onClick={CreateTicket} className={classes.btn2} >Create Ticket</Button>
     </div>
   <div class="box1 b1">

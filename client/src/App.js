@@ -29,6 +29,7 @@ import AssignUser2 from './pages/AssignUser2';
 import CreateTicket from './pages/CreateTicket';
 import CreateProject from './pages/CreateProject';
 import TicketDetailsPage from './pages/TicketDetailsPage';
+import UserProfile from './pages/UserProfile';
 ///////////////////////////////////////////////////////////
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route exact path="/Register" component={Register} />
           <Route exact path="/Accounts" component={Accounts} />
           <ProtectedRoute exact path="/ManageUserRoles" component={ManageUserRoles} />
+          <ProtectedRoute exact path="/UserProfile" component={UserProfile} />
           <ProtectedRoute exact path="/UserTable" component={UserTable} />
           <ProtectedRoute exact path="/SideAndNavbar" component={SideAndNavbar} />
           <ProtectedRoute exact path="/Users" component={Users} />

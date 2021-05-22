@@ -11,7 +11,6 @@
 .main{
     margin-left:-5px;
     margin-right:-5px;
-
 }
 
 .firstDiv {
@@ -53,12 +52,11 @@
   }
 
   .box1 {
-    background-color: #444;
+    background-color: #EDEDED;
     color: #fff;
     border-radius: 5px;
     padding: 0px;
     font-size: 150%;
-
   }
 
   .a1 {

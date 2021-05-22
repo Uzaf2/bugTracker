@@ -1,11 +1,16 @@
-import { React } from 'react';
+import { React, useContext, useState, useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import AccountsImg from '../icons/images.svg';
+import AccountsImg2 from '../icons/userImage.png';
+import AccountsImg3 from '../icons/userImage1.png';
 import '../css/accounts.css';
 import { useHistory } from "react-router-dom";
+import { useMutation } from '@apollo/react-hooks';
+import { AuthContext } from '../context/auth';
+import gql from 'graphql-tag';
 
 const useStyles = makeStyles((theme) => ({
     inputType:{
@@ -58,27 +63,59 @@ const useStyles = makeStyles((theme) => ({
 const font = "'Merriweather', serif";
 function Accounts(props) {
 
+    const [ errors, setErrors ] = useState({});
+    const context = useContext (AuthContext);
     const history = useHistory();
+    const [ role, setRole ] = useState('');
+    
+    useEffect(() => {
+        if (role === "")
+        {
+
+        }
+        else 
+        {
+            demoLogin();
+        }
+        
+    }, [role]);
+
+
+    const [demoLogin, {loading} ] = useMutation(DEMO_LOGIN, {
+        update(_, { data: { demoLogin: userData2 }}){
+        context.login(userData2);
+        props.history.push('/Dashboard');
+        },
+        onError(err){
+        console.log(err);
+        setErrors(err.graphQLErrors[0].extensions.exception.errors)
+        },
+        variables: { role: String(role)}
+    });
 
     function adminClick() {
-        history.push("/ManageUserRoles");
+        setRole('Demo Admin');
+        demoLogin();
     }
 
     function projectManagerClick() {
-        history.push("/ManageUserRoles");
+        setRole('Demo Manager');
+        demoLogin();
     }
 
     function developerClick() {
-        history.push("/ManageUserRoles");
+        setRole('Demo Developer');
+        demoLogin();
     }
 
     function submitterClick() {
-        history.push("/ManageUserRoles");
+        setRole('Demo Submitter');
+        demoLogin();
     }
 
     function handleClickDemo() {
-        //demoLogin();
-        props.history.push('/Accounts');
+      //  demoLogin();
+        //props.history.push('/Accounts');
     }
     
     const styles = useStyles();
@@ -89,11 +126,13 @@ function Accounts(props) {
             <div class="accountsForm">
                     <Typography component="h1" variant="h5" className={styles.fontType} style={{ marginBottom: "10px" }}>
                     </Typography>
+                      <p class="paragraph1">Demo User Login</p>
                     <form  class="formContainer" >
+                         
                         <div class="grid-item">
 
                         <div class="article">
-                        <img title="Title Tag Goes Here" alt="Image of Seal" class="img1" src={AccountsImg} 
+                        <img title="Title Tag Goes Here" alt="Image of Seal" class="img1" src={AccountsImg3} 
                         
                         onClick={() => adminClick()}/>
                         <p class="paragraph" class="img1" onClick={() => adminClick()} >Admin</p>
@@ -102,19 +141,19 @@ function Accounts(props) {
                         </div>
                         <div class="grid-item">
                         <div class="article">
-                        <img alt="Image of Seal" class="img2"  src={AccountsImg} onClick={() => projectManagerClick()}/>
+                        <img alt="Image of Seal" class="img2"  src={AccountsImg3} onClick={() => projectManagerClick()}/>
                         <p class="paragraph" class="img2" onClick={() => projectManagerClick()}>Project Manager</p>
                         </div>
                         </div>
                         <div class="grid-item">
                         <div class="article">
-                        <img alt="Image of Seal"  class="img3" src={AccountsImg} onClick={() => developerClick()}/>
+                        <img alt="Image of Seal"  class="img3" src={AccountsImg3} onClick={() => developerClick()}/>
                         <p class="paragraph" class="img3" onClick={() => developerClick()}>Developer</p>
                         </div>
                         </div>
                         <div class="grid-item">
                         <div class="article">
-                        <img alt="Image of Seal"  class="img4" src={AccountsImg} onClick={() => submitterClick()}/>
+                        <img alt="Image of Seal"  class="img4" src={AccountsImg3} onClick={() => submitterClick()}/>
                         <p class="paragraph" class="img4" onClick={() => submitterClick()}>Submitter</p>
                         </div>
                         </div>
@@ -123,5 +162,16 @@ function Accounts(props) {
         </Container>
     )
 }
+
+
+const DEMO_LOGIN = gql `
+mutation  
+    demoLogin ($role: String!){
+        demoLogin (role: $role) 
+        {
+            token
+        }
+    }`; 
+
 
 export default Accounts;

@@ -36,32 +36,32 @@ const useStyles = makeStyles({
   });
 
   const columns = [
-    { id: 'commenter', label: 'Commenter', minWidth: 170 },
-    { id: 'createdAt', label: 'createdAt', minWidth: 100 },
+   
     {
       id: 'message',
-      label: 'message',
+      label: 'Message',
       minWidth: 170,
       align: 'right',
       format: (value) => value.toLocaleString('en-US'),
     },
-  
+    { id: 'commenter', label: 'Commenter', minWidth: 170 },
+    { id: 'createdAt', label: 'Created At', minWidth: 100 },
   ];
   
-  function createData(commenter, createdAt, message) {
-    return { commenter, createdAt, message };
+  function createData(message, createdAt, commenter) {
+    return { message, createdAt, commenter};
   }
 
 
 function DisplayComments(props) {
 
-    const classes = useStyles();
+  const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-    var idValue = props.index.history.location.state.index;
+  var idValue = props.index.history.location.state.index;
 
-    const { loading, data} = useQuery(DISPLAY_COMMENTS,{
+  const { loading, data} = useQuery(DISPLAY_COMMENTS,{
         variables: { id: String(idValue)}
        });
 
@@ -84,7 +84,7 @@ function DisplayComments(props) {
       time = time.slice(0, -5); 
       var dateTime = date+ "\t\t"+time;
 
-      rows[i] = createData(data.getCommentsByTicketId[i].commenter,dateTime, data.getCommentsByTicketId[i].message)
+      rows[i] = createData(data.getCommentsByTicketId[i].message,dateTime, data.getCommentsByTicketId[i].commenter)
     }
     }   
   }

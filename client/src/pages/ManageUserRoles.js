@@ -67,7 +67,7 @@ input:{
 },
 submit:{
     width: '60%',
-    height: '8%',
+    height: '7%',
     backgroundColor: '#262B40',
     color: 'white',
     padding: '14px 20px',
@@ -75,7 +75,7 @@ submit:{
     display: 'inline-block',
     borderWidth: '4px',
     borderRadius: '10px', 
-    marginLeft: '15%',
+    marginLeft: '16%',
     marginRight: '30%',
     '&:hover': {
         background: "#F5A623",
@@ -164,9 +164,9 @@ function ManageUserRoles(props) {
             <select className={classes.input} id="role" name="role" onChange={onChange} value={values.role}>
               <option value="0">--Select Role/None--:</option>
               <option value="Admin">Admin</option>
-              <option value="Demo Admin">Demo_Admin</option>
-              <option value="Demo Developer">Demo_Developer</option>
-              <option value="Demo Project Manager">Demo_Project Manager</option>
+              <option value="Project Manager">Project Manager</option>
+              <option value="Developer">Developer</option>
+              <option value="Submitter">Submitter</option>
             </select>
           </div>
 
