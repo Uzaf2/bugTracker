@@ -12,6 +12,7 @@ const jsonwebtoken = require('jsonwebtoken')
 function generateToken(user){
 
 return jwt.sign ({
+    role: user.role,
     id: user.id,
     email: user.email,
     username: user.username

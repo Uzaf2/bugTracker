@@ -51,7 +51,7 @@ type Comment {
     id: ID!
     message: String!
     createdAt: String!
-    commenter: ID!
+    commenter: String!
 }
 
 input userInput {

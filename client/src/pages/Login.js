@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
     const [demoLogin, {loading} ] = useMutation(DEMO_LOGIN, {
         update(_, { data: { demoLogin: userData2 }}){
         context.login(userData2);
-        props.history.push('/ManageUserRoles');
+        props.history.push('/Accounts');
         },
         onError(err){
         console.log(err);
@@ -103,7 +103,8 @@ const useStyles = makeStyles((theme) => ({
     }
 
     function handleClickDemo() {
-        demoLogin();
+        //demoLogin();
+        props.history.push('/Accounts');
     }
   
     const styles = useStyles();

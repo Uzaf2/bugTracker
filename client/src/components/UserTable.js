@@ -9,7 +9,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { useQuery, gql } from '@apollo/client';
-import { Collapse } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
@@ -80,8 +79,8 @@ function createData(username, email, role) {
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
       <div className={classes.banner}>
-          <h3 className={classes.heading}>Your Projects</h3>
-          <p className={classes.heading}>All the Projects you have in the database</p>
+          <h3 className={classes.heading}>Users</h3>
+          <p className={classes.heading}>Users and their roles</p>
           </div>
         <Table stickyHeader aria-label="sticky table">
           <TableHead className={classes.header}>

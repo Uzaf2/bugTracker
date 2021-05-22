@@ -24,6 +24,7 @@ const AuthContext = new createContext({
 });
 
 function authReducer (state, action){
+    
     switch (action.type){
         case 'LOGIN':
         return {
@@ -41,9 +42,11 @@ function authReducer (state, action){
 }
 
 function AuthProvider (props){
+   
     const[state, dispatch] = useReducer(authReducer, initialState);
 
     function login(userData) {
+        console.log("User Data:", userData);
         localStorage.setItem('jwtToken', userData.token);
         dispatch({
             type: 'LOGIN',

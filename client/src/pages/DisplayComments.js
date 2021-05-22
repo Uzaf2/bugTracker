@@ -13,17 +13,21 @@ import TableRow from '@material-ui/core/TableRow';
 
 const useStyles = makeStyles({
     root: {
-      width: '100%',
-  
+    width: '600px',
+    marginLeft: '0%',
+    height: "100%"
     },
     banner:{
       backgroundColor: '#262B40',
-      height: '5%',
+      height: '4%',
       width:'93%',
       padding: '2%',
       marginLeft:'1%'
       },
       heading:{
+        color: 'white'
+      },
+      paragraph: {
         color: 'white'
       },
     container: {
@@ -66,17 +70,24 @@ function DisplayComments(props) {
   if (loading) 
        return <p>Loading...</p>;
   else {
-      console.log("data: ", data.getCommentsByTicketId);
+
+    var length = data.getCommentsByTicketId.length
+    if (length > 0)
+    {
 
       var length = data.getCommentsByTicketId.length;
     for(var i=0;i<length; i++)
     {
-      rows[i] = createData(data.getCommentsByTicketId[i].commenter,data.getCommentsByTicketId[i].createdAt, data.getCommentsByTicketId[i].message)
+      var time = data.getCommentsByTicketId[i].createdAt.split('T')[1];
+
+      var date = data.getCommentsByTicketId[i].createdAt.substring(0, data.getCommentsByTicketId[i].createdAt.indexOf("T"));
+      time = time.slice(0, -5); 
+      var dateTime = date+ "\t\t"+time;
+
+      rows[i] = createData(data.getCommentsByTicketId[i].commenter,dateTime, data.getCommentsByTicketId[i].message)
     }
-
+    }   
   }
-
- // console.log("Display Comments props :", props.index.history.location.state.index);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -91,8 +102,7 @@ function DisplayComments(props) {
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
       <div className={classes.banner}>
-          <h3 className={classes.heading}>Comments</h3>
-          <p className={classes.heading}>Comments for the given ticket</p>
+          <p className={classes.heading}>Comments</p>
           </div>
         <Table stickyHeader aria-label="sticky table">
           <TableHead className={classes.header}>

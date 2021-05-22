@@ -60,16 +60,33 @@ function Accounts(props) {
 
     const history = useHistory();
 
-    function imageClick() {
+    function adminClick() {
         history.push("/ManageUserRoles");
     }
 
+    function projectManagerClick() {
+        history.push("/ManageUserRoles");
+    }
+
+    function developerClick() {
+        history.push("/ManageUserRoles");
+    }
+
+    function submitterClick() {
+        history.push("/ManageUserRoles");
+    }
+
+    function handleClickDemo() {
+        //demoLogin();
+        props.history.push('/Accounts');
+    }
+    
     const styles = useStyles();
 
     return (
         <Container component="main" maxWidth="xs" className={useStyles.container} class="background">
             <CssBaseline />
-            <div className="form">
+            <div class="accountsForm">
                     <Typography component="h1" variant="h5" className={styles.fontType} style={{ marginBottom: "10px" }}>
                     </Typography>
                     <form  class="formContainer" >
@@ -78,27 +95,27 @@ function Accounts(props) {
                         <div class="article">
                         <img title="Title Tag Goes Here" alt="Image of Seal" class="img1" src={AccountsImg} 
                         
-                        onClick={() => imageClick()}/>
-                        <p class="paragraph" onClick={() => imageClick()} >Admin</p>
+                        onClick={() => adminClick()}/>
+                        <p class="paragraph" class="img1" onClick={() => adminClick()} >Admin</p>
                         </div>
 
                         </div>
                         <div class="grid-item">
                         <div class="article">
-                        <img alt="Image of Seal" class="img2"  src={AccountsImg}/>
-                        <p class="paragraph">Project Manager</p>
+                        <img alt="Image of Seal" class="img2"  src={AccountsImg} onClick={() => projectManagerClick()}/>
+                        <p class="paragraph" class="img2" onClick={() => projectManagerClick()}>Project Manager</p>
                         </div>
                         </div>
                         <div class="grid-item">
                         <div class="article">
-                        <img alt="Image of Seal"  class="img3" src={AccountsImg}/>
-                        <p class="paragraph">Developer</p>
+                        <img alt="Image of Seal"  class="img3" src={AccountsImg} onClick={() => developerClick()}/>
+                        <p class="paragraph" class="img3" onClick={() => developerClick()}>Developer</p>
                         </div>
                         </div>
                         <div class="grid-item">
                         <div class="article">
-                        <img alt="Image of Seal"  class="img4" src={AccountsImg}/>
-                        <p class="paragraph">Submitter</p>
+                        <img alt="Image of Seal"  class="img4" src={AccountsImg} onClick={() => submitterClick()}/>
+                        <p class="paragraph" class="img4" onClick={() => submitterClick()}>Submitter</p>
                         </div>
                         </div>
                     </form>

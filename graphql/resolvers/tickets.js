@@ -66,7 +66,6 @@ module.exports = {
         await Project.findByIdAndUpdate({_id: projectId},{tickets: ticketsArray});
         const ticket = await newTicket.save();
 
-        console.log("New Tickets", ticket);
            return ticket;
         }
     },

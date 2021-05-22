@@ -1,3 +1,4 @@
+import React from 'react';
 import '../css/main.css';
 import {useContext} from 'react';
 import grid from '../icons/grid-outline.svg';
@@ -7,7 +8,7 @@ import peopleCirle from '../icons/people-circle-outline.svg';
 import personAddOutline from '../icons/person-add-outline.svg';
 import { useHistory } from "react-router-dom";
 import { AuthContext } from '../context/auth';
-
+import jwtDecode from 'jwt-decode';
 /*
         <a className="section" href="#section" onClick={openNav}>
           Open Sidebar
@@ -17,7 +18,13 @@ import { AuthContext } from '../context/auth';
           </a>
           */
 function SideAndNavbar(props) {
-  const {user, logout} = useContext(AuthContext);
+  
+  var {user, logout} = useContext(AuthContext);
+  //console.log("AuthContext user", user);
+  //console.log("user role", user.token);
+
+  //    user  = jwtDecode (localStorage.getItem('jwtToken'));
+      
   const history = useHistory();
  
   function openNav(e) {
@@ -93,7 +100,10 @@ function SideAndNavbar(props) {
           <img class="grid" id="grid" src={grid} alt="image al" />
           <span class="navName" id="navName">Dashboard Home</span>
         </a>
-        <a href="#" className="section" onClick={HandleOnClickManageUserRoles}>
+      
+        {user && user.role === 'Demo Admin' && (
+            <React.Fragment>
+          <a href="#" className="section" onClick={HandleOnClickManageUserRoles}>
           <img class="grid" id="grid1" src={homeIcon} alt="image al" />
           <span class="navName" id="navName1">Manage Role Assignment</span>
         </a>
@@ -101,6 +111,9 @@ function SideAndNavbar(props) {
           <img class="grid" id="grid2" src={peopleCirle} alt="image al" />
           <span class="navName" id="navName2">Manage Project Users</span>
         </a>
+        </React.Fragment>
+        )}
+        
         <a href="#" className="section" onClick={HandleOnClickProjectTable}>
           <img class="grid" id="grid3" src={layers} alt="image al" />
           <span class="navName" id="navName3">My Projects</span>

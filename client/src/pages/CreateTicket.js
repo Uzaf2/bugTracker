@@ -233,7 +233,7 @@ function CreateTicket(props) {
             onChange={onChange}>
             <option value="completed">Completed</option>
             <option value="open">Open</option>
-            <option value="inprogress">In Progress</option>
+            <option value="in progress">In Progress</option>
             </select>
             <input className={classes.submit} type="submit" value="Create Ticket"/>
           </form>

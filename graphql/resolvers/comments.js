@@ -24,7 +24,11 @@ module.exports = {
 
             for (var i=0;i< comments.length;i++)
             {
+              
                 const commentsObj = await Comment.findById(comments[i]);
+                //console.log("Commenter Obj", commentsObj._id);
+                //const commenterObj = await User.findById(mongoose.Types.ObjectId(commentsObj._id));
+                console.log("Comments Obj", commentsObj);
                 commentsArray.push(commentsObj);
             }
         
@@ -44,12 +48,11 @@ module.exports = {
 
                 const ticket = await Ticket.findById(id);
 
-
-               
+                console.log("Comment user", user);
                 const newComment = new Comment({
                     message,
                     createdAt: new Date().toISOString(),
-                    commenter: mongoose.Types.ObjectId(user.id)
+                    commenter: user.username
                 })
 
                 const comment = await newComment.save();

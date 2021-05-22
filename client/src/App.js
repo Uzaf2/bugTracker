@@ -3,9 +3,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import { BrowserRouter as Router , Route, Switch } from 'react-router-dom';
 import ProtectedRoute from './util/ProtectedRoute';
-
 import {AuthProvider} from './context/auth';
-
 import ManageUserRoles from './pages/ManageUserRoles';
 import UserTable from './components/UserTable';
 import SideAndNavbar from './components/SideAndNavbar';
@@ -33,7 +31,6 @@ import CreateProject from './pages/CreateProject';
 import TicketDetailsPage from './pages/TicketDetailsPage';
 ///////////////////////////////////////////////////////////
 
-
 function App() {
   return (
         <AuthProvider>
@@ -41,6 +38,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/Register" component={Register} />
+          <Route exact path="/Accounts" component={Accounts} />
           <ProtectedRoute exact path="/ManageUserRoles" component={ManageUserRoles} />
           <ProtectedRoute exact path="/UserTable" component={UserTable} />
           <ProtectedRoute exact path="/SideAndNavbar" component={SideAndNavbar} />

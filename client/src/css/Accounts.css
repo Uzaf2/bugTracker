@@ -9,7 +9,7 @@
   padding: 30px;
   grid-row-gap: 40px;
   border: none;
-  background-color: white;
+  background-color: #E0E0E0;
   border-radius: 25px;
 }
 
@@ -18,9 +18,17 @@
   height: 50px;
 }
 
+.img1:hover {
+  cursor: pointer;
+}
+
 .img2 {
   width: 50px;
   height: 50px;
+}
+
+.img2:hover {
+  cursor: pointer;
 }
 
 .img3 {
@@ -28,9 +36,17 @@
   height: 50px;
 }
 
+.img3:hover {
+  cursor: pointer;
+}
+
 .img4 {
   width: 50px;
   height: 50px;
+}
+
+.img4:hover {
+  cursor: pointer;
 }
 
 .paragraph {
@@ -41,16 +57,18 @@
   display: -ms-grid;
   display: grid;
   color: black;
+  margin-left: 10px;
+  display: block;
 }
 
 .grid-item {
-  border: 2px solid rgba(0, 0, 0, 0.8);
-  padding-left: 20px;
+  padding-left: 40px;
+  padding-top: 30px;
   font-size: 30px;
   text-align: center;
   width: 130px;
   height: 130px;
-  background-color: white;
+  background-color: #E0E0E0;
 }
 
 .article {
@@ -61,6 +79,14 @@
   -ms-grid-columns: 100px;
       grid-template-columns: 100px;
   grid-gap: 3px;
-  border: 2px solid rgba(0, 0, 0, 0.8);
+}
+
+.background {
+  height: 400px;
+}
+
+.accountsForm {
+  height: 400px;
+  width: 400px;
 }
 /*# sourceMappingURL=accounts.css.map */

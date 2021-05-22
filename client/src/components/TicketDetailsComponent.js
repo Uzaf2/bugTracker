@@ -16,14 +16,12 @@ import { useMutation } from '@apollo/react-hooks';
 
 const useStyles = makeStyles({
   root: {
-    width: '500px',
-    marginLeft: '0%',
-    marginTop:'5%',
-    height: "300px"
+    width: '600px',
+    height: "500px"
   },
   banner:{
   backgroundColor: '#262B40',
-  height: '15%',
+  height: '10%',
   width:'93%',
   padding: '2%',
   marginLeft:'1%'
@@ -157,8 +155,7 @@ const {loading:loading2, data:data2} = useQuery (FETCH_PROJECTS_QUERY);
         <div id="main" class="main" className={classes.main}>
           <Paper className={classes.root}>
           <div className={classes.banner}>
-          <h3 className={classes.heading}>Details for the Ticket</h3>
-          <p className={classes.heading}></p>
+          <p className={classes.heading}>Ticket Details</p>
           </div>
           <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">

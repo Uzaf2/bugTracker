@@ -9,7 +9,6 @@ import DisplayComments from '../pages/DisplayComments';
 const useStyles = makeStyles({
     root: {
       width: '100%',
-  
     },
     banner:{
       backgroundColor: '#262B40',
@@ -41,8 +40,7 @@ const useStyles = makeStyles({
 
 
 function TicketDetailsPage(props) {
-   
-    //var value = props.history.location.state.index;
+  
  return (
 <body>
     <SideAndNavbar/>
@@ -51,7 +49,6 @@ function TicketDetailsPage(props) {
     <div class="wrapperOne">
     <div class="boxOne a">
     <TicketDetailsComponent index={props}/>
-
     </div>
   <div class="boxOne b">
     <AddComment index= {props}/>

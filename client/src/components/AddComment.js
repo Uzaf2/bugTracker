@@ -30,7 +30,15 @@ const useStyles = makeStyles((theme) => ({
         marginRight: '100px'
       },
       input:{
-        width: "500px"
+        width: "500px",
+        marginLeft: "30px"
+      },
+      comment: {
+        padding: '10px',
+        marginLeft: '20px'
+      },
+      submit: {
+        marginLeft: "30px"
       }
   }));
 
@@ -45,9 +53,6 @@ function AddComment(props) {
   const [ticketId, setTicketId] = useState("");
   const [messageValue, setMessage ]= useState("");
   const [ errors, setErrors ] = useState({});
-
-
- 
 
   console.log("Index", index);
   console.log("Array", array.getTickets[index-1].id);
@@ -86,17 +91,19 @@ function AddComment(props) {
     <body>
       <div>
       <form onSubmit={onSubmit} class="inputForm">
-          <InputLabel htmlFor="outlined-adornment-amount">Make Comment</InputLabel>
+          <InputLabel className={classes.comment} htmlFor="outlined-adornment-amount">Add a Comment</InputLabel>
           <textarea 
             type="text" 
             id="message" 
             name="message" 
             className={classes.input}
-            placeholder="Project desc.." required
+            placeholder="" required
             error={errors.message}
             value={values.message}
             onChange={onChange}/>
-             <input className={classes.submit} type="submit" value="Create Ticket"/>
+             <Button className={classes.submit} variant="contained" color="primary" type="submit">
+             Create Ticket
+            </Button>
           </form>
          
       </div>
