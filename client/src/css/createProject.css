@@ -1,46 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
-body {
-    font-family: "Lato", sans-serif;
-  }
 
-
-  .divForm {
-    margin-top: 100px;
-  }
-
-
-  label{
-    margin-left: 30%;
-  }
-  
- 
-  
-  .createForm{
-    vertical-align: top;
-    align-items: center;
-  }
-
-label {
-    font-family: "Lato", sans-serif;
-    font-style: italic;
-    font-weight: 600;
+.ui-error-message{
+top:100;
+left: 400;
+margin-left: 500px;
 }
 
-.description {
-  width: 530px;
-  height: 200px; 
-  margin-left:30%;
-  margin-right: 30%;
-}
-
-input[type=submit]:hover {
-  background-color: #F5A623;
-  
-}
-input::placeholder {
-  font-size: 16px;
-  margin-bottom: 100px;
-  color: #979797;
-  padding: 0px;
-  height: 38px;
+.errorValue{
+  font-size: 1000px;
+  color: black;
 }

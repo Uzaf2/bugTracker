@@ -31,6 +31,10 @@ const useStyles = makeStyles({
   container: {
     maxHeight: 440,
   },
+  displayComments: 
+    {
+      color: 'black'
+    }
 });
 
 const columns = [
@@ -61,7 +65,7 @@ const {loading:loading1, data:data1} = useQuery (FETCH_TICKETS_QUERY,{
 
 var rows = [];
 if (loading1)
-    return <p>Loading...</p>;
+    return <p className={classes.displayComments}>Loading...</p>;
   else {
 
     if(data1.getTicketsByProjectId!=null)
@@ -105,7 +109,7 @@ if (loading1)
           <Paper className={classes.root}>
             <TableContainer className={classes.container}>
               <div className={classes.banner}>
-            <h5 className={classes.heading}>Tickets for the Project</h5>
+            <p className={classes.heading}>Tickets for the Project</p>
             </div>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>

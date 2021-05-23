@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   banner:
   {
   backgroundColor: '#262B40',
-  height: '120px',
+  height: '90px',
   width:'93%',
   padding: '2%',
   marginLeft:'1%'
@@ -31,6 +31,10 @@ const useStyles = makeStyles({
   container: {
     maxHeight: 440,
   },
+  displayComments: 
+    {
+      color: 'black'
+    }
 });
 
 const columns = [
@@ -62,7 +66,7 @@ function AssignedDeveloper(props) {
 
   var rows = [];
   if (loading)
-    return <p>Loading...</p>;
+    return <p className={classes.displayComments}>Loading...</p>;
   else {
    
     var length = data.getProjectsAndUsers.length;
@@ -100,7 +104,7 @@ function AssignedDeveloper(props) {
           <Paper className={classes.root}>
             <TableContainer className={classes.container}>
             <div className={classes.banner}>
-          <h5 className={classes.heading}>AssignedPersonnel</h5>
+          <p className={classes.heading}>Assigned Personnel</p>
           <p className={classes.heading}>Users assigned to this Project</p>
           </div>
               <Table stickyHeader aria-label="sticky table">

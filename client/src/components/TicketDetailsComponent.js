@@ -33,6 +33,9 @@ const useStyles = makeStyles({
     marginBottom: '0px',
     marginLeft:'0%',
     marginTop:'0px'
+  },displayComments: 
+  {
+    color: 'black'
   }
 });
 
@@ -80,7 +83,7 @@ const {loading:loading2, data:data2} = useQuery (FETCH_PROJECTS_QUERY);
     var rows= [];
 
     if (loading)
-      return <p>Loading...</p>;
+      return <p className={classes.displayComments}>Loading...</p>;
     else {
 
       var time = data.getTicketById.createdAt.split('T')[1];

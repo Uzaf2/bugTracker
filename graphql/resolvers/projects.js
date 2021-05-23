@@ -44,12 +44,10 @@ module.exports = {
             try {
                 const projectValue = await Project.findOne({ name });
 
+                var errors={}; 
+                errors.username= 'This project username is taken';
                 if (projectValue) {
-                    throw new UserInputError('Username is taken', {
-                        errors: {
-                            username: 'This project username is taken'
-                        }
-                    })
+                    throw new UserInputError('Username is taken', {errors})
                 }
     
                 const newProject = new Project({

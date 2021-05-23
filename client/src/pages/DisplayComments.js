@@ -33,6 +33,10 @@ const useStyles = makeStyles({
     container: {
       maxHeight: 440,
     },
+    displayComments: 
+    {
+      color: 'black'
+    }
   });
 
   const columns = [
@@ -68,7 +72,7 @@ function DisplayComments(props) {
        var rows =[];
     
   if (loading) 
-       return <p>Loading...</p>;
+       return <p className={classes.displayComments}>Loading...</p>;
   else {
 
     var length = data.getCommentsByTicketId.length

@@ -67,6 +67,7 @@ module.exports = {
             var username = "admin";
             const user = await User.findOne({username});
     
+         
             user.role = role;
             await user.save();
 
@@ -87,7 +88,7 @@ module.exports = {
            }
             const user = await User.findOne({username});
             if (user) {
-                throw new UserInputError('Username is taken', {
+                throw new UserInputError('This Username is already taken', {
                     errors: {
                         username: 'This username is taken'
                     }

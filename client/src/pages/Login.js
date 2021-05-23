@@ -113,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
         <Container component="main" maxWidth="xs" className={useStyles.container} class="background">
             <CssBaseline />
             <div class="form">
-            <div class="heading">
+            <div class="headingLogin">
             <p> Bug Tracker Login</p>
             </div>
             <div className={useStyles.paper} class="innerForm">

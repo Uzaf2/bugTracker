@@ -11,11 +11,9 @@ import {useContext} from 'react';
 import { AuthContext } from '../context/auth';
 import jwtDecode from 'jwt-decode';
 
-
 const useStyles = makeStyles({
     root: {
       width: '100%',
-  
     },
     banner:{
       backgroundColor: '#262B40',
@@ -64,13 +62,11 @@ function ProjectDetails(props) {
     }
   }
 
-    const classes = useStyles();
-  const history = useHistory();
+const classes = useStyles();
+const history = useHistory();
 var value =  props.history.location.state.index;
 
-
 function AssignUser() {
-  
   history.push({
     pathname: '/AssignUser',
     search: '?update=true',  // query string
@@ -116,10 +112,8 @@ function CreateTicket() {
   <TicketsTable2 className="ticketsTable" index={value}/>
   </div>
   </div>
-    </div>
-    
-    
-   </body>
+  </div>
+  </body>
  )
 }
 

@@ -5,6 +5,7 @@ import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useForm } from '../util/hooks';
 import { makeStyles } from '@material-ui/core/styles';
 import { FETCH_PROJECTS_QUERY, FETCH_USERS_QUERY } from '../util/graphql';
+import '../css/createProject.css';
 
 const useStyles = makeStyles({
     root: {
@@ -66,8 +67,8 @@ const useStyles = makeStyles({
 function CreateProject(props) {
 
     const classes = useStyles();
-    const [errors, setErrors]= useState({});
-    const {onChange, onSubmit, values}= useForm(createProject, {
+    const [errors, setErrors] = useState([]);
+    const {onChange, onSubmit, values} = useForm(createProject, {
         name:'',
         description: ''
     });
@@ -81,7 +82,9 @@ function CreateProject(props) {
         proxy.writeQuery({ query: FETCH_PROJECTS_QUERY, data:{getProjects:[result.data.createProject, ...data.getProjects],},});
         },
         onError(err) {
-            setErrors(err.graphQLErrors[0].extensions.exception.errors);
+            console.log("Create Project Error",err.graphQLErrors[0].message);
+            setErrors(err.graphQLErrors[0].message);
+            console.log("Errors: ",errors);
         },
         variables:values
     });
@@ -92,7 +95,6 @@ function CreateProject(props) {
 
  return (
 <body>
-
         <SideAndNavbar/>
           <form onSubmit={onSubmit} class="inputForm">
             <label for="name"
@@ -119,12 +121,8 @@ function CreateProject(props) {
             onChange={onChange}></textarea>
             <input class="submitBtn"  className={classes.submit} type="submit" value="Create Project" />
           </form>
-          <div className="ui error message">
-                <ul className="list">
-                    {Object.values(errors).map(value=>(
-                        <li key={value}>{value}</li>
-                    ))}
-                </ul>
+          <div class="ui-error-message">
+               <p>{errors}</p>
           </div>
    </body>
  )

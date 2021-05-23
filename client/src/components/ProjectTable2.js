@@ -81,7 +81,7 @@ function ProjectTable2(props) {
           <Paper className={classes.root}>
             <TableContainer className={classes.container}>
             <div className={classes.banner}>
-          <h5 className={classes.heading}>Project Details</h5>
+          <p className={classes.heading}>Project Details</p>
           </div>
 
               <Table stickyHeader aria-label="sticky table">
