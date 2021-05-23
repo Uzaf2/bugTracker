@@ -54,7 +54,7 @@ module.exports = {
     Mutation: {
         async getUser(_,{userId},){
             try {
-                console.log("userId", userId);
+              
                 const user = await User.findById(userId);
                 return user;
             }
@@ -66,13 +66,11 @@ module.exports = {
         {
             var username = "admin";
             const user = await User.findOne({username});
-    
-         
+            console.log("Value of role in demoLogin:", role);
             user.role = role;
             await user.save();
 
             const token = generateToken(user);
-         
             return {
                 ...user._doc,
                 id:user._id,
@@ -82,7 +80,6 @@ module.exports = {
         async register (_, { registerInput: { username, email, password, confirmPassword }}) {
 
            const { errors, valid } = validateRegisterInput(username,email, password, confirmPassword);
-
            if (!valid) {
                throw new UserInputError('Error: ', {errors});
            }
@@ -130,7 +127,7 @@ module.exports = {
             }
 
             const token = generateToken(user);
-            console.log("Token in the login", token);
+       
             return {
                 ...user._doc,
                 id:user._id,
@@ -144,7 +141,6 @@ module.exports = {
             const userObj = await User.findOneAndUpdate({username:name}, {role, role});
             //console.log("UserObj", userObj[0].role);
             //userObj[0].role.push(role);
-
             //console.log("UserObj",userObj.assignedTickets);
 
             /*
@@ -171,7 +167,6 @@ module.exports = {
                 roleValue,
                 access
               });
-              
               */
 
             await userObj.save();        

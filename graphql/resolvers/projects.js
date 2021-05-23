@@ -81,7 +81,7 @@ module.exports = {
             try {
             //const userObj = authorization(context);
             const project = await Project.findById(projectId);
-            console.log("Project", project);
+         
             var flag = false;
 
             if (userId.match(/^[0-9a-fA-F]{24}$/)) {

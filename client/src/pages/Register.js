@@ -86,7 +86,7 @@ function Register(props) {
     return (
         <Container component="main" maxWidth="xs" className={useStyles.container} class="background">
             <CssBaseline />
-            <div className="formRegister">
+            <div class="formRegister">
                 <div className={useStyles.paper} class="innerForm">
                     <Typography component="h1" variant="h5" className={styles.fontType} style={{ marginBottom: "10px" }}>
                     </Typography>

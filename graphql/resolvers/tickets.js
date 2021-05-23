@@ -14,6 +14,7 @@ module.exports = {
             var ticketsArray = [];
             var comments = [];
 
+           
             const assignedProjectValue = await Project.find({name:assignedProjectInput});
 
             if (!assignedProjectValue){
@@ -25,7 +26,6 @@ module.exports = {
             }
 
             const assignedDeveloperValue = await User.find({username:assignedDeveloperInput});
-
             var developerId= mongoose.Types.ObjectId(assignedDeveloperValue[0]._id);
             var projectId = mongoose.Types.ObjectId(assignedProjectValue[0]._id);
 
@@ -35,7 +35,7 @@ module.exports = {
                         name:'Developer name is not present'
                     }
                 })
-            }          
+            }       
             
             assignedProject.push(projectId);
             assignedDeveloper.push(developerId);
@@ -53,8 +53,7 @@ module.exports = {
                 updatedAt: new Date().toISOString()
             })
 
-           var ticketId= mongoose.Types.ObjectId(newTicket._id);
-        
+        var ticketId= mongoose.Types.ObjectId(newTicket._id);
         const project = await Project.findById(projectId);
 
         for (var i=0;i<project.tickets.length;i++)
@@ -66,7 +65,7 @@ module.exports = {
         await Project.findByIdAndUpdate({_id: projectId},{tickets: ticketsArray});
         const ticket = await newTicket.save();
 
-           return ticket;
+        return ticket;
         }
     },
     Query: {

@@ -67,15 +67,17 @@ function Accounts(props) {
     const context = useContext (AuthContext);
     const history = useHistory();
     const [ role, setRole ] = useState('');
-    
+
     useEffect(() => {
         if (role === "")
         {
 
         }
-        else 
+        else if (role==="Demo Admin" ||  role==="Demo Manager" ||  role==="Demo Developer" ||  role==="Demo Submitter")
         {
-            demoLogin();
+        
+          console.log("Demo Login Called !!!");
+          demoLogin();
         }
         
     }, [role]);

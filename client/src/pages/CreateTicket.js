@@ -70,8 +70,7 @@ function CreateTicket(props) {
 
     const index = props.history.location.state.index;
     const [errors, setErrors]= useState({});
-
-    const {onChange, onSubmit, values}= useForm(createProject, {
+    const {onChange, onSubmit, values}= useForm(createTicket, {
         
         title:'',
         description: '',
@@ -88,16 +87,19 @@ function CreateTicket(props) {
 
     const [create, {loading}] = useMutation (CREATE_TICKET,{
         update(proxy,  result){
+            console.log("index:::", index);
         const data = proxy.readQuery({ query: FETCH_TICKETS_QUERY,
           variables: { id: String(index)}
          });
+
 
           proxy.writeQuery({ query: FETCH_TICKETS_QUERY, data:{getTicketsByProjectId:[result.data.createTicket, ...data.getTicketsByProjectId],},
           variables: { id: String(index)}});
            success();
         },
         onError(err) {
-            console.log("Error", err);
+            console.log("Error:::", err.graphQLErrors[0]);
+
         },
         variables:values
     });
@@ -105,13 +107,17 @@ function CreateTicket(props) {
     const {loading:usersloading, data: users} = useQuery (GET_USERS);
     const {loading:projectsloading, data:projects} = useQuery (GET_PROJECTS);
 
+    console.log("Projects", projects);
     
     if (projects!=null)
     {       
         const length = projects.getProjects.length; 
+
         var projectsArray = [];
+        projectsArray.push("--Please choose an option--");
         for (var i=0;i<projects.getProjects.length; i++)
         {
+            
             projectsArray.push(projects.getProjects[i].name);
         }
     
@@ -137,10 +143,12 @@ function CreateTicket(props) {
     {
         const length = users.getUsers.length; 
         var usernames = [];
-        
+    
+        usernames.push(" --Please choose an option--");
         for (var i=0;i<users.getUsers.length; i++)
         {
            usernames.push(users.getUsers[i].username);
+           
         }
     
         var select = document.getElementById("assignedDeveloperInput");
@@ -165,7 +173,7 @@ function CreateTicket(props) {
         alert("New Ticket Created");
     }
 
-    function createProject () {
+    function createTicket () {
         create();
     }
  return (
@@ -194,7 +202,8 @@ function CreateTicket(props) {
             placeholder="Project desc.." required
             error={errors.description}
             value={values.description}
-            onChange={onChange}/>
+            onChange={onChange}
+            />
             <label className={classes.label} for="">Assigned Project</label>
             <select className={classes.input} id="assignedProjectInput" name="assignedProjectInput"
             value={values.assignedProjectInput} onChange={onChange}>
@@ -210,7 +219,8 @@ function CreateTicket(props) {
             name="priority"
             className={classes.input}
             onChange={onChange}>
-            <option value="Low">Low</option>
+            <option value="">--Please choose an option--</option>
+            <option value="Low" >Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
             </select>
@@ -221,6 +231,7 @@ function CreateTicket(props) {
             id="type"
             name="type"
             onChange={onChange}>
+            <option value="">--Please choose an option--</option>
             <option value="Bugs/Error">Bugs/Error</option>
             <option value="Feature Requests">Feature Requests</option>
             <option value="Other Comments">Other Comments</option>
@@ -232,8 +243,9 @@ function CreateTicket(props) {
             value={values.status}
             id="status" name="status"
             onChange={onChange}>
+            <option value="">--Please choose an option--</option>
+            <option value="open" >Open</option>
             <option value="completed">Completed</option>
-            <option value="open">Open</option>
             <option value="in progress">In Progress</option>
             </select>
             <input className={classes.submit} type="submit" value="Create Ticket"/>

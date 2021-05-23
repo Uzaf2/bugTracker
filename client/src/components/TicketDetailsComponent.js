@@ -102,7 +102,7 @@ const {loading:loading2, data:data2} = useQuery (FETCH_PROJECTS_QUERY);
         {
           if (data1.getUsers[i].id === assignedDeveloper[0])
           {
-              assignedProjectName = data1.getUsers[i].username;
+            assignedDeveloperName = data1.getUsers[i].username;
           }
         }
       }
@@ -112,7 +112,7 @@ const {loading:loading2, data:data2} = useQuery (FETCH_PROJECTS_QUERY);
         {
           if (data2.getProjects[i].id === assignedProject[0])
           {
-            assignedDeveloperName = data2.getProjects[i].name;
+            assignedProjectName = data2.getProjects[i].name;
           }
         }
       }

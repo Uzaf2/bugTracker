@@ -36,9 +36,7 @@ const useStyles = makeStyles({
 const columns = [
   { id: 'username', label: 'Username', minWidth: 170 },
   { id: 'email', label: 'Email', minWidth: 100 },
-  //{ id: 'creationTime', label: 'Created', minWidth: 100 },
   { id: 'role', label: 'Role', minWidth: 200 },
-  //{ id: 'access', label: 'Access', minWidth: 100 }
 ];
 
 function createData(username, email, creationTime, role, access) {
@@ -64,7 +62,7 @@ function AssignedDeveloper2(props) {
   if (loading)
     return <p>Loading...</p>;
   else {
-   
+
     var length = data.getProjectsAndUsers.length;
    for (var k = 0; k < length; k++)
     {

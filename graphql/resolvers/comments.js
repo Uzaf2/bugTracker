@@ -26,9 +26,6 @@ module.exports = {
             {
               
                 const commentsObj = await Comment.findById(comments[i]);
-                //console.log("Commenter Obj", commentsObj._id);
-                //const commenterObj = await User.findById(mongoose.Types.ObjectId(commentsObj._id));
-                console.log("Comments Obj", commentsObj);
                 commentsArray.push(commentsObj);
             }
         
@@ -44,11 +41,9 @@ module.exports = {
         async createComment(_, { message, id }, context) {
             try {
                 const user = authorization(context);
-                console.log("user: ", user);
 
                 const ticket = await Ticket.findById(id);
 
-                console.log("Comment user", user);
                 const newComment = new Comment({
                     message,
                     createdAt: new Date().toISOString(),
@@ -59,7 +54,6 @@ module.exports = {
                 ticket.comments.push(comment._id);
                 await ticket.save();
                 
-                console.log("Comment", comment);
                 return {
                     ...comment._doc,
                     id: comment._id,

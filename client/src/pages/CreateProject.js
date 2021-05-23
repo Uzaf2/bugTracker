@@ -77,20 +77,27 @@ function CreateProject(props) {
 
     const [create, {loading}] = useMutation (CREATE_PROJECT,{
         update(proxy, result){
+        
         const data = proxy.readQuery({ query: FETCH_PROJECTS_QUERY });
     
         proxy.writeQuery({ query: FETCH_PROJECTS_QUERY, data:{getProjects:[result.data.createProject, ...data.getProjects],},});
+        success();
         },
         onError(err) {
             console.log("Create Project Error",err.graphQLErrors[0].message);
             setErrors(err.graphQLErrors[0].message);
             console.log("Errors: ",errors);
         },
-        variables:values
+        variables:values,
+       
     });
     
     function createProject () {
         create();
+    }
+
+    function success() {
+        alert("New Ticket Created");
     }
 
  return (

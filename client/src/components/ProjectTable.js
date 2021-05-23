@@ -19,7 +19,7 @@ import jwtDecode from 'jwt-decode';
 
 const useStyles = makeStyles({
   root: {
-    width: '150%',
+    width: '100%',
     marginTop: '15px'
   },
   banner:{
@@ -67,7 +67,6 @@ function ProjectTable() {
   if (user!=null)
   {
     var count = Object.keys(user).length;
-    console.log("count",count);
 
     if (count == 2)
     {
