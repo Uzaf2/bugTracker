@@ -53,3 +53,46 @@ module.exports.validateRegisterInput = (
             valid: Object.keys(errors).length < 1
         };
 };
+
+
+module.exports.validateUpdateTicketInput = (id, title, description, assignedProjectInput, assignedDeveloperInput, priority, status, type  )=> 
+{
+    const errors = {};
+
+    if(id.trim()===''){
+        errors.username = 'Id must not be empty';
+    }
+
+    if (title.trim()===' '){
+        errors.password = 'Title must not be empty';
+    }
+
+    if(description.trim()===''){
+        errors.username = 'Description must not be empty';
+    }
+
+    if (assignedProjectInput.trim()===' '){
+        errors.password = 'Assigned Project must not be empty';
+    }
+
+    if (assignedDeveloperInput.trim()===' '){
+        errors.password = 'Assigned Developer must not be empty';
+    }
+
+    if (priority.trim()===' '){
+        errors.password = 'Priority must not be empty';
+    }
+
+    if (status.trim()===' '){
+        errors.password = 'Status must not be empty';
+    }
+
+    if (type.trim()===' '){
+        errors.password = 'Type must not be empty';
+    }
+    
+    return {
+        errors,
+        valid: Object.keys(errors).length < 1
+    };
+};

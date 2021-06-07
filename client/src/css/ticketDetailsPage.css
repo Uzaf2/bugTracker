@@ -1,80 +1,84 @@
 .ticketsTable{
-    margin: 0; 
- }
- 
- .assignedPersonnel{
-     float: left;
-     width: 50%;
-     padding: 5px;
- }
- 
- .main{
-     margin-left:-5px;
-     margin-right:-5px;
- 
- }
- 
- .firstDiv {
-     margin-left: 60px;
-     float: left;
- }
- 
- .secondMain{
-     float: left;
-     width: 40%;
-     padding: 0px;
- }
- 
- .bottomDiv{
-     float: right;
-     margin-right: 600px;
-     margin-top:10px;
-     height: 5%;
- }
- 
- 
- .test {
-     float:right;
-     margin-left: 20%;
-     background-color: black;
-     width: 80%;
-     height: 100%;
- }
- 
- .wrapperOne {
-     display: grid;
-     grid-gap: 10px;
-     grid-template-columns: 47% 47%;
-     grid-template-rows: 50% 50%;
-     width: 80vw;
-     height: 120vh;
-     background-color: #fff;
-     color: #444;
-   }
- 
-   .boxOne {
-     background-color:#EDEDED;
-     color: #fff;
-     border-radius: 5px;
-     font-size: 150%;
-   }
- 
-   .a {
-     grid-column: 1;
-     grid-row: 1;
-   }
+  margin: 0; 
+}
 
-   .b {
-     grid-column: 2;
-     grid-row:  1;
-   }
+.assignedPersonnel{
+   float: left;
+   width: 50%;
+   padding: 5px;
+}
 
-   .c {
-     grid-column: 1 ;
-     grid-row: 2 ;
-   }
-   
-   .d {
-     grid-column: 2;
-     grid-row: 2 ;
-   }
+.main{
+   margin-left:-5px;
+   margin-right:-5px;
+
+}
+
+.firstDiv {
+   margin-left: 60px;
+   float: left;
+}
+
+.secondMain{
+   float: left;
+   width: 40%;
+   padding: 0px;
+}
+
+.bottomDiv{
+   float: right;
+   margin-right: 600px;
+   margin-top:10px;
+   height: 5%;
+}
+
+
+.test {
+   float:right;
+   margin-left: 20%;
+   background-color: black;
+   width: 80%;
+   height: 100%;
+}
+
+.wrapperOne {
+   display: grid;
+   grid-gap: 40px;
+   grid-template-columns: 47% 47%;
+   grid-template-rows: 50% 50%;
+   width: 80vw;
+   height: 125vh;
+   background-color: #F4F3EF;
+   color: #444;
+ }
+
+ .boxOne {
+  background-color: #F4F3EF;
+   color: #fff;
+   border-radius: 5px;
+   font-size: 150%;
+ }
+
+ .a {
+   grid-column: 1;
+   grid-row: 1/2;
+ }
+
+ .b {
+   grid-column: 2;
+   grid-row:  1/2;
+ }
+
+ .c {
+   grid-column: 1 ;
+   grid-row: 2 ;
+ }
+ 
+ .d {
+   grid-column: 2;
+   grid-row: 2 ;
+ }
+
+ .displayComments {
+   margin-top: 100px;
+ }

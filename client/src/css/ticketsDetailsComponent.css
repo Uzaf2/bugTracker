@@ -30,3 +30,57 @@ a:hover {
     color:red;
     margin:20px 20px 20px 20px;
 }
+
+
+
+
+
+.updateTicket{
+    color: white;
+    background-color:#403A3A;
+    padding: 12px 40px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    outline: none !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    margin-left: 1%;
+    margin-top: 2%;
+    border-radius: 3px;
+    border: 0px solid rgb(255, 255, 255);
+    z-index: 1;
+    color: white;
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap');
+  
+  .updateTicket:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+  background: #455CA8;
+  transition: all 0.3s ease;
+  border-radius: 3px;
+  }
+  
+  .updateTicket:hover {
+  color: white;
+  }
+  
+  .updateTicket:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+  }
+  
+  .updateTicket:active {
+  top: 2px;
+  }
+  

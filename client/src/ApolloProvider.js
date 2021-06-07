@@ -1,14 +1,14 @@
 import React from 'react';
 import App from './App';
-import  ApolloClient from 'apollo-client';
-import { InMemoryCache } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { createHttpLink } from 'apollo-link-http';
-import { ApolloProvider } from '@apollo/react-hooks';
+import { ApolloProvider } from '@apollo/client/react';
 import { setContext } from 'apollo-link-context';
 
 
 const httpLink = createHttpLink({
-    uri:'http://localhost:5000'
+    //uri:'https://glacial-brook-94591.herokuapp.com/'
+    uri:'http://localhost:5000/'
 })
 
 const authLink = setContext(()=>{

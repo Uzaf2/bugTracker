@@ -1,11 +1,13 @@
 
 .ui-error-message{
-top:100;
-left: 400;
-margin-left: 500px;
-}
-
-.errorValue{
-  font-size: 1000px;
-  color: black;
-}
+  top:100;
+  left: 400;
+  margin-left: 500px;
+  }
+  
+  .errorValue{
+    font-size: 1000px;
+    color: black;
+  }
+  
+  

@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
 
 .background  {
-    background-image: url('../icons/background2.jpg');
+    background-image: url('../background2.jpeg');
     background-size:cover;
     width: 100%;
     min-height: 100vh;

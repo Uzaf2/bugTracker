@@ -18,17 +18,20 @@ import jwtDecode from 'jwt-decode';
 const useStyles = makeStyles({
   root: {
     width: '600px',
-    height: "280px"
+    height: "280px",
+    borderRadius:"10px"
   },
   banner:{
   backgroundColor: '#262B40',
   height: '15%',
   width:'93%',
   padding: '2%',
-  marginLeft:'1%'
+  marginLeft:'1%',
+  borderRadius: '5px'
   },
   heading:{
-    color: 'white'
+    color: 'white',
+    fontSize: '16px'
   },
   main: {
     marginBottom: '0px',

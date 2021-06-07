@@ -1,97 +1,97 @@
 .formContainer {
-    display: grid;
-    grid-column-gap: 10px;
-    grid-template-columns: auto auto ;
-    grid-template-rows: auto auto;
-    padding: 30px;
-    grid-row-gap:40px;
-    border: none;
-    background-color: white;
-    border-radius: 10px;
-  }
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: auto auto ;
+  grid-template-rows: auto auto;
+  padding: 30px;
+  grid-row-gap:40px;
+  border: none;
+  background-color: white;
+  border-radius: 10px;
+}
 
-  .img1 {
-    width: 50px;
-    height: 50px;
-  }
+.img1 {
+  width: 50px;
+  height: 50px;
+}
 
-  .img1:hover {
-    cursor: pointer;
-  }
+.img1:hover {
+  cursor: pointer;
+}
 
-  .img2{
-    width: 50px;
-    height: 50px;
-  }
+.img2{
+  width: 50px;
+  height: 50px;
+}
 
-  .img2:hover {
-    cursor: pointer;
-  }
+.img2:hover {
+  cursor: pointer;
+}
 
-  .img3{
-    width: 50px;
-    height: 50px;
-  }
+.img3{
+  width: 50px;
+  height: 50px;
+}
 
-  .img3:hover {
-    cursor: pointer;
-  }
+.img3:hover {
+  cursor: pointer;
+}
 
-  .img4{
-    width: 50px;
-    height: 50px;
-  }
+.img4{
+  width: 50px;
+  height: 50px;
+}
 
-  .img4:hover {
-    cursor: pointer;
-  }
+.img4:hover {
+  cursor: pointer;
+}
 
-  .paragraph {
-    position: absolute;
-    width: 100px;
-    text-align: center;
-    bottom: 0;
-    left: 0;
-    white-space: nowrap;
-  }
- 
-  .grid-item {
-    padding-left: 40px;
-    font-size: 30px;
-    text-align: center;
-    width: 130px;
-    height: 100px;
-    background-color: white;
-  }
+.paragraph {
+  position: absolute;
+  width: 100px;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  white-space: nowrap;
+}
 
-  .article{
-    
-    display: inline-grid;
-    grid-template-rows: 30px 40px;
-    grid-template-columns:  100px;
-    grid-gap: 3px;
-  }
+.grid-item {
+  padding-left: 40px;
+  font-size: 30px;
+  text-align: center;
+  width: 130px;
+  height: 100px;
+  background-color: white;
+}
 
-
-  .background {
-    height: 400px;
-    background-color: white;
-    text-align: center;
-  }
+.article{
   
-  .accountsForm {
-    height: 400px;
-    width: 400px;
-    background-color: white;
-    border-radius: 10px;
-    padding-top: 25px;
-  }
+  display: inline-grid;
+  grid-template-rows: 30px 40px;
+  grid-template-columns:  100px;
+  grid-gap: 3px;
+}
 
-  .paragraph1 {
-    
-    color: black;
-    font-size: 20px;
-    align-items: center;
-    font-family: sans-serif;
 
-  }
+.background {
+  height: 400px;
+  background-color: white;
+  text-align: center;
+}
+
+.accountsForm {
+  height: 400px;
+  width: 400px;
+  background-color: white;
+  border-radius: 10px;
+  padding-top: 25px;
+}
+
+.paragraph1 {
+  
+  color: black;
+  font-size: 20px;
+  align-items: center;
+  font-family: sans-serif;
+
+}

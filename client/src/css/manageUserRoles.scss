@@ -1,117 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap');
 
-
-  .grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
-    //border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-    height: 80vh;
-  }
-  
-  .grid-item1{
-    background-color:#111;
-  }
-
-  .main {
-    transition: margin-left .5s;
-    margin-left: 18%;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    width: 85%;
-    height: 60%;
-    bottom: 0;
-    margin-top: 0;
-  }
-
-  .table {
-    width: 1000px;
-  }
-
-  .container {
-    height: 100vh;
-    width: 100%;
-    margin: 0rem auto;
-    display: flex;
-  }
-  
-  .cell {
-    color: white;
-    font-size: 2.5rem;
-    text-align: center;
-    padding: 4rem;
-  }
-
-  
-  .custom-select1 {
-    height: 30%;
-    width: 60%;    
-    grid-area: header;
-  }
-  .custom-select2 {
-    height: 30%;
-    width: 60%;
-    grid-area: body;
-  }
-  .assignButton {
-    height: 20%;
-    width: 20%;
-    grid-area: footer;
-  }
-
-  .assignButton:hover {
-    background-color: #8F3985; /* Green */
-    color: white;
-  }
-  .label1 {
-   padding-left: 50px;
-   grid-area: header;
-  }
-
-  .select1{
-    margin-left: 50%;
-    width: 100%;
-  }
-
-  .label2{
-    margin-left: 100%;
-    align-items: center;
-  }
-
-  .select2{
-    margin-left: 50%;
-    width: 100%;
-    grid-area: body;
-  }
-
-
-  .assignButton{
-    margin-left: 40%;
-    width: 40%;
-    height: 8%;
-    color: white;
-    background-color: #3F51B5;
-    border-radius: 10px;
-  }
-
-.mainContainer {
-  display: flex;
+.btn41-43 {
+  padding: 12px 40px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  background-color: #047857;
+  margin-left: 25%;
+  margin-top: 2%;
+  border-radius: 3px;
 }
 
-.leftSide {
-width: 100%;
-height: 80%;
-display: grid;
-grid-template-areas: "header"
-"body"
-"footer";
-
-grid-template-rows: 1fr 1fr 5fr;
-grid-template-columns: 1fr;
+.btn-41 {
+  border: 0px solid rgb(255, 255, 255);
+  z-index: 1;
+  color: white;
 }
 
-.rightSide {
-  height: 80%;
-  width:100%;
+.btn-41:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+  background: #51CBCE;
+  transition: all 0.3s ease;
+  border-radius: 3px;
+}
 
+.btn-41:hover {
+  color: white;
+}
+
+.btn-41:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+
+.btn-41:active {
+  top: 2px;
+}
+
+
+.activeArea{
+  color: black;
+}
+
+
+.title{
+  width: 80%;
+  margin-left: 16%;
+  font-size: 16;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.label1 {
+  width: 80%;
+  font-size: 16;
+  font-family: 'Montserrat', sans-serif;
+
+  display: inline-block;
+  margin-top: 5%;
+  margin-left: 18%;
+  font-weight: 800;
+}
+
+.label2 {
+  width: 80%;
+  font-size: 16;
+  font-family: 'Montserrat', sans-serif;
+
+  display: inline-block;
+  margin-top: 5%;
+  margin-left: 18%;
+  font-weight: 800;
 }

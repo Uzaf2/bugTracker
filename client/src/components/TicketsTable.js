@@ -8,10 +8,11 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { useQuery, gql } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import SideAndNavbar from './SideAndNavbar';
 import { useHistory } from "react-router-dom";
 import '../css/ticketsTable.css';
+import Spinner from 'react-spinner-material';
 
 const useStyles = makeStyles({
   root: {
@@ -23,12 +24,18 @@ const useStyles = makeStyles({
   backgroundColor: '#262B40',
   height: '15%',
   width:'93%',
-  padding: '2%',
-  marginLeft:'1%'
+  padding: '1%',
+  marginLeft:'1%',
+  borderRadius:'5px'
   },
   
   heading:{
-    color: 'white'
+    color: 'white',
+    fontSize: '16px'
+  },
+  subHeading:{
+    color: 'white',
+    fontSize: '14px'
   },
   container: {
     maxHeight: 440,
@@ -38,6 +45,10 @@ const useStyles = makeStyles({
     textAlign:'left',
     marginLeft:'20%'
   },
+  spinner:{
+    marginLeft: '50%',
+    marginTop: '20%'
+  }
 });
 
 const columns = [
@@ -61,24 +72,26 @@ function TicketsTable() {
   var ticketsArray = [];
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const { loading, data } = useQuery(FETCH_PROJECTS_QUERY);
+  const { loading, data } = useQuery(FETCH_ALL_TICKETS_QUERY);
 
   var rows = [];
   if (loading)
-    return <p>Loading...</p>;
+  {
+  return (
+ <div className={classes.spinner}>
+  <Spinner  radius={120} color={"#4B0082"} stroke={5} visible={true} />
+  </div>);
+  }
+
   else {
     var length = data.getTickets.length;
     ticketsArray = data;
-    console.log("Data", data);
+    
     for (var i = 0; i < length; i++) {
-
      var time = data.getTickets[i].createdAt.split('T')[1];
-
      var date = data.getTickets[i].createdAt.substring(0, data.getTickets[i].createdAt.indexOf("T"));
      time = time.slice(0, -5); 
      var dateTime = date+ "\t\t"+time;
-
-    
     rows[i] = createData(data.getTickets[i].title, data.getTickets[i].description 
     ,data.getTickets[i].priority, data.getTickets[i].status, dateTime, 'Edit Details');
     }
@@ -108,7 +121,6 @@ function TicketsTable() {
 
   function RenderElement(value, value2, value3) {
     if (value2.id === "editDetails") {
-      console.log("value", value, "value2", value2, "value3", value3);
       return <a  onClick={() => HandleOnClick(value3, ticketsArray)} className="link"> {value} </a>;
     }
     else {
@@ -124,7 +136,7 @@ function TicketsTable() {
           <Paper className={classes.root}>
           <div className={classes.banner}>
           <h3 className={classes.heading}>Tickets Table</h3>
-          <p className={classes.heading}>All the tickets you have in the database</p>
+          <p className={classes.subHeading}>All the tickets you have in the database</p>
           </div>
             <TableContainer className={classes.container}>
               <Table stickyHeader aria-label="sticky table">
@@ -176,10 +188,12 @@ function TicketsTable() {
   );
 }
 
-const FETCH_PROJECTS_QUERY = gql`
+const FETCH_ALL_TICKETS_QUERY = gql`
 {
   getTickets{
     id
+    assignedProject
+    assignedDeveloper
     title
     description
     priority

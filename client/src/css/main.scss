@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
-
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
 body {
     font-family: "Lato", sans-serif;
@@ -15,7 +14,7 @@ body {
     overflow-x: hidden;
     transition: 0.5s;
     padding: 1.25rem .5rem 2rem;
-    background-color: #262B40;
+    background-color: #2C2C2C;
   }
   
   .sidebar a {
@@ -35,11 +34,11 @@ body {
   }
   
   .sidebar a:hover {
-    background-color:#F5A623;
+    color:#00ACC1;
     transition: .3s;
     cursor: pointer;
   }
-  
+
   .sidebar .closebtn {
     position: absolute;
     top: 0;
@@ -60,8 +59,6 @@ body {
   .openbtn:hover {
     background-color: #444;
   }
-  
-  
   
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {
@@ -102,17 +99,14 @@ body {
 }
 
 body {
-     background-color: #EDEDED;
+     background-color: #F4F3EF;
 }
-
 
 .table {
   width: 80%;
   height: 200px;
   float:  right;
 }
-
-
 
 .userTable {
   margin-top: 0%;
@@ -127,35 +121,26 @@ body {
   font-size: 12px;
 }
 
-
 .topnav {
   overflow: hidden;
-  background-color: #262B40;
+  background-color: #F4F3EF;
   float: right;
-  margin-top: 0 px;
-  width: 81%;
+  width: 82%;
   z-index: 100;
   border-top: 0;
+  border-bottom: 0.5px solid#DDDDDD;
 }
 
 .topnav a {
   float: right;
-  color: #f2f2f2;
+  color:black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  
 }
 
-.topnav a:hover {
-  background-color: #F5A623;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #262B40;
-  color: white;
-}
 
 
 .topnav input[type=text] {
@@ -178,4 +163,29 @@ width:49%; margin-right:2%
   margin-left: 20px;
   font-size: 12px;
   float:left;width:49%; margin-right:2%
+}
+
+
+.home{
+font-size: 14px;
+margin-left:2px;
+float: right;
+
+}
+
+.homeDiv{
+  vertical-align: middle;
+}
+
+.logoutDiv{
+ vertical-align: middle;
+}
+
+.logout{
+  font-size: 14px;
+}
+
+
+.activeArea{
+  margin-left: 20%;
 }

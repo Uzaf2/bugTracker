@@ -8,7 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { useQuery, gql } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 
 const useStyles = makeStyles({
   root: {
@@ -19,11 +19,17 @@ const useStyles = makeStyles({
     backgroundColor: '#262B40',
     height: '5%',
     width:'93%',
-    padding: '2%',
+    borderRadius:'5px',
+    padding: '1%',
     marginLeft:'1%'
     },
     heading:{
-      color: 'white'
+      color: 'white',
+      fontSize: '16px'
+    },
+    subHeading: {
+      color: 'white',
+      fontSize: '14px'
     },
   container: {
     maxHeight: 440,
@@ -79,8 +85,8 @@ function createData(username, email, role) {
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
       <div className={classes.banner}>
-          <h3 className={classes.heading}>Users</h3>
-          <p className={classes.heading}>Users and their roles</p>
+          <p className={classes.heading}>Users</p>
+          <p className={classes.subHeading}>Users and their roles</p>
           </div>
         <Table stickyHeader aria-label="sticky table">
           <TableHead className={classes.header}>

@@ -66,6 +66,27 @@ module.exports = {
         const ticket = await newTicket.save();
 
         return ticket;
+        },
+        async updateTicket(_,{id, title,description, assignedProjectInput, assignedDeveloperInput, priority, status, type  }) 
+        {
+            const tickets = await Ticket.find().sort({ createdAt: -1 });
+                
+            const project = await Project.find({name:assignedProjectInput});
+            const developer = await User.find({username:assignedDeveloperInput});
+
+
+            var projectArray = [];
+            var developerArray = [];
+            projectArray.push(mongoose.Types.ObjectId(project[0]._id));
+            developerArray.push(mongoose.Types.ObjectId(developer[0]._id));
+            const ticketId = tickets[id-1]._id;
+            const ticketObj = await Ticket.findById(ticketId);
+
+            await Ticket.findByIdAndUpdate({_id: ticketId},{title: title,
+            description: description,assignedProject:projectArray,assignedDeveloper: developerArray,priority: priority, status: status,
+            type: type});
+
+            return tickets[id-1];
         }
     },
     Query: {

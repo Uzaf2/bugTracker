@@ -8,26 +8,34 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { useQuery, gql } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import SideAndNavbar from './SideAndNavbar';
 import { useHistory } from "react-router-dom";
 import '../css/ticketsDetailsComponent.css';
-import { useMutation } from '@apollo/react-hooks';
+import Spinner from 'react-spinner-material';
 
 const useStyles = makeStyles({
   root: {
-    width: '600px',
-    height: "500px"
+    width: '100%',
+    height: '90%'
   },
   banner:{
   backgroundColor: '#262B40',
   height: '10%',
   width:'93%',
   padding: '2%',
-  marginLeft:'1%'
+  marginLeft:'1%',
+  borderRadius: '5px'
   },
   heading:{
-    color: 'white'
+    color: 'white',
+    fontSize: '16px'
+  },
+  link:{
+    color: 'white',
+     textDecoration: 'underline',
+     cursor: 'pointer',
+     fontSize: '14px'
   },
   main: {
     marginBottom: '0px',
@@ -36,6 +44,14 @@ const useStyles = makeStyles({
   },displayComments: 
   {
     color: 'black'
+  },
+  table:{
+    height: '100%',
+    width: '100%'
+  },
+  spinner: {
+    marginLeft: '30%',
+    marginTop: '30%'
   }
 });
 
@@ -59,11 +75,8 @@ function createData(name, description, assignedProject, assignedDeveloper, prior
 
 function TicketDetailsComponent(props) {
 
-  var valueNumber = 0;
   var assignedProject = 0;
   var assignedDeveloper = 0;
-  var userData = "";
-  var projectData = ""
   var assignedProjectName = "";
   var assignedDeveloperName = "";
   const history = useHistory();
@@ -72,7 +85,7 @@ function TicketDetailsComponent(props) {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   var index = props.index.history.location.state.index;
   var array = props.index.history.location.state.array;
-  
+ 
   const {loading, data} = useQuery (FETCH_TICKETS_QUERY,{
     variables: { id: String(index)}
     });
@@ -83,7 +96,9 @@ const {loading:loading2, data:data2} = useQuery (FETCH_PROJECTS_QUERY);
     var rows= [];
 
     if (loading)
-      return <p className={classes.displayComments}>Loading...</p>;
+    return (<div className={classes.spinner}>
+      <Spinner  radius={60} color={"#4B0082"} stroke={5} visible={true} />
+      </div>);
     else {
 
       var time = data.getTicketById.createdAt.split('T')[1];
@@ -91,7 +106,6 @@ const {loading:loading2, data:data2} = useQuery (FETCH_PROJECTS_QUERY);
        
       time = time.slice(0, -5); 
       var dateTime = date+ "\t\t"+time;
-  
       
       assignedProject = data.getTicketById.assignedProject;
       assignedDeveloper = data.getTicketById.assignedDeveloper;
@@ -103,6 +117,7 @@ const {loading:loading2, data:data2} = useQuery (FETCH_PROJECTS_QUERY);
           if (data1.getUsers[i].id === assignedDeveloper[0])
           {
             assignedDeveloperName = data1.getUsers[i].username;
+           
           }
         }
       }
@@ -130,26 +145,15 @@ const {loading:loading2, data:data2} = useQuery (FETCH_PROJECTS_QUERY);
     setPage(0);
   };
 
-  function HandleOnClick(props, rowsArray) {
-   
+function EditTicket() {
     history.push({
       pathname: '/TicketDetails',
       search: '?update=true',  // query string
       state: {  // location state
-        index: props, 
-        array: rowsArray
+        update: true, 
+        index:index
       },
     }); 
-
-  }
-
-  function RenderElement(value, value2, value3) {
-    if (value2.id === "editDetails") {
-      return <a  onClick={() => HandleOnClick(value3, rows)} className="link"> {value} </a>;
-    }
-    else {
-      return value;
-    }
   }
 
   return (
@@ -158,7 +162,9 @@ const {loading:loading2, data:data2} = useQuery (FETCH_PROJECTS_QUERY);
         <div id="main" class="main" className={classes.main}>
           <Paper className={classes.root}>
           <div className={classes.banner}>
-          <p className={classes.heading}>Ticket Details</p>
+          <p className={classes.heading}>Ticket Details </p>
+           <p className={classes.link} onClick={EditTicket} >Edit Tickets</p>
+         
           </div>
           <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">

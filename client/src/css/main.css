@@ -15,7 +15,7 @@ body {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   padding: 1.25rem .5rem 2rem;
-  background-color: #262B40;
+  background-color: #2C2C2C;
 }
 
 .sidebar a {
@@ -35,7 +35,7 @@ body {
 }
 
 .sidebar a:hover {
-  background-color: #F5A623;
+  color: #00ACC1;
   -webkit-transition: .3s;
   transition: .3s;
   cursor: pointer;
@@ -116,7 +116,7 @@ body {
 }
 
 body {
-  background-color: #EDEDED;
+  background-color: #F4F3EF;
 }
 
 .table {
@@ -140,31 +140,21 @@ body {
 
 .topnav {
   overflow: hidden;
-  background-color: #262B40;
+  background-color: #F4F3EF;
   float: right;
-  margin-top: 0 px;
-  width: 81%;
+  width: 82%;
   z-index: 100;
   border-top: 0;
+  border-bottom: 0.5px solid #DDDDDD;
 }
 
 .topnav a {
   float: right;
-  color: #f2f2f2;
+  color: black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #F5A623;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #262B40;
-  color: white;
 }
 
 .topnav input[type=text] {
@@ -190,5 +180,27 @@ body {
   float: left;
   width: 49%;
   margin-right: 2%;
+}
+
+.home {
+  font-size: 14px;
+  margin-left: 2px;
+  float: right;
+}
+
+.homeDiv {
+  vertical-align: middle;
+}
+
+.logoutDiv {
+  vertical-align: middle;
+}
+
+.logout {
+  font-size: 14px;
+}
+
+.activeArea {
+  margin-left: 20%;
 }
 /*# sourceMappingURL=main.css.map */

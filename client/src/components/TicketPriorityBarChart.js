@@ -1,19 +1,31 @@
 import React from 'react';
 import Chart from "react-google-charts";
-import { useQuery, gql } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
+import Spinner from 'react-spinner-material';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  spinner: {
+    marginLeft: '45%',
+    marginTop: '25%'
+  }
+});
 
 
 function TicketPriorityBarChart(props) {
-var counterValue = 0;
+    const classes = useStyles();
+    var counterValue = 0;
     var high = 0;
     var medium = 0;
     var low = 0; 
-    var rows = [];
     const { loading, data } = useQuery(GET_TICKETS);
 
     
     if (loading)
-      return <p>Loading...</p>;
+      return (<div className={classes.spinner}>
+      <Spinner  radius={60} color={"#4B0082"} stroke={5} visible={true} />
+      </div>);  
+      //return <p>Loading...</p>;
 
     else {
 

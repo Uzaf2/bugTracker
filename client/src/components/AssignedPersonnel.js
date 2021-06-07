@@ -8,9 +8,10 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { useQuery, gql } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import { useHistory } from "react-router-dom";
 import '../css/assignedpersonnel.css';
+import Spinner from 'react-spinner-material';
 
 const useStyles = makeStyles({
   banner:
@@ -18,12 +19,17 @@ const useStyles = makeStyles({
   backgroundColor: '#262B40',
   height: '90px',
   width:'93%',
-  padding: '2%',
+  padding: '1%',
+  borderRadius: '5px',
   marginLeft:'1%'
   },
   heading:{
     color: 'white',
-    padding: '0'
+    fontSize: '16px'
+  },
+  subHeading:{
+    color: 'white',
+    fontSize: '14px'
   },
   root: {
     width: '100%',
@@ -34,7 +40,11 @@ const useStyles = makeStyles({
   displayComments: 
     {
       color: 'black'
-    }
+    },
+    spinner:{
+      marginLeft: '50%',
+      marginTop: '20%'
+    },
 });
 
 const columns = [
@@ -66,7 +76,11 @@ function AssignedDeveloper(props) {
 
   var rows = [];
   if (loading)
-    return <p className={classes.displayComments}>Loading...</p>;
+  return (
+    <div className={classes.spinner}>
+     <Spinner  radius={60} color={"#4B0082"} stroke={5} visible={true} />
+     </div>);
+   
   else {
    
     var length = data.getProjectsAndUsers.length;
@@ -105,7 +119,7 @@ function AssignedDeveloper(props) {
             <TableContainer className={classes.container}>
             <div className={classes.banner}>
           <p className={classes.heading}>Assigned Personnel</p>
-          <p className={classes.heading}>Users assigned to this Project</p>
+          <p className={classes.subHeading}>Users assigned to this Project</p>
           </div>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>

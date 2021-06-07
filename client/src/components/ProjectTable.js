@@ -8,7 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { useQuery, gql } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import SideAndNavbar from './SideAndNavbar';
 import { useHistory } from "react-router-dom";
 import '../css/projectTable.css';
@@ -16,8 +16,13 @@ import Button from '@material-ui/core/Button';
 import {useContext} from 'react';
 import { AuthContext } from '../context/auth';
 import jwtDecode from 'jwt-decode';
+import Spinner from 'react-spinner-material';
 
 const useStyles = makeStyles({
+  spinner:{
+    marginLeft: '50%',
+    marginTop: '20%'
+  },
   root: {
     width: '100%',
     marginTop: '15px'
@@ -26,11 +31,17 @@ const useStyles = makeStyles({
     backgroundColor: '#262B40',
     height: '15%',
     width:'93%',
-    padding: '2%',
-    marginLeft:'1%'
+    padding: '1%',
+    marginLeft:'1%',
+    borderRadius:'5px'
     },
     heading:{
-      color: 'white'
+      color: 'white',
+      fontSize: '16px'
+    },
+    subHeading: {
+      color: 'white',
+      fontSize: '14px'
     },
   container: {
     maxHeight: 440,
@@ -45,6 +56,18 @@ const useStyles = makeStyles({
   }
 });
 
+
+
+/*
+
+
+          {user && user.role === 'Demo Admin' && (
+    <Button variant="contained" color="primary" onClick={AssignUser} className={classes.btn1}>Assign User</Button>
+    )}
+    {user && user.role === 'Demo Manager' && (
+    <Button variant="contained" color="primary" onClick={AssignUser} className={classes.btn1}>Assign User</Button>
+    )}
+*/
 const columns = [
   { id: 'name', label: 'Name', minWidth: 170 },
   { id: 'description', label: 'Description', minWidth: 100 },
@@ -62,6 +85,7 @@ function createData(name, description, details) {
 }
 
 function ProjectTable() {
+
   var {user, logout} = useContext(AuthContext);
 
   if (user!=null)
@@ -87,7 +111,12 @@ function ProjectTable() {
   const { loading, data } = useQuery(FETCH_PROJECTS_QUERY);
   var rows = [];
   if (loading)
-    return <p>Loading...</p>;
+  {
+    return (
+   <div className={classes.spinner}>
+    <Spinner  radius={120} color={"#4B0082"} stroke={5} visible={true} />
+    </div>);
+    }
   else {
     var length = data.getProjects.length;
     for (var i = 0; i < length; i++) {
@@ -117,6 +146,7 @@ function ProjectTable() {
 
   }
 
+  /*
   function AssignUser() {
     //history.push('/AssignUser');
     history.push({
@@ -124,9 +154,11 @@ function ProjectTable() {
       search: '?update=true',  // query string
       state: {  // location state
         update: true, 
+
       },
     }); 
   }
+  */
 
   function CreateTicket() {
     history.push('/CreateTicket');
@@ -150,20 +182,16 @@ function ProjectTable() {
         <SideAndNavbar></SideAndNavbar>
      
         <div id="main" className="main" className={classes.main}>
-
           <div>
-          {user && user.role === 'Demo Admin' && (
-        <Button variant="contained" color="primary" onClick={CreateProject} className={classes.btn1}>Create Project</Button>
-          )}
-
-         {user && user.role === 'Demo Manager' && (
-        <Button variant="contained" color="primary" onClick={CreateProject} className={classes.btn1}>Create Project</Button>
-          )}
+  
+    
+        <Button variant="contained" color="primary" class="createProject" onClick={CreateProject} >Create Project</Button>
+        
          </div>
           <Paper className={classes.root}>
           <div className={classes.banner}>
-          <h3 className={classes.heading}>Your Projects</h3>
-          <p className={classes.heading}>All the Projects you have in the database</p>
+          <p className={classes.heading}>Your Projects</p>
+          <p className={classes.subHeading}>All the Projects you have in the database</p>
           </div>
          
             <TableContainer className={classes.container}>

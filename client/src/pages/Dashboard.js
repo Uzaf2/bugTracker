@@ -5,6 +5,7 @@ import TicketPriorityBarChart from '../components/TicketPriorityBarChart';
 import TicketTypePieChart from '../components/TicketTypePieChart';
 import TicketStatusBarChart from '../components/TicketStatusBarChart';
 import DeveloperTicketsPieChart from '../components/DeveloperTicketsPieChart';
+import TicketTypeNewPieChart from '../components/TicketTypeNewPieChart';
 
 
 function Dashboard(props) {

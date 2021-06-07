@@ -10,9 +10,8 @@ import Container from '@material-ui/core/Container';
 import '../App.css'; 
 import { useHistory } from "react-router-dom";
 import { useForm } from '../util/hooks';
-import gql from 'graphql-tag';
-import { useMutation } from '@apollo/react-hooks';
 import { AuthContext } from '../context/auth';
+import { gql, useMutation, useQuery } from '@apollo/client';
 
 const useStyles = makeStyles((theme) => ({
     root: {

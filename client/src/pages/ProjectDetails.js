@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SideAndNavbar from '../components/SideAndNavbar';
 import ProjectTable2 from '../components/ProjectTable2';
 import AssignedPersonnel from '../components/AssignedPersonnel';
@@ -44,13 +44,22 @@ const useStyles = makeStyles({
   });
 
 
+   //{
+    //user && user.role === 'Demo Admin' && (
+    //<Button variant="contained" color="primary" onClick={AssignUser} className={classes.btn1}>Assign User</Button>
+   // )}
+
+      ///user && user.role === 'Demo Manager' && (
+    //<Button variant="contained" color="primary" onClick={AssignUser} className={classes.btn1}>Assign User</Button>
+   // )}
+
 function ProjectDetails(props) {
+
   var {user, logout} = useContext(AuthContext);
 
   if (user!=null)
   {
     var count = Object.keys(user).length;
-    console.log("count",count);
 
     if (count == 2)
     {
@@ -61,11 +70,12 @@ function ProjectDetails(props) {
       
     }
   }
-
+  
 const classes = useStyles();
 const history = useHistory();
 var value =  props.history.location.state.index;
 
+/*
 function AssignUser() {
   history.push({
     pathname: '/AssignUser',
@@ -75,6 +85,7 @@ function AssignUser() {
     },
   }); 
 }
+*/
 
 function CreateTicket() {
   history.push({
@@ -94,13 +105,7 @@ function CreateTicket() {
     <div class="wrapper1">
     <div class="box1 a1">
 
-    {user && user.role === 'Demo Admin' && (
-    <Button variant="contained" color="primary" onClick={AssignUser} className={classes.btn1}>Assign User</Button>
-    )}
-    {user && user.role === 'Demo Manager' && (
-    <Button variant="contained" color="primary" onClick={AssignUser} className={classes.btn1}>Assign User</Button>
-    )}
-    <Button variant="contained" color="primary" onClick={CreateTicket} className={classes.btn2} >Create Ticket</Button>
+    <Button variant="contained" color="primary" class="createTicket" onClick={CreateTicket} >Create Ticket</Button>
     </div>
   <div class="box1 b1">
   <ProjectTable2 index={value}/> 

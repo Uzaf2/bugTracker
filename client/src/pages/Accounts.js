@@ -3,14 +3,11 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import AccountsImg from '../icons/images.svg';
-import AccountsImg2 from '../icons/userImage.png';
 import AccountsImg3 from '../icons/userImage1.png';
 import '../css/accounts.css';
 import { useHistory } from "react-router-dom";
-import { useMutation } from '@apollo/react-hooks';
 import { AuthContext } from '../context/auth';
-import gql from 'graphql-tag';
+import { gql, useMutation } from '@apollo/client';
 
 const useStyles = makeStyles((theme) => ({
     inputType:{
@@ -68,18 +65,19 @@ function Accounts(props) {
     const history = useHistory();
     const [ role, setRole ] = useState('');
 
+
+
     useEffect(() => {
+        
         if (role === "")
         {
 
         }
         else if (role==="Demo Admin" ||  role==="Demo Manager" ||  role==="Demo Developer" ||  role==="Demo Submitter")
         {
-        
-          console.log("Demo Login Called !!!");
           demoLogin();
         }
-        
+
     }, [role]);
 
 
@@ -97,27 +95,18 @@ function Accounts(props) {
 
     function adminClick() {
         setRole('Demo Admin');
-        demoLogin();
     }
 
     function projectManagerClick() {
         setRole('Demo Manager');
-        demoLogin();
     }
 
     function developerClick() {
         setRole('Demo Developer');
-        demoLogin();
     }
 
     function submitterClick() {
         setRole('Demo Submitter');
-        demoLogin();
-    }
-
-    function handleClickDemo() {
-      //  demoLogin();
-        //props.history.push('/Accounts');
     }
     
     const styles = useStyles();

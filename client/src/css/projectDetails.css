@@ -1,78 +1,130 @@
 .ticketsTable{
-   margin: 0; 
+  margin: 0; 
 }
 
 .assignedPersonnel{
-    float: left;
-    width: 50%;
-    padding: 5px;
+   float: left;
+   width: 50%;
+   padding: 5px;
 }
 
 .main{
-    margin-left:-5px;
-    margin-right:-5px;
+   margin-left:-5px;
+   margin-right:-5px;
 }
 
 .firstDiv {
-    margin-left: 60px;
-    float: left;
+   margin-left: 60px;
+   float: left;
 }
 
 .secondMain{
-    float: left;
-    width: 40%;
-    padding: 0px;
+   float: left;
+   width: 40%;
+   padding: 0px;
 }
 
 .bottomDiv{
-    float: right;
-    margin-right: 600px;
-    margin-top:10px;
-    height: 5%;
+   float: right;
+   margin-right: 600px;
+   margin-top:10px;
+   height: 5%;
 }
 
 .test1 {
-    float:right;
-    margin-left: 20%;
-    background-color: black;
-    width: 80%;
-    height: 100%;
+   float:right;
+   margin-left: 20%;
+   background-color: black;
+   width: 80%;
+   height: 100%;
 }
 
 .wrapper1 {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: 21% 21% 21% 21%;
-    grid-template-rows: 8% 30% 62%;
-    width: 90vw;
-    height: 90vh;
-    background-color: #EDEDED;
-    color: #444;
-  }
+   display: grid;
+   grid-gap: 20px;
+   grid-template-columns: 21% 21% 21% 21%;
+   grid-template-rows: 8% 30% 62%;
+   width: 90vw;
+   height: 90vh;
+   background-color: #F4F3EF;
+   color: #444;
+ }
 
-  .box1 {
-    background-color: #EDEDED;
-    color: #EDEDED;
-    border-radius: 5px;
-    padding: 0px;
-    font-size: 150%;
-  }
+ .box1 {
+   background-color: #F4F3EF;
+   color: #EDEDED;
+   border-radius: 5px;
+   padding: 0px;
+   font-size: 150%;
+ }
 
-  .a1 {
-    grid-column: 1 / span 4;
-    grid-row: 1;
-  }
-  .b1 {
-    grid-column: 1/ span 4;
-    grid-row:  2;
-  }
-  .c1 {
-    grid-column: 1 / span 2;
-    grid-row: 3 ;
-    margin-top: 20px;
-  }
-  .d1 {
-    grid-column: 3 / 5;
-    grid-row: 3;
-    margin-top: 20px;
-  }
+ .a1 {
+   grid-column: 1 / span 4;
+   grid-row: 1;
+ }
+ .b1 {
+   grid-column: 1/ span 4;
+   grid-row:  2;
+ }
+ .c1 {
+   grid-column: 1 / span 2;
+   grid-row: 3 ;
+   margin-top: 20px;
+ }
+ .d1 {
+   grid-column: 3 / 5;
+   grid-row: 3;
+   margin-top: 20px;
+ }
+
+.createTicket{
+ color: white;
+ background-color: #455CA8;
+ padding: 12px 40px;
+ font-family: "Roboto", sans-serif;
+ font-weight: 500;
+ outline: none !important;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ position: relative;
+ display: inline-block;
+ margin-left: 1%;
+ margin-top: 2%;
+ border-radius: 3px;
+ border: 0px solid rgb(255, 255, 255);
+ z-index: 1;
+ color: white;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap');
+
+
+
+.createTicket:after {
+position: absolute;
+content: "";
+width: 0;
+height: 100%;
+top: 0;
+left: 0;
+direction: rtl;
+z-index: -1;
+background: #403A3A;
+transition: all 0.3s ease;
+border-radius: 3px;
+}
+
+.createTicket:hover {
+color: white;
+}
+
+.createTicket:hover:after {
+left: auto;
+right: 0;
+width: 100%;
+}
+
+.createTicket:active {
+top: 2px;
+}

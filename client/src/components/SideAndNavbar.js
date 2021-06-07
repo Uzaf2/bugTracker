@@ -9,6 +9,9 @@ import personAddOutline from '../icons/person-add-outline.svg';
 import { useHistory } from "react-router-dom";
 import { AuthContext } from '../context/auth';
 import jwtDecode from 'jwt-decode';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import HomeIcon from '@material-ui/icons/Home';
+import { Home } from '@material-ui/icons';
 /*
         <a className="section" href="#section" onClick={openNav}>
           Open Sidebar
@@ -17,68 +20,60 @@ import jwtDecode from 'jwt-decode';
           Close Sidebar
           </a>
           */
-function SideAndNavbar(props) {
-  
+function SideAndNavbar(props) {  
   var {user, logout} = useContext(AuthContext);
-  //console.log("AuthContext user", user);
-  //console.log("user role", user.token);
+  var activeBar = "";
 
-  console.log("User in side nav bar",user);
   if (user!=null)
   {
     var count = Object.keys(user).length;
-    console.log("count",count);
-
     if (count == 2)
     {
       user  = jwtDecode (localStorage.getItem('jwtToken'));
+      console.log("User :", user);
     }
     else if (count > 2)
     {
-     
+      user  = jwtDecode (localStorage.getItem('jwtToken'));
+      console.log("User :", user);
     }
   }
-  
-  //    user  = jwtDecode (localStorage.getItem('jwtToken'));
-      
+
+  console.log(" User: ", user);
   const history = useHistory();
  
   function openNav(e) {
-    document.getElementById("mySidebar").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-
+    document.getElementById("mySidebar").style.width = "20%";
+    document.getElementById("main").style.marginLeft = "20%";
     document.getElementById('navName').style.fontSize = '0.75rem';
     document.getElementById('navName1').style.fontSize = '0.75rem';
     document.getElementById('navName2').style.fontSize = '0.75rem';
     document.getElementById('navName3').style.fontSize = '0.75rem';
     document.getElementById('navName4').style.fontSize = '0.75rem';
     document.getElementById('navName5').style.fontSize = '';
-
-    document.getElementById('grid').style.width = '30px';
-    document.getElementById('grid1').style.width = '30px';
-    document.getElementById('grid2').style.width = '30px';
-    document.getElementById('grid3').style.width = '30px';
-    document.getElementById('grid4').style.width = '30px';
-    document.getElementById('grid5').style.width = '30px';
+    document.getElementById('grid').style.width = '2.4%';
+    document.getElementById('grid1').style.width = '2.4%';
+    document.getElementById('grid2').style.width = '2.4%';
+    document.getElementById('grid3').style.width = '2.4%';
+    document.getElementById('grid4').style.width = '2.4%';
+    document.getElementById('grid5').style.width = '2.4%';
   }
 
   function closeNav(e) {
-    document.getElementById('mySidebar').style.width = '60px';
-    document.getElementById('main').style.marginLeft = '60px';
-
-    document.getElementById('navName').style.fontSize = '0px';
-    document.getElementById('navName1').style.fontSize = '0px';
-    document.getElementById('navName2').style.fontSize = '0px';
-    document.getElementById('navName3').style.fontSize = '0px';
-    document.getElementById('navName4').style.fontSize = '0px';
-    document.getElementById('navName5').style.fontSize = '0px';
-
-    document.getElementById('grid').style.width = '30px';
-    document.getElementById('grid1').style.width = '30px';
-    document.getElementById('grid2').style.width = '30px';
-    document.getElementById('grid3').style.width = '30px';
-    document.getElementById('grid4').style.width = '30px';
-    document.getElementById('grid5').style.width = '30px';
+    document.getElementById('mySidebar').style.width = '4.8%';
+    document.getElementById('main').style.marginLeft = '4.8%';
+    document.getElementById('navName').style.fontSize = '0%';
+    document.getElementById('navName1').style.fontSize = '0%';
+    document.getElementById('navName2').style.fontSize = '0%';
+    document.getElementById('navName3').style.fontSize = '0%';
+    document.getElementById('navName4').style.fontSize = '0%';
+    document.getElementById('navName5').style.fontSize = '0%';
+    document.getElementById('grid').style.width = '2.4%';
+    document.getElementById('grid1').style.width = '2.4%';
+    document.getElementById('grid2').style.width = '2.4%';
+    document.getElementById('grid3').style.width = '2.4%';
+    document.getElementById('grid4').style.width = '2.4%';
+    document.getElementById('grid5').style.width = '2.4%';
   }
   
   function HandleOnClickDashboard (){
@@ -96,7 +91,6 @@ function SideAndNavbar(props) {
     history.push('/TicketsTable');
   }
   
-
   function HandleOnClickManageUserRoles() {
     history.push('/ManageUserRoles');
   }
@@ -121,7 +115,33 @@ function SideAndNavbar(props) {
           <span class="navName" id="navName">Dashboard Home</span>
         </a>
       
-        {user && user.role === 'Demo Admin' && (
+        {user && user.role === "Demo Admin" && (
+          <React.Fragment>
+          <a href="#" className="section" onClick={HandleOnClickManageUserRoles}>
+          <img class="grid" id="grid1" src={homeIcon} alt="image al" />
+          <span class="navName" id="navName1">Manage Role Assignment</span>
+        </a>
+        <a href="#" className="section" onClick={HandleOnManageProjectUsers}>
+          <img class="grid" id="grid2" src={peopleCirle} alt="image al" />
+          <span class="navName" id="navName2">Manage Project Users</span>
+        </a>
+        </React.Fragment>
+        )}
+
+         {user && user.role === "Project Manager" && (
+            <React.Fragment>
+          <a href="#" className="section" onClick={HandleOnClickManageUserRoles}>
+          <img class="grid" id="grid1" src={homeIcon} alt="image al" />
+          <span class="navName" id="navName1">Manage Role Assignment</span>
+        </a>
+        <a href="#" className="section" onClick={HandleOnManageProjectUsers}>
+          <img class="grid" id="grid2" src={peopleCirle} alt="image al" />
+          <span class="navName" id="navName2">Manage Project Users</span>
+        </a>
+        </React.Fragment>
+        )}
+
+         {user && user.role === "Admin" && (
             <React.Fragment>
           <a href="#" className="section" onClick={HandleOnClickManageUserRoles}>
           <img class="grid" id="grid1" src={homeIcon} alt="image al" />
@@ -146,7 +166,7 @@ function SideAndNavbar(props) {
         </a>
         </React.Fragment>
         )}  
-        
+      
         <a href="#" className="section" onClick={HandleOnClickProjectTable}>
           <img class="grid" id="grid3" src={layers} alt="image al" />
           <span class="navName" id="navName3">My Projects</span>
@@ -160,9 +180,21 @@ function SideAndNavbar(props) {
           <span class="navName" id="navName5">User Profile</span>
         </a>
         </div>
-      <div class="topnav">
-        <a onClick={handleClick} href="#home">Home</a>
-        <a href="#about" onClick={logout}>Logout</a>
+        
+        <div class="topnav">
+        
+        <span class="activeArea" id="activeArea"></span>
+
+        <a onClick={handleClick} href="#home" text="Home" name="HHOME">
+        <HomeIcon></HomeIcon>
+        <span class="homeDiv">Home</span>
+        </a>
+
+        <a href="#about" onClick={logout}>
+        <ExitToAppIcon></ExitToAppIcon>   
+        <span class="logoutDiv">Logout</span>    
+        </a>
+
       </div>
     </body>
   );

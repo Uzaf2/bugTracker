@@ -1,7 +1,5 @@
-import React, { useState, useEffect }  from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -10,22 +8,28 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import { gql, useQuery } from '@apollo/client';
+import Spinner from 'react-spinner-material';
 
 const useStyles = makeStyles({
     root: {
-    width: '600px',
+    width: '55s0px',
     marginLeft: '0%',
-    height: "100%"
+    height: "100%",
+    marginTop: '10%',
+    marginLeft:'2%'
     },
     banner:{
       backgroundColor: '#262B40',
       height: '4%',
       width:'93%',
-      padding: '2%',
-      marginLeft:'1%'
+      padding: '1%',
+      marginLeft:'1%',
+      borderRadius: '5px'
       },
       heading:{
-        color: 'white'
+        color: 'white',
+        fontSize: '16px'
       },
       paragraph: {
         color: 'white'
@@ -36,6 +40,10 @@ const useStyles = makeStyles({
     displayComments: 
     {
       color: 'black'
+    },
+    spinner: {
+      marginLeft: '30%',
+      marginTop: '10%'
     }
   });
 
@@ -72,7 +80,9 @@ function DisplayComments(props) {
        var rows =[];
     
   if (loading) 
-       return <p className={classes.displayComments}>Loading...</p>;
+  return (<div className={classes.spinner}>
+    <Spinner  radius={60} color={"#4B0082"} stroke={5} visible={true} />
+    </div>);
   else {
 
     var length = data.getCommentsByTicketId.length
@@ -82,6 +92,7 @@ function DisplayComments(props) {
       var length = data.getCommentsByTicketId.length;
     for(var i=0;i<length; i++)
     {
+      console.log("Data", data);
       var time = data.getCommentsByTicketId[i].createdAt.split('T')[1];
 
       var date = data.getCommentsByTicketId[i].createdAt.substring(0, data.getCommentsByTicketId[i].createdAt.indexOf("T"));

@@ -6,10 +6,9 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 import { useForm } from '../util/hooks';
-import { useMutation } from '@apollo/react-hooks';
-import { useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
-
+import { gql, useMutation, useQuery } from '@apollo/client';
+import swal from 'sweetalert';
+import '../css/addComment.css';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -54,11 +53,8 @@ function AddComment(props) {
   const [messageValue, setMessage ]= useState("");
   const [ errors, setErrors ] = useState({});
 
-    
   useEffect(() => {
-
     create();
-    
   }, [messageValue, ticketId]);
 
   const classes = useStyles();
@@ -67,19 +63,15 @@ function AddComment(props) {
       message:''
   });
 
-  
   const [create, {loading}] = useMutation (CREATE_COMMENT,{
-    update(proxy,  result){
-  
+    update(proxy,  result){  
       const data = proxy.readQuery({ query: DISPLAY_COMMENTS,
         variables: { id: String(index)}
        });
-       
-
+      
       proxy.writeQuery({ query: DISPLAY_COMMENTS, 
       data:{getCommentsByTicketId:[result.data.createComment, ...data.getCommentsByTicketId],},
       variables: { id: String(index)}});
-
        success();
     },
     onError(err) {
@@ -89,7 +81,13 @@ function AddComment(props) {
 });
   
     function success() {
-      alert("New Ticket Created");
+      swal({
+        title: "Done!",
+        text: "New Comment Added",
+        icon: "success",
+        timer: 2000,
+        button: false
+      })
   }
 
   function createProject () {
@@ -112,7 +110,7 @@ function AddComment(props) {
             error={errors.message}
             value={values.message}
             onChange={onChange}/>
-             <Button className={classes.submit} variant="contained" color="primary" type="submit">
+             <Button class="addComment" variant="contained" color="primary" type="submit">
              Add Comment
             </Button>
           </form>

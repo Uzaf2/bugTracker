@@ -1,13 +1,13 @@
 const bcrypt = require('bcryptjs');
 const { UserInputError } = require('apollo-server');
-const User = require('../../models/User');
+const User = require('../../models/user');
 const jwt = require('jsonwebtoken');
 const { validateLoginInput, validateRegisterInput } = require ('../../utils/validators');
 
 var mongoose = require('mongoose');
 const { UniqueArgumentNamesRule } = require('graphql');
 const { SECRET_KEY } = require ('../../config');
-const jsonwebtoken = require('jsonwebtoken')
+const jsonwebtoken = require('jsonwebtoken');
 
 function generateToken(user){
 
@@ -66,7 +66,6 @@ module.exports = {
         {
             var username = "admin";
             const user = await User.findOne({username});
-            console.log("Value of role in demoLogin:", role);
             user.role = role;
             await user.save();
 
@@ -136,38 +135,8 @@ module.exports = {
         },
         async assignRole(_, {name, role}){
             try {
-            //console.log("Values in the AssignRole function", name,"Role :", role);
 
             const userObj = await User.findOneAndUpdate({username:name}, {role, role});
-            //console.log("UserObj", userObj[0].role);
-            //userObj[0].role.push(role);
-            //console.log("UserObj",userObj.assignedTickets);
-
-            /*
-            const assignedTickets = userObj[0].assignedTickets;
-            const ticketsCreated = userObj[0].ticketsCreated;
-            const associatedProjects = userObj[0].associatedProjects;
-            const _id = userObj[0]._id;
-            const email = userObj.email;
-            const password = userObj.password;
-            const creationTime = userObj.creationTime;
-            const roleValue = role;
-            const username = userObj[0].username;
-            const access = userObj[0].access;
-
-            console.log("UserObj", userObj);
-
-        
-            const newUser = new User({
-                _id,
-                username,
-                email,
-                password,
-                creationTime,
-                roleValue,
-                access
-              });
-              */
 
             await userObj.save();        
             const users = await User.find().sort({createdAt : -1});

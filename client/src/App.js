@@ -7,7 +7,6 @@ import {AuthProvider} from './context/auth';
 import ManageUserRoles from './pages/ManageUserRoles';
 import UserTable from './components/UserTable';
 import SideAndNavbar from './components/SideAndNavbar';
-import Users from './pages/Users';
 import ProjectTable2 from './components/ProjectTable2';
 import TicketsTable from './components/TicketsTable';
 import AssignedPersonnel from './components/AssignedPersonnel';
@@ -19,18 +18,17 @@ import TicketPriorityBarChart from './components/TicketPriorityBarChart';
 import TicketTypePieChart from './components/TicketTypePieChart';
 import TicketStatusBarChart from './components/TicketStatusBarChart';
 import DeveloperTicketsPieChart from './components/DeveloperTicketsPieChart';
-import ManageProjectUsers from './pages/ManageProjectUsers';
-import TicketDetails from './pages/TicketDetails';
+import ManageProjectUsers from './components/ManageProjectUsers';
+import TicketDetails from './components/TicketDetails';
+import TicketDetails2 from './components/TicketDetails2';
 import TicketDetailsComponent from './components/TicketDetailsComponent';
-//////////////// They are causing problems with TextFields//////
-import AssignUser from './pages/AssignUser';
 import ProjectUserAssign from './pages/ProjectUserAssign';
-import AssignUser2 from './pages/AssignUser2';
-import CreateTicket from './pages/CreateTicket';
-import CreateProject from './pages/CreateProject';
+import AssignUser from './components/AssignUser';
+import CreateTicket from './components/CreateTicket';
+import CreateProject from './components/CreateProject';
 import TicketDetailsPage from './pages/TicketDetailsPage';
 import UserProfile from './pages/UserProfile';
-///////////////////////////////////////////////////////////
+import TicketTypeNewPieChart from './components/TicketTypeNewPieChart';
 
 function App() {
   return (
@@ -44,7 +42,6 @@ function App() {
           <ProtectedRoute exact path="/UserProfile" component={UserProfile} />
           <ProtectedRoute exact path="/UserTable" component={UserTable} />
           <ProtectedRoute exact path="/SideAndNavbar" component={SideAndNavbar} />
-          <ProtectedRoute exact path="/Users" component={Users} />
           <ProtectedRoute exact path="/ProjectTable2" component={ProjectTable2} />
           <ProtectedRoute exact path="/TicketsTable" component={TicketsTable} />
           <ProtectedRoute exact path="/AssignedPersonnel" component={AssignedPersonnel} />
@@ -58,13 +55,14 @@ function App() {
           <ProtectedRoute exact path="/DeveloperTicketsPieChart" component={DeveloperTicketsPieChart} />
           <ProtectedRoute exact path="/ManageProjectUsers" component={ManageProjectUsers} />
           <ProtectedRoute exact path="/TicketDetails" component={TicketDetails} />
+          <ProtectedRoute exact path="/TicketDetails2" component={TicketDetails2} />
           <ProtectedRoute exact path="/TicketDetailsComponent" component={TicketDetailsComponent} />
           <ProtectedRoute exact path="/CreateTicket" component={CreateTicket} />
           <ProtectedRoute exact path="/AssignUser" component={AssignUser} />
-          <ProtectedRoute exact path="/AssignUser2" component={AssignUser2} />
           <ProtectedRoute exact path="/ProjectUserAssign" component={ProjectUserAssign} />
           <ProtectedRoute exact path="/CreateProject" component={CreateProject} />
           <ProtectedRoute exact path="/TicketDetailsPage" component={TicketDetailsPage} />
+          <ProtectedRoute exact path="/TicketTypeNewPieChart" component={TicketTypeNewPieChart} />
           </Switch>
         </Router>
         </AuthProvider>

@@ -79,29 +79,30 @@ module.exports = {
         async assignUser(_, { projectId, userId, name }) {
             
             try {
-            //const userObj = authorization(context);
+
             const project = await Project.findById(projectId);
-         
             var flag = false;
 
+            var id = mongoose.Types.ObjectId(userId);
             if (userId.match(/^[0-9a-fA-F]{24}$/)) {
-                var id = mongoose.Types.ObjectId(userId);
-                var list = project.users;
 
-                for (var i = 0; i < project.users.length; i++) {
-
-                    var obj = toString(project.users[i]);
-                    var obj2 = toString(id);
-                  
-                    if (obj.localeCompare(obj2))
-                {
-                    flag = true;
+                const length = project.users.length;
+                for (var i = 0; i < length; i++) {                
+                    var obj = mongoose.Types.ObjectId(project.users[i]);
+                    if (obj.equals(id))
+                    {
+                        var errors={}; 
+                        throw new UserInputError('User already assigned to the project');
+                    }
+                    else  {
+                        project.users.push(id);
+                        }   
                 }
-                }
-
-                if (flag === false) {
+            }
+            
+            if (project.users.length==0)
+            {
                     project.users.push(id);
-                }
             }
             
             await project.save();
@@ -111,7 +112,6 @@ module.exports = {
                 const projects = await Project.find().sort({ createdAt: -1 });
                 const length = projects[index].users.length;
                 var userId = 0
-                var users = 0;
 
                 for (var i=0;i<length; i++)
                {
@@ -119,14 +119,11 @@ module.exports = {
                   var usersValue =  await User.findOne( userId );
                   usersArray.push(usersValue);
                }
-
                return usersArray;
             }
             catch(err){
                 throw new Error(err);
             }
-            
-           // return project;
         }
     }
 };

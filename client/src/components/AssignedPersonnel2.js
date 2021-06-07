@@ -8,35 +8,46 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { useQuery, gql } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import { useHistory } from "react-router-dom";
 import '../css/assignedpersonnel2.css';
+import Spinner from 'react-spinner-material';
 
 const useStyles = makeStyles({
   banner:
   {
   backgroundColor: '#262B40',
-  height: '120px',
-  width:'93%',
-  padding: '2%',
-  marginLeft:'1%'
+  width:'95%',
+  padding: '1%',
+  marginLeft:'1%',
+  borderRadius: '5px'
   },
   heading:{
+    fontSize: '16px',
     color: 'white',
     padding: '0'
   },
+  subHeading:{
+    fontSize: '14px',
+    color: 'white',
+  },
   root: {
-    width: '100%',
+    width: '600px',
+    marginRight:'2%',
   },
   container: {
     maxHeight: 440,
   },
+  spinner:{
+    marginLeft: '50%',
+    marginTop: '20%'
+  },
 });
 
 const columns = [
-  { id: 'username', label: 'Username', minWidth: 170 },
-  { id: 'email', label: 'Email', minWidth: 100 },
-  { id: 'role', label: 'Role', minWidth: 200 },
+  { id: 'username', label: 'Username', minWidth: 200 },
+  { id: 'email', label: 'Email', minWidth: 200 },
+  { id: 'role', label: 'Role', minWidth: 400 },
 ];
 
 function createData(username, email, creationTime, role, access) {
@@ -59,8 +70,10 @@ function AssignedDeveloper2(props) {
  });
 
   var rows = [];
-  if (loading)
-    return <p>Loading...</p>;
+  if (loading)(
+    <div className={classes.spinner}>
+     <Spinner  radius={60} color={"#4B0082"} stroke={5} visible={true} />
+     </div>);
   else {
 
     var length = data.getProjectsAndUsers.length;
@@ -69,11 +82,9 @@ function AssignedDeveloper2(props) {
           var name = (data.getProjectsAndUsers[k].username);
           var email = (data.getProjectsAndUsers[k].email);
           var role = (data.getProjectsAndUsers[k].role);
-
           JSON.stringify(name); 
           JSON.stringify(email); 
           JSON.stringify(role); 
-
           rows.push({
             username: name,
             email: email,
@@ -97,8 +108,8 @@ function AssignedDeveloper2(props) {
         <div id="main" class="main">
           <Paper className={classes.root}>
             <div className={classes.banner}>
-          <h4 className={classes.heading}>AssignedPersonnel</h4>
-          <p className={classes.heading}>Users assigned to this Project</p>
+          <p className={classes.heading}>Assigned Personnel</p>
+          <p className={classes.subHeading}>Users assigned to this Project</p>
           </div>
           <TableContainer className={classes.container}>
               <Table stickyHeader aria-label="sticky table">

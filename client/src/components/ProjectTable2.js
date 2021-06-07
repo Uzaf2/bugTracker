@@ -8,10 +8,11 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { useQuery, gql } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import SideAndNavbar from './SideAndNavbar';
 import { useHistory } from "react-router-dom";
 import '../css/projectTable.css';
+import Spinner from 'react-spinner-material';
 
 const useStyles = makeStyles({
   banner:
@@ -21,18 +22,23 @@ const useStyles = makeStyles({
   width:'93%',
   padding: '2%',
   marginLeft:'1%',
-  fontSize: '12'
+  fontSize: '12',
+  borderRadius: '5px'
   },
   heading:{
     color: 'white',
-    
+    fontSize: '16px'
   },
   root: {
     width: '100%',
-   
+    height: '80%'
   },
   container: {
     maxHeight: 440,
+  },
+  spinner:{
+    marginLeft: '30%',
+    marginTop: '5%'
   },
 });
 
@@ -56,12 +62,12 @@ function ProjectTable2(props) {
 
   var rows = [];
   if (loading)
-    return <p>Loading...</p>;
+      return (
+     <div className={classes.spinner}>
+      <Spinner  radius={60} color={"#4B0082"} stroke={5} visible={true} />
+      </div>);
   else {
-    //var length = data.getProjects.length;
-    //for (var i = 0; i < ; i++) {
       rows[index] = createData(data.getProjects[index].name, data.getProjects[index].description)
-    //}
   }
 
   const handleChangePage = (event, newPage) => {

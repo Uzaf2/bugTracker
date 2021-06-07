@@ -1,16 +1,19 @@
 
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import { useQuery, gql } from '@apollo/client';
 import Chart from "react-google-charts";
+import Spinner from 'react-spinner-material';
 
-var counterValue = 0;
-
+const useStyles = makeStyles({
+  spinner: {
+    marginLeft: '45%',
+    marginTop: '25%'
+  }
+});
 function DeveloperTicketsPieChart(props) {
 
-    var featureRequests = 0;
-    var otherComments = 0;
-    var BugsErrors = 0; 
-    var trainingDocuments = 0;
+  const classes = useStyles();
     var users = [];
     var tickets = [];
     var developersArray = [];
@@ -20,7 +23,10 @@ function DeveloperTicketsPieChart(props) {
     const { loading:loading1, data:data1 } = useQuery(GET_USERS);
 
 if (loading)
-      return <p>Loading...</p>;
+return (<div className={classes.spinner}>
+  <Spinner  radius={60} color={"#4B0082"} stroke={5} visible={true} />
+  </div>);     
+//return <p>Loading...</p>;
 
     else {
     

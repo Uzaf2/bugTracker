@@ -1,10 +1,20 @@
 
 import React from 'react';
-import { useQuery, gql } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import Chart from "react-google-charts";
+import Spinner from 'react-spinner-material';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  spinner: {
+    marginLeft: '45%',
+    marginTop: '25%'
+  }
+});
 
 function TicketTypePieChart(props) {
-var counterValue = 0;
+    const classes = useStyles();
+    var counterValue = 0;
     var featureRequests = 0;
     var otherComments = 0;
     var BugsErrors = 0; 
@@ -13,7 +23,9 @@ var counterValue = 0;
     var inputArray= [];
 
  if (loading)
-      return <p>Loading...</p>;
+ return (<div className={classes.spinner}>
+  <Spinner  radius={60} color={"#4B0082"} stroke={5} visible={true} />
+  </div>); 
 
     else {
             

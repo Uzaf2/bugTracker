@@ -3,16 +3,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import UserTable from '../components/UserTable';
 import SideAndNavbar from '../components/SideAndNavbar';
 import Button from '@material-ui/core/Button';
-import { useMutation } from '@apollo/react-hooks';
 import { useForm } from '../util/hooks';
-import { useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import { FETCH_USERS_QUERY } from '../util/graphql';
+import Spinner from 'react-spinner-material';
+import swal from 'sweetalert';
+import '../css/manageUserRoles.css';
 
 const useStyles = makeStyles({
   root: {
     width: '100%',
-
   },
   banner:{
     backgroundColor: '#262B40',
@@ -89,12 +89,16 @@ marginLeft: '30%',
 marginRight: '30%'
 },
 title: {
-  width: '50%',
+  width: '80%',
   marginLeft: "20%",
   fontSize: 18,
   fontWeight: '800',
   fontFamily: 'sans-serif'
-}
+},
+  spinner: {
+    marginLeft: '50%',
+    marginTop: '25%'
+  }
 });
 
 function ManageUserRoles(props) {
@@ -117,13 +121,15 @@ function ManageUserRoles(props) {
       update(proxy,  result ){
         const data = proxy.readQuery({ query: FETCH_USERS_QUERY });
         proxy.writeQuery({ query: FETCH_USERS_QUERY, data});
+        success();
       }
   });
   
-  
   var rows= ['Select the user'];
   if (loading) 
-       return <p>Loading...</p>;
+  return (<div className={classes.spinner}>
+  <Spinner  radius={60} color={"#4B0082"} stroke={5} visible={true} />
+  </div>);
   else {
       var length = data.getUsers.length;
       for(var i=0;i<length;i++)
@@ -136,18 +142,27 @@ function ManageUserRoles(props) {
     assign();
 }
 
+function success() {
+  swal({
+    title: "Done!",
+    text: "Role Assigned to the User",
+    icon: "success",
+    timer: 2000,
+    color:"#0000FF",
+    button: false
+  })
+}
+
   return (
     <body>
-    <SideAndNavbar/>
-   
-    <form onSubmit={onSubmit} class="inputForm">
+    <SideAndNavbar index={"Manage User Roles"}/>
    
       <div id="main" class="container">
         <div class="leftSide">
-        
+        <form onSubmit={onSubmit} class="inputForm">
           <div class="custom-select1">
-          <h2 className={classes.title}>Manage User Roles</h2>
-            <label for="cars" className={classes.label}>Select 1 or more Users:</label>
+          <h2 class="title">Manage User Roles</h2>
+            <label for="cars" class="label1" >Select 1 or more Users:</label>
             <br/>
             <select className={classes.input} id="name" name="name" onChange={onChange} value={values.name}>
          {rows.map(time => {
@@ -159,7 +174,7 @@ function ManageUserRoles(props) {
           </div>
           
           <div class="custom-select2">
-            <label for="cars" class="label2" className={classes.label}>Select the Role to assign:</label>
+            <label for="cars" class="label2" >Select the Role to assign:</label>
             <br/>
             <select className={classes.input} id="role" name="role" onChange={onChange} value={values.role}>
               <option value="0">--Select Role/None--:</option>
@@ -170,16 +185,18 @@ function ManageUserRoles(props) {
             </select>
           </div>
 
-          <Button className={classes.submit} variant="contained" color="primary" onClick={assignRole()}>
+          <Button class="btn41-43 btn-41" variant="contained" color="primary"  type="submit">
           Assign
           </Button>
+
+          </form>
          </div>
        
           <div class="rightSide">
             <UserTable class="userTable" />
           </div>
       </div>
-      </form>
+      
     </body>
   );
 }

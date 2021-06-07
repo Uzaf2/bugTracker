@@ -8,9 +8,10 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { useQuery, gql } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import { useHistory } from "react-router-dom";
 import '../css/projectTable.css';
+import Spinner from 'react-spinner-material';
 
 const useStyles = makeStyles({
   banner:
@@ -18,11 +19,13 @@ const useStyles = makeStyles({
   backgroundColor: '#262B40',
   height: '5%',
   width:'93%',
-  padding: '2%',
-  marginLeft:'1%'
+  padding: '1.5%',
+  marginLeft:'1%',
+  borderRadius: '5px'
   },
   heading:{
-    color: 'white'
+    color: 'white',
+    fontSize: '16px'
   },
   root: {
     width: '100%',
@@ -34,6 +37,10 @@ const useStyles = makeStyles({
   displayComments: 
     {
       color: 'black'
+    },
+    spinner:{
+      marginTop:'20%',
+      marginLeft:'50%'
     }
 });
 
@@ -65,7 +72,10 @@ const {loading:loading1, data:data1} = useQuery (FETCH_TICKETS_QUERY,{
 
 var rows = [];
 if (loading1)
-    return <p className={classes.displayComments}>Loading...</p>;
+return (<div className={classes.spinner}>
+<Spinner  radius={60} color={"#4B0082"} stroke={5} visible={true} />
+</div>);
+    
   else {
 
     if(data1.getTicketsByProjectId!=null)
